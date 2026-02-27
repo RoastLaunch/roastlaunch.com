@@ -88,5 +88,54 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  // NEWSLETTER HIDDEN IFRAME SUBMISSION
+     // Form submits silently into a hidden iframe so there's no redirect.
+     // The user stays on the page and sees a success message.
 
+     // Single hidden iframe shared by all forms on the page
+     const nlIframe = document.createElement('iframe');
+     nlIframe.name = 'nl-iframe';
+     nlIframe.setAttribute('style', 'position:absolute;width:0;height:0;border:0;');
+     nlIframe.setAttribute('aria-hidden', 'true');
+     nlIframe.setAttribute('tabindex', '-1');
+     document.body.appendChild(nlIframe);
+
+     document.querySelectorAll('.newsletter-form').forEach(form => {
+
+            // Get or create a .newsletter-wrap around the form
+            let wrap = form.closest('.newsletter-wrap');
+            if (!wrap) {
+                     wrap = document.createElement('div');
+                     wrap.className = 'newsletter-wrap';
+                     form.parentNode.insertBefore(wrap, form);
+                     wrap.appendChild(form);
+            }
+
+            // Get or create the success message inside the wrap
+            let success = wrap.querySelector('.newsletter-success');
+            if (!success) {
+                     success = document.createElement('div');
+                     success.className = 'newsletter-success';
+                     success.setAttribute('aria-live', 'polite');
+                     success.innerHTML =
+                                '<div class="newsletter-success-icon">&#10003;</div>' +
+                                '<p class="newsletter-success-title">Welcome to the community!</p>' +
+                                '<p class="newsletter-success-sub">Check your inbox to confirm your subscription.</p>';
+                     wrap.appendChild(success);
+            }
+
+            // Point form at the hidden iframe so the redirect is invisible
+            form.target = 'nl-iframe';
+
+            form.addEventListener('submit', () => {
+                     // Fade the form out
+                     form.classList.add('newsletter-form--out');
+                     // After fade, hide form and reveal success state
+                     setTimeout(() => {
+                                form.style.display = 'none';
+                                success.classList.add('newsletter-success--visible');
+                     }, 320);
+            });
+     });
+   
 });
