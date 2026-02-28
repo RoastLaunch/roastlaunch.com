@@ -94,6 +94,11 @@ section { padding: 88px 0; }
   transition: color 0.2s var(--ease);
 }
 .nav-menu a:hover { color: var(--text-primary); }
+.nav-menu a.nav-active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--terracotta);
+  padding-bottom: 2px;
+}
 .hamburger {
   display: none;
   background: none;
