@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join the Roast Launch Community. Weekly coffee education, monthly business deep-dives, live Q&amp;A calls, and 100+ aspiring coffee shop owners who share your calling. Starting at $37/mo.">
+    <meta property="og:title" content="Join the Roast Launch Community — Starting at $37/mo">
+    <meta property="og:description" content="Build your coffee shop with people who get it. Education, community, tools, and accountability — all for less than a bag of specialty coffee a week.">
+    <meta property="og:type" content="website">
+    <title>Join the Roast Launch Community — Starting at $37/mo</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── COMMUNITY LANDING — page-specific styles ── */
+
+        /* Section label */
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* ── HERO ── */
+        .cl-hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+            background: linear-gradient(155deg, var(--warm-white) 55%, var(--warm-cream) 100%);
+        }
+        .cl-hero-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 72px 24px;
+            display: grid;
+            grid-template-columns: 1fr 440px;
+            gap: 64px;
+            align-items: center;
+        }
+        .cl-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+        .cl-hero-sub {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        .cl-hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .cl-social-proof {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .cl-avatars {
+            display: flex;
+        }
+        .cl-avatars span {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-white);
+            background: var(--warm-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            margin-left: -9px;
+        }
+        .cl-avatars span:first-child { margin-left: 0; }
+        .cl-social-proof p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        .cl-social-proof strong { color: var(--text-primary); }
+
+        /* Hero card */
+        .cl-hero-card {
+            background: var(--warm-white);
+            border-radius: 20px;
+            padding: 36px 32px;
+            border: 1px solid rgba(28, 18, 9, 0.07);
+            box-shadow: 0 8px 40px rgba(28, 18, 9, 0.09);
+        }
+        .cl-hero-card-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .cl-hero-card-price {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .cl-hero-card-price-sub {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .cl-card-divider {
+            border: none;
+            border-top: 1px solid rgba(28, 18, 9, 0.06);
+            margin: 18px 0;
+        }
+        .cl-card-checklist {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .cl-card-checklist li {
+            padding: 8px 0 8px 24px;
+            font-size: 15px;
+            color: var(--text-primary);
+            position: relative;
+            border-bottom: 1px solid rgba(28, 18, 9, 0.04);
+        }
+        .cl-card-checklist li:last-child { border-bottom: none; }
+        .cl-card-checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .cl-hero-card .btn {
+            width: 100%;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .cl-hero-card-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* ── TRUST BAR ── */
+        .cl-trust-bar {
+            background: var(--warm-cream);
+            padding: 16px 24px;
+            text-align: center;
+            border-bottom: 1px solid rgba(28, 18, 9, 0.06);
+        }
+        .cl-trust-bar p {
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* ── BENEFITS ── */
+        .cl-benefits {
+            padding: 88px 0;
+            background: var(--warm-white);
+        }
+        .cl-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .cl-benefit-card {
+            padding: 28px;
+            background: var(--warm-cream);
+            border-radius: 14px;
+            border: 1px solid rgba(28, 18, 9, 0.04);
+            transition: all 0.3s var(--ease);
+        }
+        .cl-benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(28, 18, 9, 0.08);
+        }
+        .cl-benefit-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .cl-benefit-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+        .cl-benefit-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.65;
+        }
+
+        /* ── WHO THIS IS FOR ── */
+        .cl-for-you {
+            background: var(--espresso);
+            padding: 88px 0;
+        }
+        .cl-for-you h2 { color: var(--warm-white); }
+        .cl-for-you .section-label { color: rgba(196, 97, 42, 0.9); }
+        .cl-for-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+        }
+        .cl-for-col h3 {
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--warm-cream);
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(250, 250, 248, 0.1);
+        }
+        .cl-for-list { list-style: none; }
+        .cl-for-list li {
+            padding: 11px 0 11px 28px;
+            font-size: 16px;
+            color: rgba(250, 250, 248, 0.8);
+            border-bottom: 1px solid rgba(250, 250, 248, 0.06);
+            position: relative;
+            line-height: 1.55;
+        }
+        .cl-for-list li:last-child { border-bottom: none; }
+        .cl-for-list.yes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .cl-for-list.no li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: rgba(250, 250, 248, 0.28);
+            font-weight: 700;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .cl-testimonials {
+            background: var(--warm-cream);
+            padding: 88px 0;
+        }
+        .cl-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .cl-testimonial {
+            background: var(--warm-white);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(28, 18, 9, 0.05);
+            position: relative;
+        }
+        .cl-testimonial::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: rgba(196, 97, 42, 0.12);
+            position: absolute;
+            top: 14px;
+            left: 24px;
+            line-height: 1;
+        }
+        .cl-testimonial-text {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .cl-testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cl-testimonial-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(196, 97, 42, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .cl-testimonial-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        .cl-testimonial-role {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .cl-testimonial-disclaimer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+
+        /* ── PRICING ── */
+        .cl-pricing {
+            background: var(--warm-white);
+            padding: 88px 0;
+        }
+        .cl-pricing-intro {
+            text-align: center;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+        .cl-pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 860px;
+            margin: 52px auto 0;
+        }
+        .cl-price-card {
+            background: var(--warm-white);
+            border-radius: 18px;
+            padding: 40px 36px;
+            border: 1px solid rgba(28, 18, 9, 0.07);
+            transition: all 0.3s var(--ease);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .cl-price-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(28, 18, 9, 0.08);
+        }
+        .cl-price-card.featured {
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 28px rgba(196, 97, 42, 0.12);
+            background: var(--warm-white);
+        }
+        .cl-price-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--warm-white);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .cl-price-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .cl-price-tag {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .cl-price-tag span {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .cl-price-founding {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .cl-price-regular {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .cl-price-divider {
+            border: none;
+            border-top: 1px solid rgba(28, 18, 9, 0.06);
+            margin: 18px 0 22px;
+        }
+        .cl-price-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex: 1;
+        }
+        .cl-price-features li {
+            padding: 9px 0 9px 26px;
+            font-size: 15px;
+            color: var(--text-primary);
+            position: relative;
+            border-bottom: 1px solid rgba(28, 18, 9, 0.04);
+        }
+        .cl-price-features li:last-child { border-bottom: none; }
+        .cl-price-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .cl-price-card .btn {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+        .cl-price-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .cl-pricing-footer {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-top: 36px;
+        }
+        .cl-pricing-footer a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ── FAQ ── */
+        .cl-faq {
+            background: var(--warm-cream);
+            padding: 88px 0;
+        }
+        .cl-faq .faq-container { max-width: 720px; margin: 40px auto 0; }
+
+        /* ── FINAL CTA ── */
+        .cl-final-cta {
+            background: var(--espresso);
+            padding: 104px 24px;
+            text-align: center;
+        }
+        .cl-final-cta h2 {
+            color: var(--warm-white);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            max-width: 680px;
+            margin: 0 auto 16px;
+        }
+        .cl-final-cta .cta-sub {
+            color: rgba(250, 250, 248, 0.7);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
+        .cl-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .btn-ghost {
+            background: rgba(250, 250, 248, 0.1);
+            color: var(--warm-white) !important;
+            border: 2px solid rgba(250, 250, 248, 0.2);
+        }
+        .btn-ghost:hover {
+            background: rgba(250, 250, 248, 0.18);
+            color: var(--warm-white) !important;
+            transform: translateY(-2px);
+        }
+        .cl-final-cta .cta-guarantee {
+            font-size: 13px;
+            color: rgba(250, 250, 248, 0.4);
+            margin-bottom: 0;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 960px) {
+            .cl-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                padding: 56px 24px;
+            }
+            .cl-hero { min-height: auto; padding-top: 72px; }
+            .cl-hero-sub { max-width: 100%; }
+            .cl-for-grid { grid-template-columns: 1fr; gap: 36px; }
+            .cl-pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+        }
+        @media (max-width: 768px) {
+            .cl-benefits-grid,
+            .cl-testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .cl-hero-inner { padding-top: 48px; }
+            .cl-cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── NAVIGATION ── -->
+    <header class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Roast Launch</a>
+            <nav class="nav-menu">
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="blog.html">Blog</a>
+                <a href="community.html" class="nav-active">Community</a>
+            </nav>
+            <a href="#join" class="btn btn-primary">Join the Community</a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════════════════════
+             HERO
+        ══════════════════════════════════════════════ -->
+        <section class="cl-hero">
+            <div class="cl-hero-inner">
+
+                <!-- Left: copy -->
+                <div class="fade-in">
+                    <span class="section-label">The Roast Launch Community</span>
+                    <h1>Build your coffee shop with people who get it.</h1>
+                    <p class="cl-hero-sub">Weekly coffee education, monthly business deep-dives, live Q&amp;A calls, and a community of 100+ aspiring owners who share your calling — all for less than a bag of specialty coffee a week.</p>
+                    <div class="cl-hero-buttons">
+                        <a href="#join" class="btn btn-primary">Join Core — $37/mo →</a>
+                        <a href="#what-you-get" class="btn btn-outline">See What's Included</a>
+                    </div>
+                    <div class="cl-social-proof">
+                        <div class="cl-avatars">
+                            <span>☕</span>
+                            <span>🏪</span>
+                            <span>📈</span>
+                            <span>✨</span>
+                        </div>
+                        <p><strong>100+ members</strong> learning, growing, and building toward launch</p>
+                    </div>
+                </div>
+
+                <!-- Right: pricing card -->
+                <div class="cl-hero-card fade-in">
+                    <p class="cl-hero-card-label">Core Membership</p>
+                    <div class="cl-hero-card-price">$37</div>
+                    <p class="cl-hero-card-price-sub">per month &middot; founding member price</p>
+                    <hr class="cl-card-divider">
+                    <ul class="cl-card-checklist">
+                        <li>All 8 curriculum modules</li>
+                        <li>Weekly coffee education sessions</li>
+                        <li>Monthly business deep-dive calls</li>
+                        <li>Live member Q&amp;A calls</li>
+                        <li>Private community forum</li>
+                        <li>Tools &amp; templates library</li>
+                        <li>Newsletter archive access</li>
+                    </ul>
+                    <a href="https://roastlaunch.beehiiv.com/subscribe" class="btn btn-primary">Join the Community →</a>
+                    <p class="cl-hero-card-note">Cancel anytime &middot; Price locks in forever at $37/mo</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── TRUST BAR ── -->
+        <div class="cl-trust-bar">
+            <p>Built for aspiring specialty coffee shop owners &nbsp;&middot;&nbsp; Faith-grounded &nbsp;&middot;&nbsp; Community-first &nbsp;&middot;&nbsp; No fluff</p>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             WHAT YOU GET
+        ══════════════════════════════════════════════ -->
+        <section class="cl-benefits" id="what-you-get">
+            <div class="container">
+                <span class="section-label fade-in">What You Get</span>
+                <h2 class="fade-in">Everything you need to go from dreaming to doing</h2>
+                <p class="section-subtitle fade-in">Your membership includes education, community, tools, and accountability — all in one place, so you stop scattered Googling and start building with real intention.</p>
+                <div class="cl-benefits-grid stagger">
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">☕</span>
+                        <h3>Weekly Coffee Education</h3>
+                        <p>Deep dives into specialty coffee — single-origin regions, extraction science, flavor profiling, and how to develop your palate as a future shop owner. Real education, not YouTube rabbit holes.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">📊</span>
+                        <h3>Monthly Business Deep-Dives</h3>
+                        <p>Financial modeling, location strategy, hiring, operations, and the real numbers behind a profitable coffee shop. Taught from real research so you don't have to start from scratch.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">🎙️</span>
+                        <h3>Live Member Q&amp;A Calls</h3>
+                        <p>Bring your real questions — your market, your financial picture, your timeline — and get answers live. No canned responses. Real conversation with people who are in it with you.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">📚</span>
+                        <h3>Full Curriculum — 8 Modules</h3>
+                        <p>The complete Coffee Shop Launch System. From validating your concept to signing your lease. Work at your own pace, refer back as your planning evolves. Yours as long as you're a member.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">🤝</span>
+                        <h3>Private Community Forum</h3>
+                        <p>100+ people who understand the calling. Ask questions, share wins, form accountability partnerships, and build real relationships with people pursuing exactly what you are.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">🛠️</span>
+                        <h3>Tools &amp; Templates Library</h3>
+                        <p>Financial models, location analysis frameworks, menu development worksheets, and operational checklists. Stop reinventing the wheel — start with tools built for your exact situation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             WHO THIS IS FOR
+        ══════════════════════════════════════════════ -->
+        <section class="cl-for-you">
+            <div class="container">
+                <span class="section-label fade-in">Who This Is For</span>
+                <h2 class="fade-in">This community was built for a specific kind of person.</h2>
+                <div class="cl-for-grid stagger">
+
+                    <div class="cl-for-col">
+                        <h3>This is for you if &hellip;</h3>
+                        <ul class="cl-for-list yes">
+                            <li>You've felt called to open a specialty coffee shop but don't know where to start</li>
+                            <li>You're serious about learning — not just dreaming — and want structured education</li>
+                            <li>You want community with people who share your faith and your entrepreneurial calling</li>
+                            <li>You've tried piecing it together solo and know you need a better approach</li>
+                            <li>You want accountability and real conversation, not just a course you'll abandon</li>
+                            <li>You're willing to invest in yourself before you have the money to open</li>
+                        </ul>
+                    </div>
+
+                    <div class="cl-for-col">
+                        <h3>This is NOT for you if &hellip;</h3>
+                        <ul class="cl-for-list no">
+                            <li>You want a quick shortcut with no real learning or community involvement</li>
+                            <li>You're looking for a franchise model or someone to do the work for you</li>
+                            <li>You're not open to faith-grounded principles as part of the conversation</li>
+                            <li>You want to open a generic coffee shop with no specialty focus or differentiation</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             TESTIMONIALS
+        ══════════════════════════════════════════════ -->
+        <section class="cl-testimonials">
+            <div class="container">
+                <span class="section-label fade-in">Member Stories</span>
+                <h2 class="fade-in">What members are saying</h2>
+                <div class="cl-testimonials-grid stagger">
+
+                    <div class="cl-testimonial">
+                        <p class="cl-testimonial-text">"I'd been dreaming about opening a shop for three years and was completely stuck. The curriculum gave me a real framework — and the community kept me honest about actually doing the work instead of just planning."</p>
+                        <div class="cl-testimonial-author">
+                            <div class="cl-testimonial-avatar">☕</div>
+                            <div>
+                                <p class="cl-testimonial-name">Sarah M.</p>
+                                <p class="cl-testimonial-role">Core Member &middot; Planning phase</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cl-testimonial">
+                        <p class="cl-testimonial-text">"The monthly business calls alone are worth it. We went deep on financial modeling and I came away with an actual spreadsheet I'm using for my projections. This is real, actionable education."</p>
+                        <div class="cl-testimonial-author">
+                            <div class="cl-testimonial-avatar">📊</div>
+                            <div>
+                                <p class="cl-testimonial-name">Marcus T.</p>
+                                <p class="cl-testimonial-role">Core + Launch Partner &middot; 4 months in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cl-testimonial">
+                        <p class="cl-testimonial-text">"Finding people who understand both specialty coffee and faith-driven entrepreneurship felt impossible. This community is exactly that. It's rare — and it makes the whole journey feel a lot less lonely."</p>
+                        <div class="cl-testimonial-author">
+                            <div class="cl-testimonial-avatar">🤝</div>
+                            <div>
+                                <p class="cl-testimonial-name">Priya K.</p>
+                                <p class="cl-testimonial-role">Core Member &middot; 2 months in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="cl-testimonial-disclaimer">These testimonials represent the spirit and experience of the community. Real stories coming as the community grows.</p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             PRICING
+        ══════════════════════════════════════════════ -->
+        <section class="cl-pricing" id="join">
+            <div class="container">
+                <div class="cl-pricing-intro fade-in">
+                    <span class="section-label">Choose Your Path</span>
+                    <h2>Simple, transparent pricing</h2>
+                    <p class="section-subtitle" style="margin-bottom:0;">Start with Core. Add Launch Partner when you want a small-group accountability cohort. Both are currently at founding member pricing — meaning your price locks in the day you join.</p>
+                </div>
+
+                <div class="cl-pricing-grid stagger">
+
+                    <!-- Core -->
+                    <div class="cl-price-card">
+                        <h3>Core Membership</h3>
+                        <div class="cl-price-tag">$37<span>/mo</span></div>
+                        <p class="cl-price-founding">🔒 Founding member price — locked in forever</p>
+                        <p class="cl-price-regular">Regular price: $67/mo after founding period closes</p>
+                        <hr class="cl-price-divider">
+                        <ul class="cl-price-features">
+                            <li>All 8 curriculum modules</li>
+                            <li>Weekly coffee education sessions</li>
+                            <li>Monthly business deep-dive calls</li>
+                            <li>Live member Q&amp;A calls</li>
+                            <li>Private community forum access</li>
+                            <li>Tools &amp; templates library</li>
+                            <li>Newsletter archive access</li>
+                        </ul>
+                        <a href="https://roastlaunch.beehiiv.com/subscribe" class="btn btn-outline">Join Core — $37/mo</a>
+                        <p class="cl-price-note">Cancel anytime &middot; No contracts</p>
+                    </div>
+
+                    <!-- Core + Launch Partner -->
+                    <div class="cl-price-card featured">
+                        <div class="cl-price-badge">Most Popular</div>
+                        <h3>Core + Launch Partner</h3>
+                        <div class="cl-price-tag">$84<span>/mo</span></div>
+                        <p class="cl-price-founding">🔒 Founding member price — locked in forever</p>
+                        <p class="cl-price-regular">Regular price: $114/mo &nbsp;&middot;&nbsp; ($37 Core + $47 Launch Partner)</p>
+                        <hr class="cl-price-divider">
+                        <ul class="cl-price-features">
+                            <li>Everything in Core membership</li>
+                            <li>Bi-weekly small-group accountability calls</li>
+                            <li>Dedicated cohort Slack channel (6–8 people)</li>
+                            <li>One-on-one check-ins with John</li>
+                            <li>Priority Q&amp;A at group calls</li>
+                            <li>Goal tracking &amp; milestone celebrations</li>
+                        </ul>
+                        <a href="https://roastlaunch.beehiiv.com/subscribe" class="btn btn-primary">Join with Launch Partner →</a>
+                        <p class="cl-price-note">Cancel anytime &middot; No contracts</p>
+                    </div>
+
+                </div>
+
+                <p class="cl-pricing-footer">Already a Core member? <a href="https://roastlaunch.beehiiv.com/subscribe">Upgrade to Launch Partner anytime.</a></p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             FAQ
+        ══════════════════════════════════════════════ -->
+        <section class="cl-faq">
+            <div class="container">
+                <div style="text-align:center;" class="fade-in">
+                    <span class="section-label">FAQ</span>
+                    <h2>Questions? We have answers.</h2>
+                </div>
+                <div class="faq-container fade-in">
+
+                    <div class="faq-item">
+                        <h3>What's the difference between Core and Launch Partner?</h3>
+                        <div class="faq-answer">
+                            <p>Core gives you everything: full curriculum, weekly coffee education, monthly business calls, live Q&amp;A, and the community forum. It's structured but self-paced. Launch Partner adds bi-weekly small-group calls with a dedicated cohort for accountability and personalized feedback. Choose Core if you work well independently — choose Launch Partner if you thrive with consistent accountability and people who know your specific situation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How long will the founding member price last?</h3>
+                        <div class="faq-answer">
+                            <p>The founding period ends when the community reaches the right size — likely within the first few months of active growth. Once you lock in at $37/mo, that price is yours forever as long as you maintain your membership. There are no retroactive price increases for existing members. Ever.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I upgrade or downgrade anytime?</h3>
+                        <div class="faq-answer">
+                            <p>Yes. Start with Core and add Launch Partner whenever you want more accountability. You can also scale back to Core if your schedule changes. Changes take effect on your next billing cycle — no hassle, no penalty.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do I lose my curriculum access if I cancel?</h3>
+                        <div class="faq-answer">
+                            <p>If you cancel, you keep lifetime access to the curriculum modules you've already worked through. Forum access and live call attendance end with your membership. But the core education is yours — no expiration date.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How big are the Launch Partner cohorts?</h3>
+                        <div class="faq-answer">
+                            <p>Launch Partner groups are limited to 6–8 people. Small enough to build real trust and genuine relationship. You'll meet the same cohort every two weeks — consistent enough that people actually know your story and can give you meaningful, specific input over time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>I'm just exploring the idea. Is this too advanced for me?</h3>
+                        <div class="faq-answer">
+                            <p>Not at all. Exploration is a valid and important stage. Many of our members started with nothing but a feeling they were supposed to do this. The curriculum begins at the foundations, and the community includes people at every stage — from early dreamers to people 6 months from opening. You'll fit right in.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is this only for people of faith?</h3>
+                        <div class="faq-answer">
+                            <p>We're faith-grounded, meaning the content reflects a perspective that your work has meaning beyond profit. But we don't require any specific beliefs to join. What we ask is that you're open to that perspective being part of the conversation. People of all backgrounds are welcome here.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             FINAL CTA
+        ══════════════════════════════════════════════ -->
+        <section class="cl-final-cta">
+            <span class="section-label" style="color:rgba(196,97,42,0.85); margin-bottom:16px; display:block;">Ready to stop going it alone?</span>
+            <h2>The founding period won't be open forever.</h2>
+            <p class="cta-sub">Join now, lock in at $37/mo, and get full access to the community, curriculum, and calls today. No contracts. Cancel anytime.</p>
+            <div class="cl-cta-buttons">
+                <a href="https://roastlaunch.beehiiv.com/subscribe" class="btn btn-primary" style="font-size:17px; padding:16px 44px;">Join Core — $37/mo →</a>
+                <a href="https://roastlaunch.beehiiv.com/subscribe" class="btn btn-ghost" style="font-size:17px; padding:16px 44px;">Join with Launch Partner — $84/mo</a>
+            </div>
+            <p class="cta-guarantee">Cancel anytime &nbsp;&middot;&nbsp; Founding price locked in forever &nbsp;&middot;&nbsp; No contracts</p>
+        </section>
+
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Roast Launch</h4>
+                <p>Build the coffee shop you were made for.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="community-landing.html">Join Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="https://roastlaunch.beehiiv.com" target="_blank">Newsletter Archive</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://instagram.com/roastlaunch" target="_blank">Instagram</a></li>
+                    <li><a href="https://tiktok.com/@roastlaunch" target="_blank">TikTok</a></li>
+                    <li><a href="mailto:john@roastlaunch.com">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Roast Launch, LLC</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
