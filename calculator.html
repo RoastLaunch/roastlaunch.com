@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Financial Calculator | Roast Launch</title>
+    <meta name="description" content="Free interactive coffee shop financial calculator. Estimate startup costs, project monthly P&L, calculate break-even, and analyze unit economics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ============================================================
+           CALCULATOR STYLES â Roast Launch Branding
+           All variables and colors match the main site.
+           To create a new calculator, copy this file and update
+           the CONFIG object in the <script> section at the bottom.
+        ============================================================ */
+
+        .calc-page { background: var(--warm-white, #FAFAF8); }
+
+        /* Hero */
+        .calc-hero {
+            background: linear-gradient(135deg, var(--espresso, #1C1209) 0%, var(--coffee-brown, #3D2314) 100%);
+            color: var(--warm-white, #FAFAF8);
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+        .calc-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 16px;
+            color: var(--warm-white, #FAFAF8);
+        }
+        .calc-hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Tab Navigation */
+        .calc-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            background: var(--espresso, #1C1209);
+            padding: 0 20px;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--terracotta, #C4612A);
+        }
+        .calc-tab {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 16px 24px;
+            background: none;
+            border: none;
+            color: rgba(250, 250, 248, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+        .calc-tab:hover { color: var(--warm-white, #FAFAF8); }
+        .calc-tab.active {
+            color: var(--terracotta, #C4612A);
+        }
+        .calc-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--terracotta, #C4612A);
+        }
+
+        /* Calculator Container */
+        .calc-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* Section (each calculator panel) */
+        .calc-section {
+            display: none;
+        }
+        .calc-section.active { display: block; }
+
+        .calc-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--espresso, #1C1209);
+            margin-bottom: 8px;
+        }
+        .calc-section .section-desc {
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* Cards */
+        .calc-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .calc-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--espresso, #1C1209);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--warm-cream, #F0E6D8);
+        }
+
+        /* Input Grid */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--coffee-brown, #3D2314);
+            margin-bottom: 6px;
+        }
+        .input-group .input-hint {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        .input-group input, .input-group select {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            padding: 10px 14px;
+            border: 2px solid var(--warm-cream, #F0E6D8);
+            border-radius: 8px;
+            background: var(--warm-white, #FAFAF8);
+            color: var(--espresso, #1C1209);
+            transition: border-color 0.2s;
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--terracotta, #C4612A);
+        }
+
+        /* Results */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .result-card {
+            background: linear-gradient(135deg, var(--warm-cream, #F0E6D8) 0%, #fff 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .result-card .result-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--coffee-brown, #3D2314);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .result-card .result-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--terracotta, #C4612A);
+        }
+        .result-card .result-sub {
+            font-size: 0.78rem;
+            color: #888;
+            margin-top: 4px;
+        }
+        .result-card.highlight {
+            background: linear-gradient(135deg, var(--espresso, #1C1209) 0%, var(--coffee-brown, #3D2314) 100%);
+        }
+        .result-card.highlight .result-label { color: rgba(255,255,255,0.7); }
+        .result-card.highlight .result-value { color: var(--terracotta, #C4612A); }
+        .result-card.highlight .result-sub { color: rgba(255,255,255,0.5); }
+
+        /* Table */
+        .calc-table-wrap {
+            overflow-x: auto;
+            margin-top: 24px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .calc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+        }
+        .calc-table th {
+            background: var(--espresso, #1C1209);
+            color: var(--warm-white, #FAFAF8);
+            padding: 12px 16px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .calc-table th:first-child { text-align: left; }
+        .calc-table td {
+            padding: 10px 16px;
+            text-align: right;
+            border-bottom: 1px solid var(--warm-cream, #F0E6D8);
+            white-space: nowrap;
+        }
+        .calc-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--coffee-brown, #3D2314);
+        }
+        .calc-table tr:hover { background: rgba(240, 230, 216, 0.3); }
+        .calc-table .row-total {
+            font-weight: 700;
+            background: var(--warm-cream, #F0E6D8);
+        }
+        .calc-table .row-total td { border-bottom: 2px solid var(--coffee-brown, #3D2314); }
+        .calc-table .row-subtotal { font-weight: 600; background: rgba(240, 230, 216, 0.4); }
+        .calc-table .negative { color: #c0392b; }
+        .calc-table .positive { color: var(--sage, #5C7A4E); }
+
+        /* Year toggle for P&L */
+        .year-toggles {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .year-toggle {
+            font-family: 'Inter', sans-serif;
+            padding: 8px 20px;
+            border: 2px solid var(--warm-cream, #F0E6D8);
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--coffee-brown, #3D2314);
+            transition: all 0.2s;
+        }
+        .year-toggle.active {
+            background: var(--terracotta, #C4612A);
+            color: #fff;
+            border-color: var(--terracotta, #C4612A);
+        }
+
+        /* Drink rows in Unit Economics */
+        .drink-row {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 12px;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--warm-cream, #F0E6D8);
+        }
+        .drink-row.header {
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--coffee-brown, #3D2314);
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid var(--coffee-brown, #3D2314);
+            padding-bottom: 12px;
+        }
+        .drink-row input {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            padding: 8px 10px;
+            border: 2px solid var(--warm-cream, #F0E6D8);
+            border-radius: 6px;
+            background: var(--warm-white, #FAFAF8);
+            text-align: right;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .drink-row input:focus { outline: none; border-color: var(--terracotta, #C4612A); }
+        .drink-row .drink-name { font-weight: 500; }
+        .drink-row .computed {
+            text-align: right;
+            font-weight: 600;
+            color: var(--sage, #5C7A4E);
+        }
+
+        /* Break-even gauge */
+        .gauge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        .gauge-svg { max-width: 300px; width: 100%; }
+        .gauge-label {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--terracotta, #C4612A);
+            margin-top: 16px;
+        }
+        .gauge-sublabel {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* CTA Section */
+        .calc-cta {
+            background: linear-gradient(135deg, var(--espresso, #1C1209) 0%, var(--coffee-brown, #3D2314) 100%);
+            border-radius: 16px;
+            padding: 48px 32px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .calc-cta h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--warm-white, #FAFAF8);
+            margin-bottom: 12px;
+            border: none;
+            padding: 0;
+        }
+        .calc-cta p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .calc-cta .btn-cta {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 36px;
+            background: var(--terracotta, #C4612A);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .calc-cta .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 97, 42, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .calc-tabs { padding: 0 8px; }
+            .calc-tab { padding: 12px 14px; font-size: 0.8rem; }
+            .calc-card { padding: 20px; }
+            .input-grid { grid-template-columns: 1fr; }
+            .results-grid { grid-template-columns: 1fr 1fr; }
+            .drink-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .drink-row.header { display: none; }
+            .drink-row input { text-align: left; }
+        }
+        @media (max-width: 480px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .year-toggles { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body class="calc-page">
+
+    <!-- Navigation -->
+    <header class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Roast Launch</a>
+            <nav class="nav-menu">
+                <a href="about.html">About</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="blog.html">Blog</a>
+                <a href="community.html">Community</a>
+            </nav>
+            <a href="community-landing.html" class="btn btn-primary">Join the Community</a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="calc-hero">
+        <h1>Coffee Shop Financial Calculator</h1>
+        <p>Plan your coffee shop finances with confidence. Estimate startup costs, project revenue, and find your break-even point â all in one place.</p>
+    </section>
+
+    <!-- Tabs -->
+    <div class="calc-tabs" id="calcTabs">
+        <button class="calc-tab active" data-tab="startup">Startup Costs</button>
+        <button class="calc-tab" data-tab="pnl">Monthly P&L</button>
+        <button class="calc-tab" data-tab="unit">Unit Economics</button>
+        <button class="calc-tab" data-tab="breakeven">Break-Even</button>
+        <button class="calc-tab" data-tab="cashflow">Cash Flow</button>
+    </div>
+
+    <div class="calc-container">
+
+        <!-- ========== 1. STARTUP COSTS ========== -->
+        <div class="calc-section active" id="sec-startup">
+            <h2>Startup Cost Estimator</h2>
+            <p class="section-desc">Enter your estimates for each category below. Adjust the contingency buffer to build in a safety margin.</p>
+
+            <div class="calc-card">
+                <h3>Lease &amp; Build-Out</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Security Deposit</label>
+                        <div class="input-hint">First + last month's rent</div>
+                        <input type="number" data-key="startup_deposit" value="12000">
+                    </div>
+                    <div class="input-group">
+                        <label>Leasehold Improvements</label>
+                        <div class="input-hint">Build-out, plumbing, electrical</div>
+                        <input type="number" data-key="startup_leasehold" value="75000">
+                    </div>
+                    <div class="input-group">
+                        <label>Furniture &amp; Fixtures</label>
+                        <div class="input-hint">Tables, chairs, lighting, decor</div>
+                        <input type="number" data-key="startup_furniture" value="20000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Equipment</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Espresso Machine</label>
+                        <input type="number" data-key="startup_espresso" value="18000">
+                    </div>
+                    <div class="input-group">
+                        <label>Grinders</label>
+                        <input type="number" data-key="startup_grinders" value="4000">
+                    </div>
+                    <div class="input-group">
+                        <label>Brewers &amp; Pour-Over</label>
+                        <input type="number" data-key="startup_brewers" value="3000">
+                    </div>
+                    <div class="input-group">
+                        <label>Refrigeration</label>
+                        <input type="number" data-key="startup_fridge" value="5000">
+                    </div>
+                    <div class="input-group">
+                        <label>POS System</label>
+                        <input type="number" data-key="startup_pos" value="2500">
+                    </div>
+                    <div class="input-group">
+                        <label>Smallwares &amp; Supplies</label>
+                        <div class="input-hint">Cups, lids, napkins, initial stock</div>
+                        <input type="number" data-key="startup_smallwares" value="3000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Licensing, Legal &amp; Professional</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Business Licenses &amp; Permits</label>
+                        <input type="number" data-key="startup_licenses" value="3000">
+                    </div>
+                    <div class="input-group">
+                        <label>Legal &amp; Accounting Fees</label>
+                        <input type="number" data-key="startup_legal" value="5000">
+                    </div>
+                    <div class="input-group">
+                        <label>Insurance (First Year)</label>
+                        <input type="number" data-key="startup_insurance" value="4000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Branding &amp; Marketing</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Logo &amp; Brand Design</label>
+                        <input type="number" data-key="startup_branding" value="5000">
+                    </div>
+                    <div class="input-group">
+                        <label>Website &amp; Social Setup</label>
+                        <input type="number" data-key="startup_website" value="3000">
+                    </div>
+                    <div class="input-group">
+                        <label>Grand Opening Marketing</label>
+                        <input type="number" data-key="startup_marketing" value="5000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Working Capital</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Cash Reserve (Months of OpEx)</label>
+                        <div class="input-hint">Recommended: 3-6 months</div>
+                        <input type="number" data-key="startup_reserve_months" value="3" min="1" max="12">
+                    </div>
+                    <div class="input-group">
+                        <label>Estimated Monthly OpEx</label>
+                        <div class="input-hint">Used to calculate reserve</div>
+                        <input type="number" data-key="startup_monthly_opex" value="25000">
+                    </div>
+                    <div class="input-group">
+                        <label>Contingency Buffer (%)</label>
+                        <div class="input-hint">Extra cushion on top of total</div>
+                        <input type="number" data-key="startup_contingency" value="10" min="0" max="50">
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-grid" id="startup-results"></div>
+        </div>
+
+        <!-- ========== 2. MONTHLY P&L ========== -->
+        <div class="calc-section" id="sec-pnl">
+            <h2>Monthly P&L Projection</h2>
+            <p class="section-desc">Set your revenue and cost assumptions below, then view a 36-month profit & loss projection.</p>
+
+            <div class="calc-card">
+                <h3>Revenue Assumptions</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Drinks Sold per Day (Month 1)</label>
+                        <input type="number" data-key="pnl_drinks_day" value="150">
+                    </div>
+                    <div class="input-group">
+                        <label>Average Drink Price ($)</label>
+                        <input type="number" data-key="pnl_avg_drink" value="5.50" step="0.25">
+                    </div>
+                    <div class="input-group">
+                        <label>Food Revenue (% of Drink Rev)</label>
+                        <input type="number" data-key="pnl_food_pct" value="20" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Retail/Merch Revenue (% of Drink Rev)</label>
+                        <input type="number" data-key="pnl_retail_pct" value="5" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Monthly Growth Rate (%)</label>
+                        <div class="input-hint">Applied to drink volume each month</div>
+                        <input type="number" data-key="pnl_growth" value="2" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label>Days Open per Month</label>
+                        <input type="number" data-key="pnl_days" value="30">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Cost Assumptions</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Drink COGS (%)</label>
+                        <input type="number" data-key="pnl_drink_cogs" value="25" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Food COGS (%)</label>
+                        <input type="number" data-key="pnl_food_cogs" value="35" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Monthly Rent ($)</label>
+                        <input type="number" data-key="pnl_rent" value="5000">
+                    </div>
+                    <div class="input-group">
+                        <label>Monthly Payroll ($)</label>
+                        <input type="number" data-key="pnl_payroll" value="12000">
+                    </div>
+                    <div class="input-group">
+                        <label>Utilities ($)</label>
+                        <input type="number" data-key="pnl_utilities" value="800">
+                    </div>
+                    <div class="input-group">
+                        <label>Marketing ($)</label>
+                        <input type="number" data-key="pnl_mktg" value="1000">
+                    </div>
+                    <div class="input-group">
+                        <label>Insurance ($/mo)</label>
+                        <input type="number" data-key="pnl_insurance_mo" value="350">
+                    </div>
+                    <div class="input-group">
+                        <label>Other Monthly Costs ($)</label>
+                        <input type="number" data-key="pnl_other" value="500">
+                    </div>
+                    <div class="input-group">
+                        <label>Annual Rent Increase (%)</label>
+                        <input type="number" data-key="pnl_rent_esc" value="3" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label>Annual Payroll Increase (%)</label>
+                        <input type="number" data-key="pnl_payroll_esc" value="5" step="0.5">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Projected P&L</h3>
+                <div class="year-toggles" id="pnlYearToggles">
+                    <button class="year-toggle active" data-year="1">Year 1</button>
+                    <button class="year-toggle" data-year="2">Year 2</button>
+                    <button class="year-toggle" data-year="3">Year 3</button>
+                </div>
+                <div class="results-grid" id="pnl-annual-summary"></div>
+                <div class="calc-table-wrap">
+                    <table class="calc-table" id="pnlTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 3. UNIT ECONOMICS ========== -->
+        <div class="calc-section" id="sec-unit">
+            <h2>Unit Economics Calculator</h2>
+            <p class="section-desc">Analyze the profit margin of every drink on your menu. Adjust prices and costs to optimize your mix.</p>
+
+            <div class="calc-card">
+                <h3>Drink Menu</h3>
+                <div class="drink-row header">
+                    <span>Drink</span>
+                    <span style="text-align:right">Price ($)</span>
+                    <span style="text-align:right">COGS ($)</span>
+                    <span style="text-align:right">Margin ($)</span>
+                    <span style="text-align:right">Margin (%)</span>
+                </div>
+                <div id="drinkRows"></div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Daily Revenue Breakdown</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Drinks Sold per Day</label>
+                        <input type="number" data-key="unit_drinks_day" value="150">
+                    </div>
+                </div>
+                <div class="results-grid" id="unit-results"></div>
+            </div>
+        </div>
+
+        <!-- ========== 4. BREAK-EVEN ========== -->
+        <div class="calc-section" id="sec-breakeven">
+            <h2>Break-Even Analysis</h2>
+            <p class="section-desc">Find out how many drinks you need to sell each day to cover all your fixed costs.</p>
+
+            <div class="calc-card">
+                <h3>Fixed Monthly Costs</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Rent ($)</label>
+                        <input type="number" data-key="be_rent" value="5000">
+                    </div>
+                    <div class="input-group">
+                        <label>Payroll ($)</label>
+                        <input type="number" data-key="be_payroll" value="12000">
+                    </div>
+                    <div class="input-group">
+                        <label>Utilities ($)</label>
+                        <input type="number" data-key="be_utilities" value="800">
+                    </div>
+                    <div class="input-group">
+                        <label>Insurance ($)</label>
+                        <input type="number" data-key="be_insurance" value="350">
+                    </div>
+                    <div class="input-group">
+                        <label>Marketing ($)</label>
+                        <input type="number" data-key="be_marketing" value="1000">
+                    </div>
+                    <div class="input-group">
+                        <label>Other Fixed ($)</label>
+                        <input type="number" data-key="be_other" value="500">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Revenue &amp; Variable Costs</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Avg Drink Price ($)</label>
+                        <input type="number" data-key="be_price" value="5.50" step="0.25">
+                    </div>
+                    <div class="input-group">
+                        <label>Avg COGS per Drink ($)</label>
+                        <input type="number" data-key="be_cogs" value="1.38" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label>Days Open per Month</label>
+                        <input type="number" data-key="be_days" value="30">
+                    </div>
+                    <div class="input-group">
+                        <label>Your Current Drinks/Day</label>
+                        <div class="input-hint">To calculate margin of safety</div>
+                        <input type="number" data-key="be_current_drinks" value="150">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card" style="text-align:center;">
+                <h3 style="text-align:center;">Your Break-Even Point</h3>
+                <div class="gauge-container">
+                    <svg class="gauge-svg" viewBox="0 0 200 120" id="gaugeChart">
+                        <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="#F0E6D8" stroke-width="14" stroke-linecap="round"/>
+                        <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="#C4612A" stroke-width="14" stroke-linecap="round" id="gaugeArc" stroke-dasharray="0 251"/>
+                        <circle cx="100" cy="100" r="4" fill="#1C1209" id="gaugeNeedle"/>
+                    </svg>
+                    <div class="gauge-label" id="beGaugeLabel">0 drinks/day</div>
+                    <div class="gauge-sublabel" id="beGaugeSub"></div>
+                </div>
+                <div class="results-grid" id="be-results"></div>
+            </div>
+        </div>
+
+        <!-- ========== 5. CASH FLOW ========== -->
+        <div class="calc-section" id="sec-cashflow">
+            <h2>Cash Flow Dashboard</h2>
+            <p class="section-desc">See how your cash position evolves over 36 months based on your P&L inputs and starting capital.</p>
+
+            <div class="calc-card">
+                <h3>Starting Capital</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Opening Cash Balance ($)</label>
+                        <div class="input-hint">Your day-one bank balance</div>
+                        <input type="number" data-key="cf_opening" value="50000">
+                    </div>
+                    <div class="input-group">
+                        <label>Loan Amount ($)</label>
+                        <input type="number" data-key="cf_loan" value="150000">
+                    </div>
+                    <div class="input-group">
+                        <label>Loan Interest Rate (%)</label>
+                        <input type="number" data-key="cf_rate" value="7" step="0.25">
+                    </div>
+                    <div class="input-group">
+                        <label>Loan Term (Years)</label>
+                        <input type="number" data-key="cf_term" value="7" min="1" max="30">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Annual Cash Flow Summary</h3>
+                <div class="results-grid" id="cf-annual"></div>
+            </div>
+
+            <div class="calc-card">
+                <h3>Monthly Cash Flow</h3>
+                <div class="year-toggles" id="cfYearToggles">
+                    <button class="year-toggle active" data-year="1">Year 1</button>
+                    <button class="year-toggle" data-year="2">Year 2</button>
+                    <button class="year-toggle" data-year="3">Year 3</button>
+                </div>
+                <div class="calc-table-wrap">
+                    <table class="calc-table" id="cfTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="calc-cta">
+            <h3>Ready to Launch Your Coffee Shop?</h3>
+            <p>Join our community of aspiring coffee shop owners and get expert guidance every step of the way.</p>
+            <a href="community-landing.html#join" class="btn-cta">Join the Roast Launch Community</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Roast Launch</h4>
+                <p>Build the coffee shop you were made for.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="community.html">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="calculator.html">Financial Calculator</a></li>
+                    <li><a href="https://roastlaunch.beehiiv.com" target="_blank">Newsletter Archive</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/roastlaunch" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@roastlaunch" target="_blank">TikTok</a></li>
+                    <li><a href="mailto:john@roastlaunch.com">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Roast Launch, LLC</p>
+        </div>
+    </footer>
+
+    <script>
+    /* ==========================================================================
+       COFFEE SHOP FINANCIAL CALCULATOR â Roast Launch
+       ==========================================================================
+       UPDATABILITY GUIDE:
+       âââââââââââââââââ
+       â¢ To change default values: Update the "value" attributes in the HTML inputs above.
+       â¢ To add a new drink: Add an entry to DRINKS array below.
+       â¢ To add a new cost line: Add to the relevant section in the compute functions.
+       â¢ To duplicate this calculator: Copy this entire file and modify the inputs/labels.
+       â¢ All calculations are in plain JS functions â no framework dependencies.
+       ========================================================================== */
+
+    // ââ CONFIG: Default drink menu (easily editable) âââââââââââââââââââââââââ
+    const DRINKS = [
+        { name: 'Drip Coffee',       price: 3.50, cogs: 0.45 },
+        { name: 'Americano',         price: 4.50, cogs: 0.55 },
+        { name: 'Latte',             price: 5.50, cogs: 1.20 },
+        { name: 'Cappuccino',        price: 5.50, cogs: 1.15 },
+        { name: 'Mocha',             price: 6.00, cogs: 1.50 },
+        { name: 'Cold Brew',         price: 5.00, cogs: 0.60 },
+        { name: 'Iced Latte',        price: 5.75, cogs: 1.25 },
+        { name: 'Espresso',          price: 3.00, cogs: 0.40 },
+        { name: 'Flat White',        price: 5.50, cogs: 1.20 },
+        { name: 'Matcha Latte',      price: 6.00, cogs: 1.40 },
+        { name: 'Chai Latte',        price: 5.50, cogs: 1.10 },
+        { name: 'Hot Chocolate',     price: 5.00, cogs: 0.90 },
+    ];
+
+    // ââ UTILITY FUNCTIONS ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
+    const fmt = (n) => {
+        if (n === undefined || n === null || isNaN(n)) return '-';
+        const abs = Math.abs(n);
+        if (abs >= 1e6) return (n < 0 ? '(' : '') + '$' + (abs / 1e6).toFixed(1) + 'M' + (n < 0 ? ')' : '');
+        const s = abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        return n < 0 ? '($' + s + ')' : '$' + s;
+    };
+    const fmtD = (n) => n === 0 ? '-' : '$' + n.toFixed(2);
+    const fmtP = (n) => n === 0 ? '-' : (n * 100).toFixed(1) + '%';
+    const getV = (key) => parseFloat(document.querySelector(`[data-key="${key}"]`)?.value) || 0;
+
+    // ââ TAB SWITCHING ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    $$('.calc-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            $$('.calc-tab').forEach(t => t.classList.remove('active'));
+            $$('.calc-section').forEach(s => s.classList.remove('active'));
+            tab.classList.add('active');
+            $(`#sec-${tab.dataset.tab}`).classList.add('active');
+            recalcAll();
+        });
+    });
+
+    // ââ 1. STARTUP COSTS âââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    function calcStartup() {
+        const keys = [
+            'startup_deposit','startup_leasehold','startup_furniture',
+            'startup_espresso','startup_grinders','startup_brewers','startup_fridge','startup_pos','startup_smallwares',
+            'startup_licenses','startup_legal','startup_insurance',
+            'startup_branding','startup_website','startup_marketing'
+        ];
+        const subtotal = keys.reduce((s, k) => s + getV(k), 0);
+        const reserve = getV('startup_reserve_months') * getV('startup_monthly_opex');
+        const total = subtotal + reserve;
+        const contingency = total * (getV('startup_contingency') / 100);
+        const grand = total + contingency;
+
+        const el = $('#startup-results');
+        el.innerHTML = `
+            <div class="result-card"><div class="result-label">Hard Costs</div><div class="result-value">${fmt(subtotal)}</div></div>
+            <div class="result-card"><div class="result-label">Working Capital</div><div class="result-value">${fmt(reserve)}</div><div class="result-sub">${getV('startup_reserve_months')} months reserve</div></div>
+            <div class="result-card"><div class="result-label">Contingency (${getV('startup_contingency')}%)</div><div class="result-value">${fmt(contingency)}</div></div>
+            <div class="result-card highlight"><div class="result-label">Total Startup Cost</div><div class="result-value">${fmt(grand)}</div></div>
+        `;
+    }
+
+    // ââ 2. MONTHLY P&L ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    let pnlData = []; // 36-month array
+    let pnlYear = 1;
+
+    function calcPnl() {
+        const drinksDay0 = getV('pnl_drinks_day');
+        const avgPrice = getV('pnl_avg_drink');
+        const foodPct = getV('pnl_food_pct') / 100;
+        const retailPct = getV('pnl_retail_pct') / 100;
+        const growth = getV('pnl_growth') / 100;
+        const days = getV('pnl_days');
+        const drinkCogs = getV('pnl_drink_cogs') / 100;
+        const foodCogs = getV('pnl_food_cogs') / 100;
+        let rent = getV('pnl_rent');
+        let payroll = getV('pnl_payroll');
+        const utilities = getV('pnl_utilities');
+        const mktg = getV('pnl_mktg');
+        const ins = getV('pnl_insurance_mo');
+        const other = getV('pnl_other');
+        const rentEsc = getV('pnl_rent_esc') / 100;
+        const payrollEsc = getV('pnl_payroll_esc') / 100;
+
+        pnlData = [];
+        for (let m = 0; m < 36; m++) {
+            if (m === 12) { rent *= (1 + rentEsc); payroll *= (1 + payrollEsc); }
+            if (m === 24) { rent *= (1 + rentEsc); payroll *= (1 + payrollEsc); }
+            const drinks = Math.round(drinksDay0 * Math.pow(1 + growth, m));
+            const drinkRev = drinks * avgPrice * days;
+            const foodRev = drinkRev * foodPct;
+            const retailRev = drinkRev * retailPct;
+            const totalRev = drinkRev + foodRev + retailRev;
+            const totalCogs = (drinkRev * drinkCogs) + (foodRev * foodCogs);
+            const grossProfit = totalRev - totalCogs;
+            const totalOpex = rent + payroll + utilities + mktg + ins + other;
+            const ebitda = grossProfit - totalOpex;
+
+            pnlData.push({
+                month: m + 1,
+                drinks, drinkRev, foodRev, retailRev, totalRev,
+                totalCogs, grossProfit, rent, payroll,
+                utilities, mktg, ins, other, totalOpex, ebitda
+            });
+        }
+
+        renderPnlTable();
+        renderPnlSummary();
+    }
+
+    function renderPnlSummary() {
+        const yearData = pnlData.slice((pnlYear - 1) * 12, pnlYear * 12);
+        const totalRev = yearData.reduce((s, d) => s + d.totalRev, 0);
+        const totalProfit = yearData.reduce((s, d) => s + d.grossProfit, 0);
+        const totalEbitda = yearData.reduce((s, d) => s + d.ebitda, 0);
+        const margin = totalRev > 0 ? totalEbitda / totalRev : 0;
+
+        $('#pnl-annual-summary').innerHTML = `
+            <div class="result-card"><div class="result-label">Year ${pnlYear} Revenue</div><div class="result-value">${fmt(totalRev)}</div></div>
+            <div class="result-card"><div class="result-label">Gross Profit</div><div class="result-value">${fmt(totalProfit)}</div><div class="result-sub">${fmtP(totalRev > 0 ? totalProfit / totalRev : 0)} margin</div></div>
+            <div class="result-card"><div class="result-label">Total OpEx</div><div class="result-value">${fmt(yearData.reduce((s, d) => s + d.totalOpex, 0))}</div></div>
+            <div class="result-card highlight"><div class="result-label">EBITDA</div><div class="result-value">${fmt(totalEbitda)}</div><div class="result-sub">${fmtP(margin)} margin</div></div>
+        `;
+    }
+
+    function renderPnlTable() {
+        const start = (pnlYear - 1) * 12;
+        const yearData = pnlData.slice(start, start + 12);
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+        let thead = '<tr><th>Line Item</th>';
+        yearData.forEach((d, i) => { thead += `<th>M${d.month}</th>`; });
+        thead += '<th>Total</th></tr>';
+
+        const rows = [
+            { label: 'Drinks/Day', key: 'drinks', isCurrency: false },
+            { label: 'Drink Revenue', key: 'drinkRev' },
+            { label: 'Food Revenue', key: 'foodRev' },
+            { label: 'Retail Revenue', key: 'retailRev' },
+            { label: 'Total Revenue', key: 'totalRev', cls: 'row-subtotal' },
+            { label: 'COGS', key: 'totalCogs' },
+            { label: 'Gross Profit', key: 'grossProfit', cls: 'row-subtotal' },
+            { label: 'Rent', key: 'rent' },
+            { label: 'Payroll', key: 'payroll' },
+            { label: 'Utilities', key: 'utilities' },
+            { label: 'Marketing', key: 'mktg' },
+            { label: 'Insurance', key: 'ins' },
+            { label: 'Other', key: 'other' },
+            { label: 'Total OpEx', key: 'totalOpex', cls: 'row-subtotal' },
+            { label: 'EBITDA', key: 'ebitda', cls: 'row-total' },
+        ];
+
+        let tbody = '';
+        rows.forEach(r => {
+            const cls = r.cls ? ` class="${r.cls}"` : '';
+            tbody += `<tr${cls}><td>${r.label}</td>`;
+            let total = 0;
+            yearData.forEach(d => {
+                const v = d[r.key];
+                total += v;
+                const valStr = r.isCurrency === false ? v.toLocaleString() : fmt(v);
+                const colorCls = r.key === 'ebitda' ? (v < 0 ? ' class="negative"' : ' class="positive"') : '';
+                tbody += `<td${colorCls}>${valStr}</td>`;
+            });
+            const totalStr = r.isCurrency === false ? total.toLocaleString() : fmt(total);
+            const totalCls = r.key === 'ebitda' ? (total < 0 ? ' class="negative"' : ' class="positive"') : '';
+            tbody += `<td${totalCls}>${totalStr}</td></tr>`;
+        });
+
+        $('#pnlTable thead').innerHTML = thead;
+        $('#pnlTable tbody').innerHTML = tbody;
+    }
+
+    // Year toggles for P&L
+    document.addEventListener('click', e => {
+        if (e.target.closest('#pnlYearToggles .year-toggle')) {
+            const btn = e.target.closest('.year-toggle');
+            $$('#pnlYearToggles .year-toggle').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            pnlYear = parseInt(btn.dataset.year);
+            renderPnlTable();
+            renderPnlSummary();
+        }
+        if (e.target.closest('#cfYearToggles .year-toggle')) {
+            const btn = e.target.closest('.year-toggle');
+            $$('#cfYearToggles .year-toggle').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            cfYear = parseInt(btn.dataset.year);
+            renderCfTable();
+        }
+    });
+
+    // ââ 3. UNIT ECONOMICS âââââââââââââââââââââââââââââââââââââââââââââââââââ
+    function initDrinks() {
+        const container = $('#drinkRows');
+        container.innerHTML = '';
+        DRINKS.forEach((d, i) => {
+            const row = document.createElement('div');
+            row.className = 'drink-row';
+            row.innerHTML = `
+                <span class="drink-name">${d.name}</span>
+                <input type="number" data-drink="${i}" data-field="price" value="${d.price}" step="0.25">
+                <input type="number" data-drink="${i}" data-field="cogs" value="${d.cogs}" step="0.05">
+                <span class="computed" data-drink="${i}" data-field="margin">-</span>
+                <span class="computed" data-drink="${i}" data-field="marginPct">-</span>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    function calcUnit() {
+        let totalMargin = 0;
+        let count = 0;
+        DRINKS.forEach((d, i) => {
+            const price = parseFloat(document.querySelector(`[data-drink="${i}"][data-field="price"]`)?.value) || 0;
+            const cogs = parseFloat(document.querySelector(`[data-drink="${i}"][data-field="cogs"]`)?.value) || 0;
+            const margin = price - cogs;
+            const marginPct = price > 0 ? margin / price : 0;
+            document.querySelector(`[data-drink="${i}"][data-field="margin"]`).textContent = fmtD(margin);
+            document.querySelector(`[data-drink="${i}"][data-field="marginPct"]`).textContent = fmtP(marginPct);
+            totalMargin += margin;
+            count++;
+        });
+
+        const avgMargin = count > 0 ? totalMargin / count : 0;
+        const avgPrice = DRINKS.reduce((s, d, i) => {
+            return s + (parseFloat(document.querySelector(`[data-drink="${i}"][data-field="price"]`)?.value) || 0);
+        }, 0) / (count || 1);
+        const drinksDay = getV('unit_drinks_day');
+
+        $('#unit-results').innerHTML = `
+            <div class="result-card"><div class="result-label">Avg Margin/Drink</div><div class="result-value">${fmtD(avgMargin)}</div></div>
+            <div class="result-card"><div class="result-label">Avg Price</div><div class="result-value">${fmtD(avgPrice)}</div></div>
+            <div class="result-card"><div class="result-label">Daily Revenue</div><div class="result-value">${fmt(Math.round(avgPrice * drinksDay))}</div><div class="result-sub">${drinksDay} drinks</div></div>
+            <div class="result-card highlight"><div class="result-label">Daily Gross Profit</div><div class="result-value">${fmt(Math.round(avgMargin * drinksDay))}</div></div>
+        `;
+    }
+
+    // ââ 4. BREAK-EVEN âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    function calcBreakeven() {
+        const fixed = getV('be_rent') + getV('be_payroll') + getV('be_utilities') +
+                      getV('be_insurance') + getV('be_marketing') + getV('be_other');
+        const price = getV('be_price');
+        const cogs = getV('be_cogs');
+        const days = getV('be_days');
+        const currentDrinks = getV('be_current_drinks');
+        const contribution = price - cogs;
+        const beUnitsMonth = contribution > 0 ? Math.ceil(fixed / contribution) : 0;
+        const beUnitsDay = days > 0 ? Math.ceil(beUnitsMonth / days) : 0;
+        const beRevMonth = beUnitsMonth * price;
+        const marginOfSafety = currentDrinks > 0 && beUnitsDay > 0 ? ((currentDrinks - beUnitsDay) / currentDrinks) : 0;
+
+        // Update gauge
+        const maxDrinks = Math.max(beUnitsDay * 2, currentDrinks * 1.5, 300);
+        const pct = Math.min(beUnitsDay / maxDrinks, 1);
+        const arcLength = 251; // approximate arc length
+        $('#gaugeArc').setAttribute('stroke-dasharray', `${pct * arcLength} ${arcLength}`);
+        $('#beGaugeLabel').textContent = `${beUnitsDay} drinks/day`;
+        $('#beGaugeSub').textContent = `${beUnitsMonth.toLocaleString()} drinks/month to break even`;
+
+        $('#be-results').innerHTML = `
+            <div class="result-card"><div class="result-label">Monthly Fixed Costs</div><div class="result-value">${fmt(fixed)}</div></div>
+            <div class="result-card"><div class="result-label">Contribution/Drink</div><div class="result-value">${fmtD(contribution)}</div><div class="result-sub">Price minus COGS</div></div>
+            <div class="result-card"><div class="result-label">Break-Even Revenue</div><div class="result-value">${fmt(beRevMonth)}</div><div class="result-sub">per month</div></div>
+            <div class="result-card ${marginOfSafety >= 0 ? 'highlight' : ''}"><div class="result-label">Margin of Safety</div><div class="result-value">${fmtP(marginOfSafety)}</div><div class="result-sub">${currentDrinks > beUnitsDay ? 'Above' : 'Below'} break-even</div></div>
+        `;
+    }
+
+    // ââ 5. CASH FLOW ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    let cfData = [];
+    let cfYear = 1;
+
+    function calcCashflow() {
+        // Ensure P&L is calculated first
+        if (pnlData.length === 0) calcPnl();
+
+        const opening = getV('cf_opening');
+        const loan = getV('cf_loan');
+        const rate = getV('cf_rate') / 100;
+        const termYears = getV('cf_term');
+        const monthlyRate = rate / 12;
+        const nPayments = termYears * 12;
+        const monthlyPayment = loan > 0 && monthlyRate > 0
+            ? loan * (monthlyRate * Math.pow(1 + monthlyRate, nPayments)) / (Math.pow(1 + monthlyRate, nPayments) - 1)
+            : (loan > 0 ? loan / nPayments : 0);
+
+        let balance = opening + loan;
+        cfData = [];
+
+        for (let m = 0; m < 36; m++) {
+            const pnl = pnlData[m] || { ebitda: 0 };
+            const loanPay = m < nPayments ? monthlyPayment : 0;
+            const netCash = pnl.ebitda - loanPay;
+            const endBalance = balance + netCash;
+
+            cfData.push({
+                month: m + 1,
+                beginBalance: balance,
+                ebitda: pnl.ebitda,
+                loanPayment: loanPay,
+                netCash,
+                endBalance
+            });
+            balance = endBalance;
+        }
+
+        renderCfAnnual();
+        renderCfTable();
+    }
+
+    function renderCfAnnual() {
+        let html = '';
+        for (let y = 1; y <= 3; y++) {
+            const yearData = cfData.slice((y - 1) * 12, y * 12);
+            const netCash = yearData.reduce((s, d) => s + d.netCash, 0);
+            const end = yearData[11]?.endBalance || 0;
+            const cls = y === 1 ? 'highlight' : '';
+            html += `<div class="result-card ${cls}">
+                <div class="result-label">Year ${y} Net Cash Flow</div>
+                <div class="result-value ${netCash < 0 ? 'negative' : ''}">${fmt(Math.round(netCash))}</div>
+                <div class="result-sub">Ending: ${fmt(Math.round(end))}</div>
+            </div>`;
+        }
+        $('#cf-annual').innerHTML = html;
+    }
+
+    function renderCfTable() {
+        const start = (cfYear - 1) * 12;
+        const yearData = cfData.slice(start, start + 12);
+
+        let thead = '<tr><th>Item</th>';
+        yearData.forEach(d => { thead += `<th>M${d.month}</th>`; });
+        thead += '</tr>';
+
+        const rows = [
+            { label: 'Beginning Balance', key: 'beginBalance' },
+            { label: 'EBITDA', key: 'ebitda' },
+            { label: 'Loan Payment', key: 'loanPayment' },
+            { label: 'Net Cash Flow', key: 'netCash', cls: 'row-subtotal' },
+            { label: 'Ending Balance', key: 'endBalance', cls: 'row-total' },
+        ];
+
+        let tbody = '';
+        rows.forEach(r => {
+            const cls = r.cls ? ` class="${r.cls}"` : '';
+            tbody += `<tr${cls}><td>${r.label}</td>`;
+            yearData.forEach(d => {
+                const v = Math.round(d[r.key]);
+                const color = (r.key === 'netCash' || r.key === 'endBalance') ? (v < 0 ? ' class="negative"' : ' class="positive"') : '';
+                tbody += `<td${color}>${fmt(v)}</td>`;
+            });
+            tbody += '</tr>';
+        });
+
+        $('#cfTable thead').innerHTML = thead;
+        $('#cfTable tbody').innerHTML = tbody;
+    }
+
+    // ââ RECALC ALL ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    function recalcAll() {
+        calcStartup();
+        calcPnl();
+        calcUnit();
+        calcBreakeven();
+        calcCashflow();
+    }
+
+    // ââ INIT ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+    initDrinks();
+
+    // Recalc on any input change
+    document.addEventListener('input', (e) => {
+        if (e.target.matches('input, select')) {
+            recalcAll();
+        }
+    });
+
+    // Initial calculation
+    recalcAll();
+
+    // Hamburger menu (match site behavior)
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+    </script>
+</body>
+</html>
