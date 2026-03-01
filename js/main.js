@@ -2,6 +2,10 @@
    ROAST LAUNCH — Site JavaScript
    ═══════════════════════════════════════════════════════ */
 
+// Force scroll to top on fresh page loads (not back/forward nav)
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── NAV SCROLL EFFECT ──────────────────────────────
