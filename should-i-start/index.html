@@ -8,11 +8,11 @@
     <meta property="og:description" content="Find out if you're ready to open a specialty coffee shop — emotionally, financially, and spiritually.">
     <meta property="og:type" content="website">
     <title>Should I Start a Coffee Shop? — Roast Launch</title>
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="../favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- ═══════════════════════════════════════════════════════
          READINESS ASSESSMENT — INLINE STYLES
@@ -355,14 +355,14 @@
     <!-- ── NAVIGATION ── -->
     <header class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Roast Launch</a>
+            <a href="/" class="nav-logo">Roast Launch</a>
             <nav class="nav-menu">
-                <a href="about.html">About</a>
-                <a href="curriculum.html">Curriculum</a>
-                <a href="blog.html">Blog</a>
-                <a href="community.html">Community</a>
+                <a href="/about">About</a>
+                <a href="/curriculum">Curriculum</a>
+                <a href="/blog">Blog</a>
+                <a href="/community">Community</a>
             </nav>
-            <a href="community-landing.html" class="btn btn-primary">Join the Community</a>
+            <a href="/community-landing" class="btn btn-primary">Join the Community</a>
             <button class="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -420,16 +420,16 @@
             <div class="footer-column">
                 <h4>Pages</h4>
                 <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="curriculum.html">Curriculum</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="community.html">Community</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/curriculum">Curriculum</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/community">Community</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="https://roastlaunch.beehiiv.com" target="_blank">Newsletter Archive</a></li>
                 </ul>
             </div>
@@ -447,7 +447,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 
     <!-- ═══════════════════════════════════════════════════════
          READINESS ASSESSMENT — QUIZ ENGINE
@@ -813,20 +813,20 @@
             if (tier === RESULTS.go) {
                 ctaButtons = `
                     <div class="result-cta-buttons">
-                        <a href="community-landing.html" class="btn btn-primary">Join the Community</a>
-                        <a href="curriculum.html" class="btn btn-ghost-light">See the Curriculum</a>
+                        <a href="/community-landing" class="btn btn-primary">Join the Community</a>
+                        <a href="/curriculum" class="btn btn-ghost-light">See the Curriculum</a>
                     </div>`;
             } else if (tier === RESULTS.wait) {
                 ctaButtons = `
                     <div class="result-cta-buttons">
-                        <a href="community-landing.html" class="btn btn-primary">Join the Community</a>
-                        <a href="curriculum.html" class="btn btn-ghost-light">Preview the Curriculum</a>
+                        <a href="/community-landing" class="btn btn-primary">Join the Community</a>
+                        <a href="/curriculum" class="btn btn-ghost-light">Preview the Curriculum</a>
                     </div>`;
             } else {
                 ctaButtons = `
                     <div class="result-cta-buttons">
-                        <a href="index.html#newsletter" class="btn btn-primary">Get the Free Newsletter</a>
-                        <a href="blog.html" class="btn btn-ghost-light">Read the Blog</a>
+                        <a href="/#newsletter" class="btn btn-primary">Get the Free Newsletter</a>
+                        <a href="/blog" class="btn btn-ghost-light">Read the Blog</a>
                     </div>`;
             }
 
