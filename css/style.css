@@ -621,6 +621,7 @@ section { padding: 88px 0; }
 /* ── FAQ / ACCORDION ───────────────────────────────── */
 .faq-section {
   padding: 88px 0;
+  background: var(--warm-cream);
 }
 .faq-section .container {
   text-align: center;
@@ -788,7 +789,6 @@ section { padding: 88px 0; }
 .newsletter-signup-section {
   padding: 72px 0;
   text-align: center;
-  background: var(--warm-cream);
 }
 .newsletter-prompt {
   font-size: 17px;
