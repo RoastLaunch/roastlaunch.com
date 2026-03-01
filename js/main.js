@@ -104,16 +104,19 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = parseInt(el.textContent);
           if (isNaN(target)) return;
           let current = 0;
-          const step = () => {
-            current++;
-            el.textContent = String(current).padStart(2, '0');
-            if (current < target) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
+          el.textContent = '00';
+          // Stagger start based on target number for cascade effect
+          setTimeout(() => {
+            const interval = setInterval(() => {
+              current++;
+              el.textContent = String(current).padStart(2, '0');
+              if (current >= target) clearInterval(interval);
+            }, 80);
+          }, (target - 1) * 60);
           numObserver.unobserve(el);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
     moduleNums.forEach(el => numObserver.observe(el));
   }
 
