@@ -855,6 +855,12 @@ section { padding: 88px 0; }
 }
 .fade-in--visible { opacity: 1; transform: translateY(0); }
 
+/* Fast variant for above-the-fold / first-visible sections */
+.fade-in--fast {
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  transform: translateY(20px);
+}
+
 .stagger > * {
   opacity: 0; transform: translateY(32px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);

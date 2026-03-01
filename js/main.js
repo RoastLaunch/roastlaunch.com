@@ -74,6 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeEls.forEach(el => fadeObserver.observe(el));
     staggerEls.forEach(el => staggerObserver.observe(el));
 
+    // Immediately trigger fast-entrance sections (above-the-fold)
+    document.querySelectorAll('.fade-in--fast').forEach(el => {
+      setTimeout(() => {
+        el.classList.add('fade-in--visible');
+        fadeObserver.unobserve(el);
+        // Also trigger stagger children inside fast sections
+        const stagger = el.querySelector('.stagger');
+        if (stagger) {
+          stagger.classList.add('stagger--visible');
+          staggerObserver.unobserve(stagger);
+        }
+      }, 150);
+    });
+
     // Safety fallback
     setTimeout(() => {
       fadeEls.forEach(el => {
