@@ -25,7 +25,7 @@
 
 /* ── RESET & BASE ─────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; background-color: var(--espresso); }
 body {
   font-family: var(--font-body);
   font-size: 17px;
