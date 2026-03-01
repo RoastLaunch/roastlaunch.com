@@ -843,23 +843,23 @@ section { padding: 88px 0; }
 /* ── ANIMATIONS ────────────────────────────────────── */
 .fade-in {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
 }
 .fade-in--visible { opacity: 1; transform: translateY(0); }
 
 .stagger > * {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
 .stagger--visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(7) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
-.stagger--visible > *:nth-child(8) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(6) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(7) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
+.stagger--visible > *:nth-child(8) { transition-delay: 1.05s; opacity: 1; transform: translateY(0); }
 
 /* Subtle section separator on cream backgrounds */
 .learning-pillars,

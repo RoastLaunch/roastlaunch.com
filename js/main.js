@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(() => {
           const y = window.scrollY;
           if (y < window.innerHeight) {
-            hero.style.transform = `translateY(${y * 0.08}px)`;
-            hero.style.opacity = Math.max(1 - y / (window.innerHeight * 0.9), 0);
+            hero.style.transform = `translateY(${y * 0.15}px)`;
+            hero.style.opacity = Math.max(1 - y / (window.innerHeight * 0.7), 0);
           }
           ticking = false;
         });
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
           fadeObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     const staggerObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
           staggerObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     fadeEls.forEach(el => fadeObserver.observe(el));
     staggerEls.forEach(el => staggerObserver.observe(el));
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
           el.classList.add('stagger--visible');
         }
       });
-    }, 1500);
+    }, 2500);
 
   } else {
     fadeEls.forEach(el => el.classList.add('fade-in--visible'));
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
               current++;
               el.textContent = String(current).padStart(2, '0');
               if (current >= target) clearInterval(interval);
-            }, 80);
-          }, (target - 1) * 60);
+            }, 120);
+          }, (target - 1) * 120);
           numObserver.unobserve(el);
         }
       });
