@@ -28,11 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── SCROLL ANIMATIONS ─────────────────────────────
-  // Fade-in and stagger animations with robust fallback
-  // to prevent sections from staying invisible if the
-  // IntersectionObserver doesn't fire reliably.
+  // ── HERO PARALLAX-LITE ─────────────────────────────
+  // Subtle depth: hero content shifts slightly as you scroll
+  const hero = document.querySelector('.hero-content');
+  if (hero) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (y < window.innerHeight) {
+            hero.style.transform = `translateY(${y * 0.08}px)`;
+            hero.style.opacity = Math.max(1 - y / (window.innerHeight * 0.9), 0);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
 
+  // ── SCROLL ANIMATIONS ─────────────────────────────
   const fadeEls = document.querySelectorAll('.fade-in');
   const staggerEls = document.querySelectorAll('.stagger');
 
@@ -58,10 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeEls.forEach(el => fadeObserver.observe(el));
     staggerEls.forEach(el => staggerObserver.observe(el));
 
-    // Safety fallback: if any element is STILL invisible after
-    // 1.5 seconds, force it visible. This catches edge cases
-    // where the observer fails to fire (e.g. elements already
-    // in viewport, slow layout, GitHub Pages quirks).
+    // Safety fallback
     setTimeout(() => {
       fadeEls.forEach(el => {
         if (!el.classList.contains('fade-in--visible')) {
@@ -76,14 +89,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500);
 
   } else {
-    // No IntersectionObserver support — show everything immediately
     fadeEls.forEach(el => el.classList.add('fade-in--visible'));
     staggerEls.forEach(el => el.classList.add('stagger--visible'));
   }
 
+  // ── ANIMATED MODULE NUMBERS ────────────────────────
+  // Module numbers "count up" when they scroll into view
+  const moduleNums = document.querySelectorAll('.module-number');
+  if (moduleNums.length && 'IntersectionObserver' in window) {
+    const numObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.textContent);
+          if (isNaN(target)) return;
+          let current = 0;
+          const step = () => {
+            current++;
+            el.textContent = String(current).padStart(2, '0');
+            if (current < target) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          numObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    moduleNums.forEach(el => numObserver.observe(el));
+  }
+
   // ── FAQ ACCORDION ──────────────────────────────────
-  // Works with both <details>/<summary> elements and
-  // the older .faq-item h3 / .faq-answer pattern.
   document.querySelectorAll('.faq-item h3').forEach(trigger => {
     trigger.addEventListener('click', () => {
       const item = trigger.parentElement;
@@ -91,14 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!answer) return;
       const isOpen = item.classList.contains('active');
 
-      // Close all
       document.querySelectorAll('.faq-item.active').forEach(openItem => {
         openItem.classList.remove('active');
         const a = openItem.querySelector('.faq-answer');
         if (a) a.style.maxHeight = null;
       });
 
-      // Toggle this
       if (!isOpen) {
         item.classList.add('active');
         answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -120,11 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── NEWSLETTER HIDDEN IFRAME SUBMISSION ─────────────
-  // Form submits silently into a hidden iframe so there's no
-  // redirect — the user stays on the page and sees a branded
-  // success message fade in where the form was.
-
-  // Single hidden iframe shared by all forms on the page
   const nlIframe = document.createElement('iframe');
   nlIframe.name = 'nl-iframe';
   nlIframe.setAttribute('style', 'position:absolute;width:0;height:0;border:0;');
@@ -134,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.newsletter-form').forEach(form => {
 
-    // Get or create a .newsletter-wrap around the form
     let wrap = form.closest('.newsletter-wrap');
     if (!wrap) {
       wrap = document.createElement('div');
@@ -143,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
       wrap.appendChild(form);
     }
 
-    // Get or create the success message inside the wrap
     let success = wrap.querySelector('.newsletter-success');
     if (!success) {
       success = document.createElement('div');
@@ -156,13 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
       wrap.appendChild(success);
     }
 
-    // Point form at the hidden iframe so the redirect is invisible
     form.target = 'nl-iframe';
 
     form.addEventListener('submit', () => {
-      // Fade the form out
       form.classList.add('newsletter-form--out');
-      // After fade, hide form and reveal success state
       setTimeout(() => {
         form.style.display = 'none';
         success.classList.add('newsletter-success--visible');
