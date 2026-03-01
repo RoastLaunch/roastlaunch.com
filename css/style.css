@@ -1000,7 +1000,8 @@ section { padding: 88px 0; }
 /* Hero image placeholder */
 .hero-image-placeholder {
   width: 100%;
-  aspect-ratio: 6 / 7;
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
   background: var(--warm-cream);
   border-radius: 16px;
   border: 2px dashed rgba(196, 97, 42, 0.3);
