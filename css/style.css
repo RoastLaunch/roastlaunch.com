@@ -361,10 +361,18 @@ section { padding: 88px 0; }
   border-radius: 12px;
   padding: 28px;
   transition: all 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
 }
 .blog-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(28, 18, 9, 0.08);
+}
+.blog-card p:not(.blog-date) {
+  flex: 1;
+}
+.blog-card .read-more {
+  margin-top: auto;
 }
 .blog-card-full {
   background: var(--warm-white);
