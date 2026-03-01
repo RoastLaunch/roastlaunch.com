@@ -640,67 +640,111 @@
         const progressFill = document.getElementById('progressFill');
         const progressText = document.getElementById('progressText');
 
-        function render() {
-            // Build all question cards
+        /* Build all question cards once on init */
+        function buildQuestions() {
             questionsEl.innerHTML = '';
             QUESTIONS.forEach((q, i) => {
-                const isActive = i === current ? 'active' : '';
                 const optionsHtml = q.options.map((opt, oi) => {
-                    const sel = answers[i] === oi ? 'selected' : '';
                     return `
-                        <div class="quiz-option ${sel}" data-q="${i}" data-o="${oi}">
+                        <div class="quiz-option" data-q="${i}" data-o="${oi}">
                             <div class="quiz-option-radio"></div>
                             <div class="quiz-option-text">${opt.label}</div>
                         </div>`;
                 }).join('');
 
-                questionsEl.innerHTML += `
-                    <div class="quiz-question ${isActive}" data-index="${i}">
-                        <span class="quiz-category">${q.categoryLabel}</span>
-                        <h2>${q.text}</h2>
-                        ${q.hint ? `<p class="quiz-hint">${q.hint}</p>` : ''}
-                        <div class="quiz-options">${optionsHtml}</div>
-                        <div class="quiz-nav">
-                            ${i > 0 ? '<button class="quiz-back" data-dir="back">Back</button>' : '<span></span>'}
-                            <button class="btn btn-primary quiz-next" data-dir="next" ${answers[i] === null ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
-                                ${i === totalQ - 1 ? 'See My Results' : 'Next'}
-                            </button>
-                        </div>
+                const div = document.createElement('div');
+                div.className = 'quiz-question';
+                div.dataset.index = i;
+                div.innerHTML = `
+                    <span class="quiz-category">${q.categoryLabel}</span>
+                    <h2>${q.text}</h2>
+                    ${q.hint ? `<p class="quiz-hint">${q.hint}</p>` : ''}
+                    <div class="quiz-options">${optionsHtml}</div>
+                    <div class="quiz-nav">
+                        ${i > 0 ? '<button class="quiz-back" data-dir="back">Back</button>' : '<span></span>'}
+                        <button class="btn btn-primary quiz-next" data-dir="next" disabled style="opacity:0.4;cursor:not-allowed;">
+                            ${i === totalQ - 1 ? 'See My Results' : 'Next'}
+                        </button>
                     </div>`;
+                questionsEl.appendChild(div);
             });
+
+            // Attach option click handlers (once, using delegation)
+            questionsEl.addEventListener('click', function(e) {
+                const option = e.target.closest('.quiz-option');
+                if (option) {
+                    const qi = parseInt(option.dataset.q);
+                    const oi = parseInt(option.dataset.o);
+                    answers[qi] = oi;
+                    updateSelection(qi);
+                    return;
+                }
+
+                const navBtn = e.target.closest('[data-dir]');
+                if (navBtn) {
+                    e.preventDefault();
+                    if (navBtn.dataset.dir === 'back' && current > 0) {
+                        current--;
+                        showQuestion();
+                    } else if (navBtn.dataset.dir === 'next' && answers[current] !== null) {
+                        if (current < totalQ - 1) {
+                            current++;
+                            showQuestion();
+                        } else {
+                            showResults();
+                        }
+                    }
+                }
+            });
+        }
+
+        /* Update selection styling without rebuilding DOM */
+        function updateSelection(qi) {
+            const questionEl = questionsEl.querySelector(`.quiz-question[data-index="${qi}"]`);
+            if (!questionEl) return;
+
+            // Update option styles
+            questionEl.querySelectorAll('.quiz-option').forEach(opt => {
+                const oi = parseInt(opt.dataset.o);
+                opt.classList.toggle('selected', oi === answers[qi]);
+            });
+
+            // Enable the Next button
+            const nextBtn = questionEl.querySelector('.quiz-next');
+            if (nextBtn) {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '';
+                nextBtn.style.cursor = '';
+            }
+        }
+
+        /* Show the current question, hide others */
+        function showQuestion() {
+            const questions = questionsEl.querySelectorAll('.quiz-question');
+            questions.forEach((el, i) => {
+                if (i === current) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Restore Next button state for current question
+            const activeQ = questions[current];
+            if (activeQ) {
+                const nextBtn = activeQ.querySelector('.quiz-next');
+                if (nextBtn) {
+                    const hasAnswer = answers[current] !== null;
+                    nextBtn.disabled = !hasAnswer;
+                    nextBtn.style.opacity = hasAnswer ? '' : '0.4';
+                    nextBtn.style.cursor = hasAnswer ? '' : 'not-allowed';
+                }
+            }
 
             // Update progress
             const pct = Math.round(((current) / totalQ) * 100);
             progressFill.style.width = pct + '%';
             progressText.textContent = `Question ${current + 1} of ${totalQ}`;
-
-            // Attach option click handlers
-            questionsEl.querySelectorAll('.quiz-option').forEach(el => {
-                el.addEventListener('click', function() {
-                    const qi = parseInt(this.dataset.q);
-                    const oi = parseInt(this.dataset.o);
-                    answers[qi] = oi;
-                    render();
-                });
-            });
-
-            // Attach nav handlers
-            questionsEl.querySelectorAll('[data-dir]').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (this.dataset.dir === 'back' && current > 0) {
-                        current--;
-                        render();
-                    } else if (this.dataset.dir === 'next' && answers[current] !== null) {
-                        if (current < totalQ - 1) {
-                            current++;
-                            render();
-                        } else {
-                            showResults();
-                        }
-                    }
-                });
-            });
         }
 
         function showResults() {
@@ -836,7 +880,9 @@
                 resultsEl.innerHTML = '';
                 questionsEl.style.display = '';
                 document.querySelector('.quiz-progress').style.display = '';
-                render();
+                buildQuestions();
+                showQuestion();
+                document.querySelector('.page-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
             // Scroll to top of results
@@ -844,7 +890,8 @@
         }
 
         // Initialize
-        render();
+        buildQuestions();
+        showQuestion();
 
     })();
     </script>
