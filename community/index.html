@@ -7,6 +7,9 @@
     <meta property="og:title" content="Join the Community - Roast Launch">
     <meta property="og:description" content="You don't have to build this alone. Join our community of aspiring coffee shop owners.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roastlaunch.com/community/">
+    <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Community - Roast Launch</title>
     <link rel="icon" href="../favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +18,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header class="nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">Roast Launch</a>
@@ -34,7 +38,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Page Header -->
         <section class="page-header fade-in">
             <div class="container">
@@ -149,7 +153,8 @@
                 <div class="newsletter-prompt">
                     <div class="newsletter-wrap">
                     <form action="https://roastlaunch.beehiiv.com/subscribe" method="get" class="newsletter-form">
-                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <label for="email-community" class="sr-only">Email address</label>
+                        <input type="email" name="email" id="email-community" placeholder="Enter your email" required>
                         <button type="submit" class="btn btn-primary">Get the Newsletter</button>
                     </form>
                 <div class="newsletter-success" aria-live="polite">

@@ -7,6 +7,8 @@
     <meta property="og:title" content="Roast Launch - Build a Gathering Place That Matters">
     <meta property="og:description" content="A community of aspiring coffee shop owners building gathering places that bring people together — with specialty coffee, real business skills, and faith.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roastlaunch.com/">
+    <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <title>Roast Launch - Build a Gathering Place That Matters</title>
     <link rel="icon" href="favicon.ico">
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header class="nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">Roast Launch</a>
@@ -35,7 +38,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero fade-in">
             <div class="hero-split">
@@ -177,7 +180,8 @@
                 <p>Join a community of aspiring coffee shop owners who believe a great gathering place can change a neighborhood.</p>
                 <div class="newsletter-wrap">
                 <form action="https://roastlaunch.beehiiv.com/subscribe" method="get" class="newsletter-form">
-                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <label for="email-home" class="sr-only">Email address</label>
+                    <input type="email" id="email-home" name="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Join the Newsletter</button>
                 </form>
                 <div class="newsletter-success" aria-live="polite">
