@@ -683,7 +683,7 @@ section { padding: 88px 0; }
 
 /* ── COMMUNITY / TIERS ─────────────────────────────── */
 .whats-included {
-  background: var(--warm-cream);
+  background: var(--bg-primary);
 }
 .features-grid {
   display: grid;
@@ -691,7 +691,7 @@ section { padding: 88px 0; }
   gap: 28px;
 }
 .feature-item {
-  background: var(--warm-white);
+  background: var(--warm-cream);
   border-radius: 12px;
   padding: 28px;
   border: 1px solid rgba(28, 18, 9, 0.04);
@@ -703,7 +703,7 @@ section { padding: 88px 0; }
   margin-bottom: 0;
 }
 
-.tiers-section { padding: 72px 0; }
+.tiers-section { padding: 72px 0; background: var(--warm-cream); }
 .tiers-subtitle {
   font-size: 17px;
   color: var(--text-secondary);
