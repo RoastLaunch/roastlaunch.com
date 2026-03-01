@@ -123,14 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
           if (isNaN(target)) return;
           let current = 0;
           el.textContent = '00';
-          // Stagger start based on target number for cascade effect
+          // Stagger start based on index for quick cascade effect
           setTimeout(() => {
             const interval = setInterval(() => {
               current++;
               el.textContent = String(current).padStart(2, '0');
               if (current >= target) clearInterval(interval);
-            }, 120);
-          }, (target - 1) * 120);
+            }, 60);
+          }, (target - 1) * 80);
           numObserver.unobserve(el);
         }
       });
