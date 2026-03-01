@@ -387,6 +387,7 @@ section { padding: 88px 0; }
 }
 .blog-badge {
   display: inline-block;
+  align-self: flex-start;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
