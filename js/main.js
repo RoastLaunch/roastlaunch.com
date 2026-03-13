@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
           fadeObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
     const staggerObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           staggerObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
     fadeEls.forEach(el => fadeObserver.observe(el));
     staggerEls.forEach(el => staggerObserver.observe(el));
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
           el.classList.add('stagger--visible');
         }
       });
-    }, 2500);
+    }, 1500);
 
   } else {
     fadeEls.forEach(el => el.classList.add('fade-in--visible'));
