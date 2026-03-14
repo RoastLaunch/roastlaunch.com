@@ -113,16 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── ANIMATED MODULE NUMBERS ────────────────────────
   // Module numbers "count up" when they scroll into view
-  const moduleNums = document.querySelectorAll('.module-number');
+  // Numbers start as "00" in HTML with data-target holding the real value
+  const moduleNums = document.querySelectorAll('.module-number[data-target]');
   if (moduleNums.length && 'IntersectionObserver' in window) {
     const numObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const target = parseInt(el.textContent);
+          const target = parseInt(el.dataset.target);
           if (isNaN(target)) return;
           let current = 0;
-          el.textContent = '00';
           // Stagger start based on index for quick cascade effect
           setTimeout(() => {
             const interval = setInterval(() => {
