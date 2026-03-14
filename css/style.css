@@ -204,6 +204,22 @@ section { padding: 88px 0; }
   transform: translateY(-2px);
 }
 
+/* Member login button */
+.btn-login {
+  margin-right: 8px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--terracotta);
+  border-radius: 8px;
+  color: var(--terracotta);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.btn-login:hover {
+  background: var(--terracotta);
+  color: #fff;
+}
+
 /* ── HERO ──────────────────────────────────────────── */
 .hero {
   min-height: 88vh;
@@ -540,7 +556,10 @@ section { padding: 88px 0; }
 /* Above-the-fold elements should always be visible immediately — override fade-in */
 .page-header.fade-in,
 .hero .fade-in,
-.hero.fade-in {
+.hero.fade-in,
+.cl-hero .fade-in,
+.cl-hero-card.fade-in,
+.error-content.fade-in {
   opacity: 1;
   transform: translateY(0);
 }
