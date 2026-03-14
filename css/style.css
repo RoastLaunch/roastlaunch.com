@@ -537,6 +537,13 @@ section { padding: 88px 0; }
   padding-bottom: 48px;
   text-align: center;
 }
+/* Above-the-fold elements should always be visible immediately — override fade-in */
+.page-header.fade-in,
+.hero .fade-in,
+.hero.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
 .page-header h1 {
   margin-bottom: 16px;
 }

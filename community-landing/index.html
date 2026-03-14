@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join the Roast Launch Community. Weekly coffee education, monthly business deep-dives, live Q&amp;A calls, and a community of aspiring owners building gathering places that matter. Starting at $37/mo.">
-    <meta property="og:title" content="Join the Roast Launch Community — Starting at $37/mo">
-    <meta property="og:description" content="Build your coffee shop with people who get it. Education, community, tools, and accountability — all for less than a bag of specialty coffee a week.">
+    <meta name="description" content="Coffee Shop Launch Accelerator — A 12-week cohort program with live coaching, done-with-you templates, and lifetime alumni access. Go from dream to fundable launch plan in 12 weeks. Founding pricing: $1,997.">
+    <meta property="og:title" content="Coffee Shop Launch Accelerator — $1,997 (Founding Price)">
+    <meta property="og:description" content="12-week cohort-based program with live group coaching, financial models, location scorecard, and a small community building together. 15 spots per cohort. Money-back guarantee included.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://roastlaunch.com/community-landing/">
     <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <title>Join the Roast Launch Community — Starting at $37/mo</title>
+    <title>Coffee Shop Launch Accelerator — 12-Week Program ($1,997)</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* ── COMMUNITY LANDING — page-specific styles ── */
+        /* ── ACCELERATOR LANDING — page-specific styles ── */
 
         /* Section label */
         .section-label {
@@ -124,6 +124,12 @@
             color: var(--text-secondary);
             margin-bottom: 20px;
         }
+        .cl-price-strikethrough {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
         .cl-card-divider {
             border: none;
             border-top: 1px solid rgba(28, 18, 9, 0.06);
@@ -176,10 +182,37 @@
             margin-bottom: 0;
         }
 
+        /* ── PROBLEM SECTION ── */
+        .cl-problem {
+            padding: 88px 0;
+            background: var(--warm-white);
+        }
+        .cl-problem-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cl-problem h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 20px;
+        }
+        .cl-problem-subtext {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+        .cl-problem-followup {
+            font-size: 17px;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
         /* ── BENEFITS ── */
         .cl-benefits {
             padding: 88px 0;
-            background: var(--warm-white);
+            background: var(--warm-cream);
         }
         .cl-benefits-grid {
             display: grid;
@@ -189,7 +222,7 @@
         }
         .cl-benefit-card {
             padding: 28px;
-            background: var(--warm-cream);
+            background: var(--warm-white);
             border-radius: 14px;
             border: 1px solid rgba(28, 18, 9, 0.04);
             transition: all 0.3s var(--ease);
@@ -209,6 +242,109 @@
             color: var(--text-secondary);
             margin-bottom: 0;
             line-height: 1.65;
+        }
+
+        /* ── MODULES SECTION ── */
+        .cl-modules {
+            padding: 88px 0;
+            background: var(--warm-white);
+        }
+        .cl-modules h2 { margin-bottom: 48px; }
+        .cl-modules-intro {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 48px;
+        }
+        .cl-modules-intro p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+        .cl-modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cl-module-card {
+            padding: 32px;
+            background: var(--warm-cream);
+            border-radius: 12px;
+            border: 1px solid rgba(28, 18, 9, 0.04);
+        }
+        .cl-module-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .cl-module-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.65;
+        }
+        .cl-modules-link {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .cl-modules-link a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .cl-modules-link a:hover {
+            opacity: 0.8;
+        }
+
+        /* ── BONUS STACK ── */
+        .cl-bonus {
+            padding: 88px 0;
+            background: var(--warm-cream);
+        }
+        .cl-bonus-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+        .cl-bonus-intro h2 {
+            margin-bottom: 8px;
+        }
+        .cl-bonus-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0;
+        }
+        .cl-bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cl-bonus-item {
+            padding: 20px;
+            background: var(--warm-white);
+            border-radius: 12px;
+            border: 1px solid rgba(28, 18, 9, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cl-bonus-item-content {
+            flex: 1;
+        }
+        .cl-bonus-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .cl-bonus-item-value {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
         }
 
         /* ── WHO THIS IS FOR ── */
@@ -260,74 +396,33 @@
             font-weight: 700;
         }
 
-        /* ── TESTIMONIALS ── */
-        .cl-testimonials {
-            background: var(--warm-cream);
-            padding: 88px 0;
+        /* ── GUARANTEE SECTION ── */
+        .cl-guarantee {
+            background: rgba(28, 18, 9, 0.95);
+            padding: 88px 24px;
+            color: var(--warm-white);
         }
-        .cl-testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-        }
-        .cl-testimonial {
-            background: var(--warm-white);
-            border-radius: 16px;
-            padding: 32px;
-            border: 1px solid rgba(28, 18, 9, 0.05);
-            position: relative;
-        }
-        .cl-testimonial::before {
-            content: '"';
-            font-family: var(--font-display);
-            font-size: 5rem;
-            color: rgba(196, 97, 42, 0.12);
-            position: absolute;
-            top: 14px;
-            left: 24px;
-            line-height: 1;
-        }
-        .cl-testimonial-text {
-            font-size: 16px;
-            line-height: 1.75;
-            color: var(--text-primary);
-            font-style: italic;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-        .cl-testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .cl-testimonial-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(196, 97, 42, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-        .cl-testimonial-name {
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-        .cl-testimonial-role {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-        .cl-testimonial-disclaimer {
+        .cl-guarantee-inner {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 20px;
+        }
+        .cl-guarantee h2 {
+            color: var(--warm-white);
+            margin-bottom: 24px;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+        .cl-guarantee-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(250, 250, 248, 0.85);
+            margin-bottom: 24px;
+        }
+        .cl-guarantee-subtext {
+            font-size: 15px;
+            color: rgba(250, 250, 248, 0.6);
+            font-style: italic;
+            margin-bottom: 0;
         }
 
         /* ── PRICING ── */
@@ -337,57 +432,31 @@
         }
         .cl-pricing-intro {
             text-align: center;
-            max-width: 580px;
-            margin: 0 auto;
+            max-width: 700px;
+            margin: 0 auto 48px;
         }
         .cl-pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            max-width: 860px;
-            margin: 52px auto 0;
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
         }
         .cl-price-card {
             background: var(--warm-white);
             border-radius: 18px;
-            padding: 40px 36px;
-            border: 1px solid rgba(28, 18, 9, 0.07);
-            transition: all 0.3s var(--ease);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .cl-price-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(28, 18, 9, 0.08);
-        }
-        .cl-price-card.featured {
+            padding: 48px 36px;
             border: 2px solid var(--accent);
             box-shadow: 0 4px 28px rgba(196, 97, 42, 0.12);
-            background: var(--warm-white);
-        }
-        .cl-price-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: var(--warm-white);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            padding: 5px 18px;
-            border-radius: 20px;
-            white-space: nowrap;
+            max-width: 500px;
+            width: 100%;
         }
         .cl-price-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
         .cl-price-tag {
             font-family: var(--font-display);
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--text-primary);
             line-height: 1;
             margin-bottom: 4px;
@@ -399,32 +468,32 @@
             font-weight: 400;
         }
         .cl-price-founding {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
         .cl-price-regular {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
             margin-bottom: 24px;
         }
         .cl-price-divider {
             border: none;
             border-top: 1px solid rgba(28, 18, 9, 0.06);
-            margin: 18px 0 22px;
+            margin: 24px 0 28px;
         }
         .cl-price-features {
             list-style: none;
             margin-bottom: 32px;
-            flex: 1;
         }
         .cl-price-features li {
-            padding: 9px 0 9px 26px;
+            padding: 10px 0 10px 26px;
             font-size: 15px;
             color: var(--text-primary);
             position: relative;
             border-bottom: 1px solid rgba(28, 18, 9, 0.04);
+            line-height: 1.5;
         }
         .cl-price-features li:last-child { border-bottom: none; }
         .cl-price-features li::before {
@@ -438,12 +507,12 @@
             width: 100%;
             text-align: center;
             display: block;
+            margin-bottom: 16px;
         }
         .cl-price-note {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
             text-align: center;
-            margin-top: 10px;
             margin-bottom: 0;
         }
         .cl-pricing-footer {
@@ -456,10 +525,46 @@
             color: var(--accent);
             font-weight: 600;
         }
+        .cl-value-math {
+            background: var(--warm-cream);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .cl-value-math p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .cl-value-math strong {
+            font-size: 17px;
+            color: var(--text-primary);
+        }
+
+        /* ── THE MATH SECTION ── */
+        .cl-the-math {
+            background: var(--warm-cream);
+            padding: 88px 24px;
+        }
+        .cl-the-math-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cl-the-math h2 {
+            margin-bottom: 24px;
+        }
+        .cl-the-math p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
 
         /* ── FAQ ── */
         .cl-faq {
-            background: var(--warm-cream);
+            background: var(--warm-white);
             padding: 88px 0;
         }
         .cl-faq .faq-container { max-width: 720px; margin: 40px auto 0; }
@@ -515,11 +620,13 @@
             .cl-hero { min-height: auto; padding-top: 72px; }
             .cl-hero-sub { max-width: 100%; }
             .cl-for-grid { grid-template-columns: 1fr; gap: 36px; }
-            .cl-pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+            .cl-modules-grid,
+            .cl-bonus-grid {
+                grid-template-columns: 1fr;
+            }
         }
         @media (max-width: 768px) {
-            .cl-benefits-grid,
-            .cl-testimonials-grid {
+            .cl-benefits-grid {
                 grid-template-columns: 1fr;
             }
             .cl-hero-inner { padding-top: 48px; }
@@ -540,10 +647,10 @@
                 <a href="/should-i-start">Quiz</a>
                 <a href="/calculator">Calculator</a>
                 <a href="/blog">Blog</a>
-                <a href="/community" class="nav-active">Community</a>
+                <a href="/community-landing" class="nav-active">Accelerator</a>
             </nav>
             <a href="https://app.roastlaunch.com/login" class="btn-login" style="margin-right: 8px; padding: 8px 16px; border: 1.5px solid var(--terracotta); border-radius: 8px; color: var(--terracotta); font-weight: 500; font-size: 14px; transition: all 0.2s;">Member Login</a>
-            <a href="#join" class="btn btn-primary">Join the Community</a>
+            <a href="#apply" class="btn btn-primary">Apply Now</a>
             <button class="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -562,41 +669,41 @@
 
                 <!-- Left: copy -->
                 <div class="fade-in">
-                    <span class="section-label">The Roast Launch Community</span>
-                    <h1>Build your gathering place with people who get it.</h1>
-                    <p class="cl-hero-sub">Weekly coffee education, monthly business deep-dives, live Q&amp;A calls, and a community of aspiring owners building gathering places their neighborhoods actually need — all for less than a bag of specialty coffee a week.</p>
+                    <span class="section-label">The Coffee Shop Launch Accelerator</span>
+                    <h1>Go from dream to fundable launch plan in 12 weeks.</h1>
+                    <p class="cl-hero-sub">A 12-week cohort program with live coaching, done-with-you templates, and a small group of people building alongside you. 15 spots per cohort. Guarantee included.</p>
                     <div class="cl-hero-buttons">
-                        <a href="#join" class="btn btn-primary">Join Core — $37/mo →</a>
-                        <a href="#what-you-get" class="btn btn-outline">See What's Included</a>
+                        <a href="#apply" class="btn btn-primary">Apply for the Next Cohort →</a>
+                        <a href="https://roastlaunch.com/workshop" class="btn btn-outline">Watch Free Workshop First</a>
                     </div>
                     <div class="cl-social-proof">
                         <div class="cl-avatars">
-                            <span>☕</span>
-                            <span>🏪</span>
-                            <span>📈</span>
-                            <span>✨</span>
+                            <span>🎯</span>
+                            <span>👥</span>
+                            <span>📋</span>
                         </div>
-                        <p><strong>Founding members</strong> building gathering places that matter</p>
+                        <p><strong>Founding Cohort</strong> — limited to 15 people</p>
                     </div>
                 </div>
 
                 <!-- Right: pricing card -->
                 <div class="cl-hero-card fade-in">
-                    <p class="cl-hero-card-label">Core Membership</p>
-                    <div class="cl-hero-card-price">$37</div>
-                    <p class="cl-hero-card-price-sub">per month &middot; founding member price</p>
+                    <p class="cl-hero-card-label">Accelerator Program</p>
+                    <div class="cl-hero-card-price">$1,997</div>
+                    <p class="cl-price-strikethrough">$2,497 after founding period</p>
+                    <p class="cl-hero-card-price-sub">Founding price · 12-week program</p>
                     <hr class="cl-card-divider">
                     <ul class="cl-card-checklist">
-                        <li>All 8 curriculum modules</li>
-                        <li>Weekly coffee education sessions</li>
-                        <li>Monthly business deep-dive calls</li>
-                        <li>Live member Q&amp;A calls</li>
-                        <li>Private community forum</li>
-                        <li>Tools &amp; templates library</li>
-                        <li>Newsletter archive access</li>
+                        <li>12 weekly live coaching calls</li>
+                        <li>8-module curriculum</li>
+                        <li>Financial Model template</li>
+                        <li>Location Scorecard</li>
+                        <li>Brand Brief workshop</li>
+                        <li>Legal Checklist</li>
+                        <li>Lifetime alumni access</li>
                     </ul>
-                    <a href="#stripe-coming-soon" class="btn btn-primary">Join the Community →</a>
-                    <p class="cl-hero-card-note">Cancel anytime &middot; Price locks in forever at $37/mo</p>
+                    <a href="#apply" class="btn btn-primary">Apply for the Next Cohort →</a>
+                    <p class="cl-hero-card-note">Payment plans available · Money-back guarantee</p>
                 </div>
 
             </div>
@@ -604,47 +711,269 @@
 
         <!-- ── TRUST BAR ── -->
         <div class="cl-trust-bar">
-            <p>Built for aspiring gathering place creators &nbsp;&middot;&nbsp; Faith-grounded &nbsp;&middot;&nbsp; Community-first &nbsp;&middot;&nbsp; No fluff</p>
+            <p>12-week program &nbsp;&middot;&nbsp; 15 spots max &nbsp;&middot;&nbsp; Live coaching &nbsp;&middot;&nbsp; Guarantee included &nbsp;&middot;&nbsp; Founding pricing</p>
         </div>
 
         <!-- ══════════════════════════════════════════════
-             WHAT YOU GET
+             CREDIBILITY & SOCIAL PROOF
+        ══════════════════════════════════════════════ -->
+        <section style="background: var(--warm-white); padding: 60px 0; text-align: center;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 60px;">
+                    <div style="padding: 20px;">
+                        <p style="font-size: 28px; font-weight: 700; color: #dc6d3f; margin: 0 0 8px 0; font-family: 'DM Serif Display', serif;">50+</p>
+                        <p style="font-size: 14px; color: #666; margin: 0;">Coffee Shop Owners Interviewed</p>
+                    </div>
+                    <div style="padding: 20px;">
+                        <p style="font-size: 28px; font-weight: 700; color: #dc6d3f; margin: 0 0 8px 0; font-family: 'DM Serif Display', serif;">500+</p>
+                        <p style="font-size: 14px; color: #666; margin: 0;">Newsletter Subscribers</p>
+                    </div>
+                    <div style="padding: 20px;">
+                        <p style="font-size: 28px; font-weight: 700; color: #dc6d3f; margin: 0 0 8px 0; font-family: 'DM Serif Display', serif;">100+</p>
+                        <p style="font-size: 14px; color: #666; margin: 0;">Hours of Research</p>
+                    </div>
+                    <div style="padding: 20px;">
+                        <p style="font-size: 28px; font-weight: 700; color: #dc6d3f; margin: 0 0 8px 0; font-family: 'DM Serif Display', serif;">8</p>
+                        <p style="font-size: 14px; color: #666; margin: 0;">Comprehensive Modules</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 48px;">
+                    <p style="font-size: 18px; font-weight: 600; color: #1c1209; margin: 0 0 40px 0;">Workshop attendee feedback coming soon — founding cohort forming now</p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 900px; margin: 0 auto;">
+                        <div style="background: var(--warm-cream); padding: 32px; border-radius: 12px; position: relative;">
+                            <p style="font-size: 32px; color: #dc6d3f; position: absolute; top: 12px; left: 20px; line-height: 1;">"</p>
+                            <p style="font-size: 15px; color: #666; margin: 16px 0 0 0; line-height: 1.7;">Testimonials from founding cohort members coming soon. Be part of the group that shapes this program.</p>
+                        </div>
+                        <div style="background: var(--warm-cream); padding: 32px; border-radius: 12px; position: relative;">
+                            <p style="font-size: 32px; color: #dc6d3f; position: absolute; top: 12px; left: 20px; line-height: 1;">"</p>
+                            <p style="font-size: 15px; color: #666; margin: 16px 0 0 0; line-height: 1.7;">Your success story starts here. Join us as a founding member and be the first to complete the Coffee Shop Launch Accelerator.</p>
+                        </div>
+                        <div style="background: var(--warm-cream); padding: 32px; border-radius: 12px; position: relative;">
+                            <p style="font-size: 32px; color: #dc6d3f; position: absolute; top: 12px; left: 20px; line-height: 1;">"</p>
+                            <p style="font-size: 15px; color: #666; margin: 16px 0 0 0; line-height: 1.7;">Limited spots available. Founding cohort enrollment closes when we hit 15 committed members serious about building.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             THE PROBLEM
+        ══════════════════════════════════════════════ -->
+        <section class="cl-problem">
+            <div class="cl-problem-inner">
+                <h2>The average failed coffee shop loses $80,000–$150,000.</h2>
+                <p class="cl-problem-subtext">Most aspiring owners skip the planning phase. They fall in love with the dream, sign a lease, and learn the hard way that passion without preparation is the most expensive mistake in small business.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 48px 0; align-items: center;">
+                    <!-- Left side: The Risk -->
+                    <div style="background: #f5f5f5; padding: 32px; border-radius: 12px; text-align: center; border-left: 4px solid #dc6d3f;">
+                        <p style="font-size: 48px; font-weight: 700; color: #8b4513; margin: 0 0 16px 0; font-family: 'DM Serif Display', serif;">$120,000</p>
+                        <p style="font-size: 16px; font-weight: 600; color: #1c1209; margin: 0 0 12px 0;">Average cost of a failed coffee shop</p>
+                        <p style="font-size: 14px; color: #666; margin: 0; line-height: 1.6;">Wasted savings, broken leases, closed doors</p>
+                    </div>
+
+                    <!-- Right side: The Solution -->
+                    <div style="background: #fffef8; padding: 32px; border-radius: 12px; text-align: center; border-left: 4px solid #dc6d3f;">
+                        <p style="font-size: 48px; font-weight: 700; color: #dc6d3f; margin: 0 0 16px 0; font-family: 'DM Serif Display', serif;">$1,997</p>
+                        <p style="font-size: 16px; font-weight: 600; color: #1c1209; margin: 0 0 12px 0;">The Accelerator</p>
+                        <p style="font-size: 14px; color: #666; margin: 0; line-height: 1.6;">A complete, fundable launch plan in 12 weeks</p>
+                    </div>
+                </div>
+
+                <p class="cl-problem-followup">The Accelerator exists to make sure that doesn't happen to you.</p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             WHAT'S INCLUDED
         ══════════════════════════════════════════════ -->
         <section class="cl-benefits" id="what-you-get">
             <div class="container">
-                <span class="section-label fade-in">What You Get</span>
-                <h2 class="fade-in">Everything you need to build a gathering place that lasts</h2>
-                <p class="section-subtitle fade-in">Your membership includes education, community, tools, and accountability — so you stop scattered Googling and start building with people who understand what you're creating.</p>
+                <span class="section-label fade-in">What's Included</span>
+                <h2 class="fade-in">Everything you need to go from dream to launch plan</h2>
                 <div class="cl-benefits-grid stagger">
                     <div class="cl-benefit-card">
-                        <span class="cl-benefit-icon">☕</span>
-                        <h3>Weekly Coffee Education</h3>
-                        <p>Deep dives into specialty coffee — single-origin regions, extraction science, flavor profiling, and how to develop your palate as a future shop owner. Real education, not YouTube rabbit holes.</p>
-                    </div>
-                    <div class="cl-benefit-card">
-                        <span class="cl-benefit-icon">📊</span>
-                        <h3>Monthly Business Deep-Dives</h3>
-                        <p>Financial modeling, location strategy, hiring, operations, and the real numbers behind a profitable coffee shop. Taught from real research so you don't have to start from scratch.</p>
-                    </div>
-                    <div class="cl-benefit-card">
                         <span class="cl-benefit-icon">🎙️</span>
-                        <h3>Live Member Q&amp;A Calls</h3>
-                        <p>Bring your real questions — your market, your financial picture, your timeline — and get answers live. No canned responses. Real conversation with people who are in it with you.</p>
+                        <h3>Live Group Coaching</h3>
+                        <p>12 weekly 90-minute calls with expert-led training and live Q&A. Cohort-based accountability with people at your same stage. Real coaching, not pre-recorded lectures.</p>
                     </div>
                     <div class="cl-benefit-card">
                         <span class="cl-benefit-icon">📚</span>
-                        <h3>Full Curriculum — 8 Modules</h3>
-                        <p>The complete Coffee Shop Launch System. From validating your concept to signing your lease. Work at your own pace, refer back as your planning evolves. Yours as long as you're a member.</p>
-                    </div>
-                    <div class="cl-benefit-card">
-                        <span class="cl-benefit-icon">🤝</span>
-                        <h3>Private Community Forum</h3>
-                        <p>People who understand the calling. Ask questions, share wins, form accountability partnerships, and build real relationships with people building their own gathering places.</p>
+                        <h3>8-Module Curriculum</h3>
+                        <p>Complete Coffee Shop Launch System. From validating your concept to signing your lease. Structured lessons, homework assignments, and worksheets you'll actually use.</p>
                     </div>
                     <div class="cl-benefit-card">
                         <span class="cl-benefit-icon">🛠️</span>
-                        <h3>Tools &amp; Templates Library</h3>
-                        <p>Financial models, location analysis frameworks, menu development worksheets, and operational checklists. Stop reinventing the wheel — start with tools built for your exact situation.</p>
+                        <h3>Done-With-You Templates</h3>
+                        <p>Financial models, location scorecards, brand briefs, and legal checklists. Copy-paste frameworks designed for coffee shop owners. $2,400+ in resources included.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">👥</span>
+                        <h3>Small Cohort Community</h3>
+                        <p>Limited to 15 people per cohort. Private Discord for 12 weeks. Real relationships with people building alongside you. Not a forum of thousands — a group you actually get to know.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">🌟</span>
+                        <h3>Expert Spotlights</h3>
+                        <p>Coffee Shop Owner interviews, case studies, and real-world stories. Learn from owners who've already launched. See what works and what doesn't before you invest.</p>
+                    </div>
+                    <div class="cl-benefit-card">
+                        <span class="cl-benefit-icon">🎁</span>
+                        <h3>Lifetime Alumni Access</h3>
+                        <p>Access to curriculum, templates, and alumni community forever. Your education doesn't expire when the cohort ends. Resources available as your shop evolves.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             THE 8 MODULES
+        ══════════════════════════════════════════════ -->
+        <section class="cl-modules">
+            <div class="container">
+                <span class="section-label fade-in">The Curriculum</span>
+                <h2 class="fade-in">8 modules. 12 weeks. 1 complete launch plan.</h2>
+                <div class="cl-modules-intro fade-in">
+                    <p>The full curriculum is covered in live coaching calls. Each module builds on the last, moving you from concept validation through pre-launch readiness. All materials are provided and yours to keep forever.</p>
+                </div>
+                <div class="cl-modules-grid stagger">
+                    <div class="cl-module-card">
+                        <h3>Module 1: Concept Validation</h3>
+                        <p>Define your shop concept, validate market demand, identify your ideal customer, and confirm this is the right business for you before you invest.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 2: Financial Foundations</h3>
+                        <p>Build a complete financial model. Understand unit economics, pricing strategy, break-even analysis, and realistic revenue projections for your market.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 3: Location Strategy</h3>
+                        <p>Choose the right location using the Location Scorecard. Evaluate foot traffic, demographics, lease terms, and operational fit. Location is destiny in coffee retail.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 4: Brand & Positioning</h3>
+                        <p>Create a cohesive brand identity. Define your value proposition, messaging, visual identity, and customer experience. Complete your Brand Brief workshop.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 5: Menu & Product</h3>
+                        <p>Develop your menu using the Menu Development Framework. Source specialty coffee, design your beverage lineup, food strategy, and operational workflows.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 6: Legal & Licensing</h3>
+                        <p>Navigate permits, licenses, insurance, and legal structures. Complete your Legal Launch Checklist. Know exactly what you need before opening.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 7: Operations & Hiring</h3>
+                        <p>Build operational systems and hiring playbooks. Staff training, daily procedures, cost control, and the day-to-day reality of running a coffee shop.</p>
+                    </div>
+                    <div class="cl-module-card">
+                        <h3>Module 8: Pre-Launch & Grand Opening</h3>
+                        <p>Execute your Pre-Launch Marketing Playbook. Build buzz, secure your location, finalize all details, and prepare for a strong opening week.</p>
+                    </div>
+                </div>
+                <div class="cl-modules-link">
+                    <a href="/curriculum">View full curriculum details →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             BONUS STACK
+        ══════════════════════════════════════════════ -->
+        <section class="cl-bonus">
+            <div class="container">
+                <div class="cl-bonus-intro fade-in">
+                    <h2>Bonus Stack</h2>
+                    <p class="cl-bonus-value">$2,400+ in bonuses — included free with your program</p>
+                </div>
+                <div class="cl-bonus-grid stagger">
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Coffee Shop Financial Model Template</p>
+                            <p class="cl-bonus-item-value">$497 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Location Profitability Scorecard</p>
+                            <p class="cl-bonus-item-value">$297 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Brand Brief Workshop Recording</p>
+                            <p class="cl-bonus-item-value">$297 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Legal Launch Checklist</p>
+                            <p class="cl-bonus-item-value">$197 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Menu Development Framework</p>
+                            <p class="cl-bonus-item-value">$197 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Coffee Shop Owner Spotlight Library</p>
+                            <p class="cl-bonus-item-value">$297 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Pre-Launch Marketing Playbook</p>
+                            <p class="cl-bonus-item-value">$297 value</p>
+                        </div>
+                    </div>
+                    <div class="cl-bonus-item">
+                        <div class="cl-bonus-item-content">
+                            <p class="cl-bonus-item-title">Founding Member Alumni Community</p>
+                            <p class="cl-bonus-item-value">$247 value</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Value Stack -->
+                <div style="max-width: 600px; margin: 64px auto 0; padding: 40px; background: #fffef8; border-radius: 12px; border-left: 6px solid #dc6d3f; text-align: center;">
+                    <h3 style="font-family: 'DM Serif Display', serif; font-size: 24px; color: #1c1209; margin: 0 0 32px 0;">Total Value Stack</h3>
+
+                    <div style="text-align: left; margin-bottom: 32px; font-size: 15px; color: #1c1209;">
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.08);">
+                            <span>12 live coaching calls</span>
+                            <strong>$5,400</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.08);">
+                            <span>8-module curriculum</span>
+                            <strong>$2,997</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.08);">
+                            <span>Done-with-you templates</span>
+                            <strong>$2,400</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.08);">
+                            <span>Private cohort community</span>
+                            <strong>$497</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                            <span>Lifetime alumni access</span>
+                            <strong>$297</strong>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 2px solid #dc6d3f; padding-top: 20px; margin-bottom: 24px;">
+                        <p style="font-size: 16px; color: #666; margin: 0 0 12px 0;">TOTAL VALUE</p>
+                        <p style="font-size: 42px; font-weight: 700; color: #dc6d3f; margin: 0; font-family: 'DM Serif Display', serif;">$11,591+</p>
+                    </div>
+
+                    <div style="background: rgba(220, 109, 63, 0.08); padding: 20px; border-radius: 8px;">
+                        <p style="font-size: 18px; color: #dc6d3f; font-weight: 600; margin: 0 0 8px 0;">Your price: $1,997</p>
+                        <p style="font-size: 15px; color: #666; margin: 0;">That's 83% off the total value</p>
                     </div>
                 </div>
             </div>
@@ -656,28 +985,29 @@
         <section class="cl-for-you">
             <div class="container">
                 <span class="section-label fade-in">Who This Is For</span>
-                <h2 class="fade-in">This community was built for people who want to create gathering places, not just coffee shops.</h2>
+                <h2 class="fade-in">This Accelerator was built for a specific person.</h2>
                 <div class="cl-for-grid stagger">
 
                     <div class="cl-for-col">
-                        <h3>This is for you if &hellip;</h3>
+                        <h3>This IS for you if you're ...</h3>
                         <ul class="cl-for-list yes">
-                            <li>You've felt called to create a gathering place through specialty coffee but don't know where to start</li>
-                            <li>You're serious about building community — not just serving drinks — and want structured education to do it right</li>
-                            <li>You want to build alongside people who share your faith and your calling to serve their neighborhood</li>
-                            <li>You've tried piecing it together solo and know you need people around you to make it happen</li>
-                            <li>You want accountability and honest conversation from people who know your story</li>
-                            <li>You're willing to invest in yourself and your community before the doors open</li>
+                            <li>25–35 years old and feel called to open a specialty coffee shop</li>
+                            <li>Currently in an unfulfilling job and ready for a change</li>
+                            <li>Willing to commit 5–7 hours per week for 12 weeks</li>
+                            <li>Serious about building a thriving gathering place, not just a business</li>
+                            <li>Want accountability, coaching, and people around you</li>
+                            <li>Ready to invest in planning before you invest $100K+ in a shop</li>
                         </ul>
                     </div>
 
                     <div class="cl-for-col">
-                        <h3>This is NOT for you if &hellip;</h3>
+                        <h3>This is NOT for you if you're ...</h3>
                         <ul class="cl-for-list no">
-                            <li>You want a quick shortcut with no real learning or community involvement</li>
-                            <li>You're looking for a franchise model or someone to do the work for you</li>
-                            <li>You're not open to faith-grounded principles as part of the conversation</li>
-                            <li>You want to open a generic coffee shop with no specialty focus or differentiation</li>
+                            <li>Looking for a franchise model or turnkey solution</li>
+                            <li>Wanting passive income or quick money</li>
+                            <li>Not willing to do homework assignments and attend calls</li>
+                            <li>Expecting someone else to do the work for you</li>
+                            <li>Unwilling to have a faith-grounded conversation about your calling</li>
                         </ul>
                     </div>
 
@@ -686,108 +1016,82 @@
         </section>
 
         <!-- ══════════════════════════════════════════════
-             TESTIMONIALS
+             GUARANTEE
         ══════════════════════════════════════════════ -->
-        <section class="cl-testimonials">
-            <div class="container">
-                <span class="section-label fade-in">Member Stories</span>
-                <h2 class="fade-in">What members are saying</h2>
-                <div class="cl-testimonials-grid stagger">
-
-                    <div class="cl-testimonial">
-                        <p class="cl-testimonial-text">"I'd been dreaming about opening a shop for three years and was completely stuck. The curriculum gave me a real framework — and the community kept me honest about actually doing the work instead of just planning."</p>
-                        <div class="cl-testimonial-author">
-                            <div class="cl-testimonial-avatar">☕</div>
-                            <div>
-                                <p class="cl-testimonial-name">Sarah M.</p>
-                                <p class="cl-testimonial-role">Core Member &middot; Planning phase</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cl-testimonial">
-                        <p class="cl-testimonial-text">"The monthly business calls alone are worth it. We went deep on financial modeling and I came away with an actual spreadsheet I'm using for my projections. This is real, actionable education."</p>
-                        <div class="cl-testimonial-author">
-                            <div class="cl-testimonial-avatar">📊</div>
-                            <div>
-                                <p class="cl-testimonial-name">Marcus T.</p>
-                                <p class="cl-testimonial-role">Core + Launch Partner &middot; 4 months in</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cl-testimonial">
-                        <p class="cl-testimonial-text">"Finding people who understand that a coffee shop is really about community — not just coffee — felt impossible. This group is exactly that. People who get that we're building gathering places, not just businesses. It makes the whole journey feel a lot less lonely."</p>
-                        <div class="cl-testimonial-author">
-                            <div class="cl-testimonial-avatar">🤝</div>
-                            <div>
-                                <p class="cl-testimonial-name">Priya K.</p>
-                                <p class="cl-testimonial-role">Core Member &middot; 2 months in</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <p class="cl-testimonial-disclaimer">These testimonials represent the spirit and experience of the community. Real stories coming as the community grows.</p>
+        <section class="cl-guarantee">
+            <div class="cl-guarantee-inner">
+                <h2>The Complete Launch Plan Guarantee</h2>
+                <p class="cl-guarantee-text">Here's the deal: Complete all 12 modules. Do every homework assignment. Show up to every coaching call. If you don't walk away with a complete, investor-ready launch plan — I'll coach you 1-on-1 at no extra cost until you do. No time limit. No fine print. That's how confident I am in this system.</p>
+                <p class="cl-guarantee-subtext">You do the work. I guarantee the result.</p>
             </div>
         </section>
 
         <!-- ══════════════════════════════════════════════
              PRICING
         ══════════════════════════════════════════════ -->
-        <section class="cl-pricing" id="join">
+        <section class="cl-pricing" id="apply">
             <div class="container">
                 <div class="cl-pricing-intro fade-in">
-                    <span class="section-label">Choose Your Path</span>
-                    <h2>Simple, transparent pricing</h2>
-                    <p class="section-subtitle" style="margin-bottom:0;">Start with Core. Add Launch Partner when you want a small-group accountability cohort. Both are currently at founding member pricing — meaning your price locks in the day you join.</p>
+                    <span class="section-label">Investment</span>
+                    <h2>Simple pricing. One program.</h2>
+                    <p class="section-subtitle" style="margin-bottom:0;">12 weeks of live coaching, curriculum, templates, and community. Founding price for the first cohort.</p>
                 </div>
 
                 <div class="cl-pricing-grid stagger">
-
-                    <!-- Core -->
                     <div class="cl-price-card">
-                        <h3>Core Membership</h3>
-                        <div class="cl-price-tag">$37<span>/mo</span></div>
-                        <p class="cl-price-founding">🔒 Founding member price — locked in forever</p>
-                        <p class="cl-price-regular">Regular price: $67/mo after founding period closes</p>
+                        <h3>Coffee Shop Launch Accelerator</h3>
+                        <div class="cl-price-tag">$1,997<span></span></div>
+                        <p class="cl-price-founding">Founding price · 12-week program</p>
+                        <p class="cl-price-regular">Regular price: $2,497 after founding period closes</p>
                         <hr class="cl-price-divider">
                         <ul class="cl-price-features">
-                            <li>All 8 curriculum modules</li>
-                            <li>Weekly coffee education sessions</li>
-                            <li>Monthly business deep-dive calls</li>
-                            <li>Live member Q&amp;A calls</li>
-                            <li>Private community forum access</li>
-                            <li>Tools &amp; templates library</li>
-                            <li>Newsletter archive access</li>
+                            <li>12 weekly live coaching calls (90 min each)</li>
+                            <li>8-module curriculum with worksheets</li>
+                            <li>Financial Model template</li>
+                            <li>Location Scorecard</li>
+                            <li>Brand Brief workshop recording</li>
+                            <li>Legal Launch Checklist</li>
+                            <li>Menu Development Framework</li>
+                            <li>Coffee Shop Owner Spotlight library</li>
+                            <li>Pre-Launch Marketing Playbook</li>
+                            <li>12-week private Discord cohort community</li>
+                            <li>Lifetime alumni access</li>
                         </ul>
-                        <a href="#stripe-coming-soon" class="btn btn-outline">Join Core — $37/mo</a>
-                        <p class="cl-price-note">Cancel anytime &middot; No contracts</p>
+                        <div class="cl-value-math" style="padding: 28px; background: rgba(220, 109, 63, 0.04); border-radius: 8px; border: 2px solid rgba(220, 109, 63, 0.15);">
+                            <p style="font-size: 16px; color: #666; margin: 0 0 12px 0;">TOTAL VALUE</p>
+                            <p style="font-size: 32px; font-weight: 700; color: #1c1209; margin: 0 0 16px 0;">$11,591+ in total value</p>
+                            <strong style="font-size: 20px; color: #dc6d3f;">Your investment: $1,997</strong>
+                            <p style="font-size: 15px; color: #666; margin: 12px 0 0 0;">That's less than $167/week for 12 weeks of live coaching</p>
+                        </div>
+                        <a href="#stripe-coming-soon" class="btn btn-primary">Apply for the Next Cohort</a>
+                        <p class="cl-price-note">Payment plans available below</p>
                     </div>
-
-                    <!-- Core + Launch Partner -->
-                    <div class="cl-price-card featured">
-                        <div class="cl-price-badge">Most Popular</div>
-                        <h3>Core + Launch Partner</h3>
-                        <div class="cl-price-tag">$84<span>/mo</span></div>
-                        <p class="cl-price-founding">🔒 Founding member price — locked in forever</p>
-                        <p class="cl-price-regular">Regular price: $114/mo &nbsp;&middot;&nbsp; ($37 Core + $47 Launch Partner)</p>
-                        <hr class="cl-price-divider">
-                        <ul class="cl-price-features">
-                            <li>Everything in Core membership</li>
-                            <li>Bi-weekly small-group accountability calls</li>
-                            <li>Dedicated cohort Slack channel (6–8 people)</li>
-                            <li>One-on-one check-ins with John</li>
-                            <li>Priority Q&amp;A at group calls</li>
-                            <li>Goal tracking &amp; milestone celebrations</li>
-                        </ul>
-                        <a href="#stripe-coming-soon" class="btn btn-primary">Join with Launch Partner →</a>
-                        <p class="cl-price-note">Cancel anytime &middot; No contracts</p>
-                    </div>
-
                 </div>
 
-                <p class="cl-pricing-footer">Already a Core member? <a href="#stripe-coming-soon">Upgrade to Launch Partner anytime.</a></p>
+                <div style="text-align: center; margin-top: 48px; padding: 32px; background: var(--warm-cream); border-radius: 14px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 20px;">Payment Plans</h3>
+                    <ul style="list-style: none; margin-bottom: 0;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.06); font-size: 16px; color: var(--text-primary);">Pay in full: <strong>$1,997</strong></li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(28, 18, 9, 0.06); font-size: 16px; color: var(--text-primary);">3 payments: <strong>$797</strong> × 3</li>
+                        <li style="padding: 10px 0; font-size: 16px; color: var(--text-primary);">6 payments: <strong>$497</strong> × 6</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 32px; padding: 24px; background: rgba(220, 109, 63, 0.06); border: 1px solid rgba(220, 109, 63, 0.2); border-radius: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 15px; color: #1c1209; margin: 0;">Already completed the 5-Day Reality Check? Your $97 applies as credit toward the Accelerator. Email <a href="mailto:john@roastlaunch.com" style="color: #dc6d3f; text-decoration: none; font-weight: 600;">john@roastlaunch.com</a> with your receipt.</p>
+                </div>
+
+                <p class="cl-pricing-footer" style="margin-top: 40px;">Questions? Email <a href="mailto:john@roastlaunch.com">john@roastlaunch.com</a></p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             THE MATH
+        ══════════════════════════════════════════════ -->
+        <section class="cl-the-math">
+            <div class="cl-the-math-inner">
+                <h2>Why this is a no-brainer</h2>
+                <p>A successfully launched coffee shop generates $300,000–$500,000 in annual revenue. The Accelerator costs less than 2% of what the average failed shop loses. This isn't an expense — it's the cheapest insurance policy in small business.</p>
             </div>
         </section>
 
@@ -798,56 +1102,70 @@
             <div class="container">
                 <div style="text-align:center;" class="fade-in">
                     <span class="section-label">FAQ</span>
-                    <h2>Questions? We have answers.</h2>
+                    <h2>Common questions answered.</h2>
                 </div>
                 <div class="faq-container fade-in">
 
                     <div class="faq-item">
-                        <h3>What's the difference between Core and Launch Partner?</h3>
+                        <h3>What exactly do I get?</h3>
                         <div class="faq-answer">
-                            <p>Core gives you everything: full curriculum, weekly coffee education, monthly business calls, live Q&amp;A, and the community forum. It's structured but self-paced. Launch Partner adds bi-weekly small-group calls with a dedicated cohort for accountability and personalized feedback. Choose Core if you work well independently — choose Launch Partner if you thrive with consistent accountability and people who know your specific situation.</p>
+                            <p>The complete Coffee Shop Launch System: 8 curriculum modules delivered over 12 weeks via live group coaching calls (12 calls, 90 minutes each), done-with-you templates ($2,400+ in resources), private Discord community for your cohort, and lifetime alumni access to everything.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>How long will the founding member price last?</h3>
+                        <h3>How does the cohort work?</h3>
                         <div class="faq-answer">
-                            <p>The founding period ends when the community reaches the right size — likely within the first few months of active growth. Once you lock in at $37/mo, that price is yours forever as long as you maintain your membership. There are no retroactive price increases for existing members. Ever.</p>
+                            <p>You join a group of 15–20 people at the same stage. Every week for 12 weeks, we have a live 90-minute coaching call. Each call covers one module with training, live Q&A, and homework for the week. You work through the material at your own pace, but you're not alone — you have a cohort of people building alongside you and a private Discord for daily support.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>Can I upgrade or downgrade anytime?</h3>
+                        <h3>What if I can't make a live call?</h3>
                         <div class="faq-answer">
-                            <p>Yes. Start with Core and add Launch Partner whenever you want more accountability. You can also scale back to Core if your schedule changes. Changes take effect on your next billing cycle — no hassle, no penalty.</p>
+                            <p>All calls are recorded. If you miss a live session, you can watch the recording and catch up. That said, the live calls are where the magic happens — the accountability, the real questions, the community. We designed this assuming you'll make most calls. If you can't commit to that, this might not be the right fit.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>Do I lose my curriculum access if I cancel?</h3>
+                        <h3>When does the next cohort start?</h3>
                         <div class="faq-answer">
-                            <p>If you cancel, you keep lifetime access to the curriculum modules you've already worked through. Forum access and live call attendance end with your membership. But the core education is yours — no expiration date.</p>
+                            <p>Cohorts launch quarterly. You can apply anytime, and we'll confirm the start date based on enrollment. We don't start a cohort until we have at least 8 committed members (to ensure depth of discussion) and cap at 20.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>How big are the Launch Partner cohorts?</h3>
+                        <h3>Is there really a money-back guarantee?</h3>
                         <div class="faq-answer">
-                            <p>Launch Partner groups are limited to 6–8 people. Small enough to build real trust and genuine relationship. You'll meet the same cohort every two weeks — consistent enough that people actually know your story and can give you meaningful, specific input over time.</p>
+                            <p>Yes. Complete all 12 modules. Do every homework assignment. Show up to every coaching call. If you don't walk away with a complete, investor-ready launch plan — I'll coach you 1-on-1 at no extra cost until you do. No time limit. No fine print. You do the work. I guarantee the result.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>I'm just exploring the idea. Is this too advanced for me?</h3>
+                        <h3>Do I need coffee experience?</h3>
                         <div class="faq-answer">
-                            <p>Not at all. Exploration is a valid and important stage. Many of our members started with nothing but a feeling they were supposed to do this. The curriculum begins at the foundations, and the community includes people at every stage — from early dreamers to people 6 months from opening. You'll fit right in.</p>
+                            <p>No. Many members start with zero coffee knowledge. The curriculum includes coffee education. What matters is that you're serious about learning and building a great shop. Passion for gathering places matters more than espresso expertise.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>Is this only for people of faith?</h3>
+                        <h3>What payment options are available?</h3>
                         <div class="faq-answer">
-                            <p>We're faith-grounded, meaning the content reflects a perspective that your work has meaning beyond profit. But we don't require any specific beliefs to join. What we ask is that you're open to that perspective being part of the conversation. People of all backgrounds are welcome here.</p>
+                            <p>Three options: pay in full ($1,997), 3 payments of $797, or 6 payments of $497. All options are available for founding cohort members. Choose what works for your cash flow.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I'm just exploring? Is this too advanced?</h3>
+                        <div class="faq-answer">
+                            <p>Exploration is a valid stage, and many members started there. The curriculum begins at the foundations. We have people from "just feeling called to do this" through "six months from opening." If you're serious about exploring coffee shop ownership, this is the right program.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does the Reality Check apply toward the Accelerator?</h3>
+                        <div class="faq-answer">
+                            <p>Yes. If you've completed the 5-Day Reality Check ($97), that investment applies as credit toward your Accelerator enrollment. Just email <a href="mailto:john@roastlaunch.com" style="color: #dc6d3f; text-decoration: none; font-weight: 600;">john@roastlaunch.com</a> with your receipt and we'll apply it.</p>
                         </div>
                     </div>
 
@@ -859,14 +1177,14 @@
              FINAL CTA
         ══════════════════════════════════════════════ -->
         <section class="cl-final-cta">
-            <span class="section-label" style="color:rgba(196,97,42,0.85); margin-bottom:16px; display:block;">Ready to stop going it alone?</span>
-            <h2>The community is forming now.</h2>
-            <p class="cta-sub">Be one of the first to build with us. Lock in at $37/mo and get full access to everything — the community, the curriculum, and the calls. No contracts. Cancel anytime.</p>
+            <span class="section-label" style="color:rgba(196,97,42,0.85); margin-bottom:16px; display:block;">Your cohort is forming now.</span>
+            <h2>15 spots. 12 weeks. One complete launch plan.</h2>
+            <p class="cta-sub">Apply for the next cohort. Lock in founding pricing at $1,997. Everything included — live coaching, templates, community, and our complete launch plan guarantee.</p>
             <div class="cl-cta-buttons">
-                <a href="#stripe-coming-soon" class="btn btn-primary" style="font-size:17px; padding:16px 44px;">Join Core — $37/mo →</a>
-                <a href="#stripe-coming-soon" class="btn btn-ghost" style="font-size:17px; padding:16px 44px;">Join with Launch Partner — $84/mo</a>
+                <a href="#apply" class="btn btn-primary" style="font-size:17px; padding:16px 44px;">Apply for the Next Cohort →</a>
+                <a href="https://roastlaunch.com/workshop" class="btn btn-ghost" style="font-size:17px; padding:16px 44px;">Watch Free Workshop First</a>
             </div>
-            <p class="cta-guarantee">Cancel anytime &nbsp;&middot;&nbsp; Founding price locked in forever &nbsp;&middot;&nbsp; No contracts</p>
+            <p class="cta-guarantee">15 spots per cohort · Founding price locked in · Money-back guarantee · Limited to serious applicants</p>
         </section>
 
     </main>
@@ -884,8 +1202,8 @@
                     <li><a href="/about">About</a></li>
                     <li><a href="/curriculum">Curriculum</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="/community">Community</a></li>
-                    <li><a href="/community-landing">Join Now</a></li>
+                    <li><a href="/community-landing">Accelerator</a></li>
+                    <li><a href="/workshop">Workshop</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -902,6 +1220,7 @@
                 <ul>
                     <li><a href="https://instagram.com/roastlaunch" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                     <li><a href="https://tiktok.com/@roastlaunch" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    <li><a href="https://youtube.com/roastlaunch" target="_blank" rel="noopener noreferrer">YouTube</a></li>
                     <li><a href="mailto:john@roastlaunch.com">Email</a></li>
                 </ul>
             </div>
