@@ -380,6 +380,11 @@
                         <p class="blog-date">Feb 24, 2026</p>
                     </article>
                 </div>
+                <nav class="blog-pagination" aria-label="Blog pages">
+                    <button class="pagination-btn pagination-prev" aria-label="Previous page">&larr; Prev</button>
+                    <div class="pagination-pages"></div>
+                    <button class="pagination-btn pagination-next" aria-label="Next page">Next &rarr;</button>
+                </nav>
             </div>
         </section>
 
@@ -447,6 +452,124 @@
         </div>
     </footer>
 
+    <style>
+        .blog-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 48px;
+            padding: 24px 0;
+        }
+        .pagination-btn {
+            background: none;
+            border: 1.5px solid var(--espresso);
+            color: var(--espresso);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .pagination-btn:hover:not(:disabled) {
+            background: var(--espresso);
+            color: var(--warm-white);
+        }
+        .pagination-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+        .pagination-pages {
+            display: flex;
+            gap: 4px;
+        }
+        .pagination-page {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid transparent;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--espresso);
+            cursor: pointer;
+            background: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .pagination-page:hover {
+            background: rgba(28, 18, 9, 0.06);
+        }
+        .pagination-page.active {
+            background: var(--espresso);
+            color: var(--warm-white);
+            border-color: var(--espresso);
+            cursor: default;
+        }
+        @media (max-width: 600px) {
+            .blog-pagination { gap: 4px; }
+            .pagination-btn { padding: 6px 10px; font-size: 0.8rem; }
+            .pagination-page { width: 34px; height: 34px; font-size: 0.85rem; }
+        }
+    </style>
+    <script>
+    (function() {
+        var POSTS_PER_PAGE = 15;
+        var grid = document.querySelector('.blog-grid');
+        var cards = Array.from(grid.querySelectorAll('.blog-card-full'));
+        var totalPages = Math.ceil(cards.length / POSTS_PER_PAGE);
+        var currentPage = 1;
+        var prevBtn = document.querySelector('.pagination-prev');
+        var nextBtn = document.querySelector('.pagination-next');
+        var pagesContainer = document.querySelector('.pagination-pages');
+        var pagination = document.querySelector('.blog-pagination');
+
+        if (totalPages <= 1) { pagination.style.display = 'none'; return; }
+
+        function renderPages() {
+            pagesContainer.innerHTML = '';
+            for (var i = 1; i <= totalPages; i++) {
+                var btn = document.createElement('button');
+                btn.className = 'pagination-page' + (i === currentPage ? ' active' : '');
+                btn.textContent = i;
+                btn.setAttribute('aria-label', 'Page ' + i);
+                if (i === currentPage) btn.setAttribute('aria-current', 'page');
+                (function(page) {
+                    btn.addEventListener('click', function() { goToPage(page); });
+                })(i);
+                pagesContainer.appendChild(btn);
+            }
+        }
+
+        function showPage(page) {
+            cards.forEach(function(card, idx) {
+                var start = (page - 1) * POSTS_PER_PAGE;
+                var end = start + POSTS_PER_PAGE;
+                card.style.display = (idx >= start && idx < end) ? '' : 'none';
+            });
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = page === totalPages;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            showPage(page);
+            renderPages();
+            var section = document.querySelector('.blog-section');
+            window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
+        }
+
+        prevBtn.addEventListener('click', function() { if (currentPage > 1) goToPage(currentPage - 1); });
+        nextBtn.addEventListener('click', function() { if (currentPage < totalPages) goToPage(currentPage + 1); });
+
+        renderPages();
+        showPage(1);
+    })();
+    </script>
     <script src="../js/main.js"></script>
     <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
