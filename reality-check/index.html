@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Reality Check: A 5-day self-paced course that tells you — with data, not guesswork — whether your coffee shop concept is viable. $97 (credited toward the Accelerator).">
+    <meta property="og:title" content="The Reality Check — $97 Coffee Shop Viability Course">
+    <meta property="og:description" content="5 days. 5 exercises. 1 clear answer: Is your coffee shop concept viable? Built from 50+ owner interviews. $97 credited toward the Accelerator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roastlaunch.com/reality-check/">
+    <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Reality Check — $97 Coffee Shop Viability Course">
+    <meta name="twitter:description" content="5 days. 5 exercises. 1 clear answer: Is your coffee shop concept viable? Built from 50+ owner interviews. $97 credited toward the Accelerator.">
+    <meta name="twitter:image" content="https://roastlaunch.com/images/hero.jpg">
+    <link rel="canonical" href="https://roastlaunch.com/reality-check/">
+    <title>The Reality Check — Is Your Coffee Shop Concept Viable? | Roast Launch</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "The Reality Check",
+      "description": "A 5-day self-paced course that validates your coffee shop concept with real data — market research, financial modeling, and a go/no-go framework built from 50+ owner interviews.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Roast Launch",
+        "url": "https://roastlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "97",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "courseWorkload": "PT4H"
+      }
+    }
+    </script>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ── REALITY CHECK PAGE — page-specific styles ── */
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* ── HERO ── */
+        .rc-hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+            background: linear-gradient(155deg, var(--warm-white) 55%, var(--warm-cream) 100%);
+        }
+        .rc-hero-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 64px 24px 80px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .rc-hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.15;
+            color: var(--espresso);
+            margin-bottom: 20px;
+        }
+        .rc-hero-content h1 span {
+            color: var(--accent);
+        }
+        .rc-hero-content .subtitle {
+            font-size: 19px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+        .rc-hero-content .hero-cta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .rc-hero-content .hero-meta {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .rc-hero-visual {
+            position: relative;
+        }
+        .rc-hero-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 36px;
+            box-shadow: 0 20px 60px rgba(28, 18, 9, 0.08), 0 4px 16px rgba(28, 18, 9, 0.04);
+        }
+        .rc-hero-card .card-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 16px;
+        }
+        .rc-hero-card .card-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--espresso);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .rc-hero-card .day-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+        }
+        .rc-hero-card .day-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--warm-cream);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .rc-hero-card .day-list li:last-child {
+            border-bottom: none;
+        }
+        .rc-hero-card .day-num {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 13px;
+            min-width: 44px;
+        }
+        .rc-hero-card .card-price {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--warm-cream);
+        }
+        .rc-hero-card .card-price .price {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            color: var(--espresso);
+        }
+        .rc-hero-card .card-price .price-note {
+            font-size: 14px;
+            color: var(--sage);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ── PROBLEM / STAT SECTION ── */
+        .rc-problem {
+            background: var(--espresso);
+            color: var(--warm-white);
+            padding: 80px 24px;
+        }
+        .rc-problem-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .rc-problem h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            margin-bottom: 24px;
+            line-height: 1.25;
+        }
+        .rc-problem p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(250, 250, 248, 0.8);
+            max-width: 680px;
+            margin: 0 auto 36px;
+        }
+        .rc-stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .rc-stat {
+            text-align: center;
+        }
+        .rc-stat .stat-num {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .rc-stat .stat-label {
+            font-size: 15px;
+            color: rgba(250, 250, 248, 0.7);
+            line-height: 1.5;
+        }
+
+        /* ── HOW IT WORKS / 5 DAYS ── */
+        .rc-days {
+            padding: 96px 24px;
+            background: var(--bg-primary);
+        }
+        .rc-days-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .rc-days h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--espresso);
+        }
+        .rc-days .section-subtitle {
+            text-align: center;
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 56px;
+            line-height: 1.7;
+        }
+        .rc-day-card {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 24px;
+            align-items: start;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--warm-cream);
+        }
+        .rc-day-card:last-child {
+            border-bottom: none;
+        }
+        .rc-day-num {
+            width: 64px;
+            height: 64px;
+            background: var(--warm-cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+        .rc-day-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .rc-day-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .rc-day-card .day-output {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--sage);
+            background: rgba(92, 122, 78, 0.08);
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        /* ── WHO THIS IS FOR ── */
+        .rc-audience {
+            padding: 80px 24px;
+            background: var(--light-cream);
+        }
+        .rc-audience-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .rc-audience h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--espresso);
+        }
+        .rc-audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .rc-audience-col h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--espresso);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+        }
+        .rc-audience-col.not-for h3 {
+            border-color: var(--mid-gray);
+        }
+        .rc-audience-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .rc-audience-col li {
+            padding: 8px 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            padding-left: 28px;
+            position: relative;
+        }
+        .rc-audience-col li::before {
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+        .rc-audience-col.for-you li::before {
+            content: "\2713";
+            color: var(--sage);
+        }
+        .rc-audience-col.not-for li::before {
+            content: "\2717";
+            color: var(--mid-gray);
+        }
+
+        /* ── WHAT YOU GET ── */
+        .rc-includes {
+            padding: 96px 24px;
+            background: var(--bg-primary);
+        }
+        .rc-includes-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .rc-includes h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--espresso);
+        }
+        .rc-includes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .rc-include-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px 24px;
+            box-shadow: 0 2px 12px rgba(28, 18, 9, 0.04);
+            border: 1px solid var(--warm-cream);
+        }
+        .rc-include-card .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(196, 97, 42, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .rc-include-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .rc-include-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── PRICING / CTA ── */
+        .rc-pricing {
+            padding: 96px 24px;
+            background: linear-gradient(155deg, var(--warm-cream) 0%, var(--light-cream) 100%);
+        }
+        .rc-pricing-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .rc-pricing h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--espresso);
+            margin-bottom: 20px;
+        }
+        .rc-pricing .pricing-desc {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        .rc-pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 48px 40px;
+            box-shadow: 0 20px 60px rgba(28, 18, 9, 0.08);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .rc-pricing-card .price-main {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .rc-pricing-card .price-sub {
+            font-size: 16px;
+            color: var(--sage);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .rc-pricing-card .price-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+            text-align: left;
+        }
+        .rc-pricing-card .price-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+            padding-left: 28px;
+            position: relative;
+            border-bottom: 1px solid var(--warm-cream);
+        }
+        .rc-pricing-card .price-features li:last-child {
+            border-bottom: none;
+        }
+        .rc-pricing-card .price-features li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--sage);
+            font-weight: 700;
+        }
+        .rc-pricing-card .btn {
+            width: 100%;
+            font-size: 17px;
+            padding: 16px 32px;
+        }
+        .rc-pricing .pricing-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        /* ── BRIDGE TO ACCELERATOR ── */
+        .rc-bridge {
+            padding: 80px 24px;
+            background: var(--bg-primary);
+        }
+        .rc-bridge-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .rc-bridge h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            color: var(--espresso);
+            margin-bottom: 20px;
+        }
+        .rc-bridge p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rc-bridge .bridge-path {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 40px 0 32px;
+            flex-wrap: wrap;
+        }
+        .rc-bridge .path-step {
+            background: white;
+            border-radius: 10px;
+            padding: 16px 24px;
+            box-shadow: 0 2px 12px rgba(28, 18, 9, 0.04);
+            border: 1px solid var(--warm-cream);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--espresso);
+        }
+        .rc-bridge .path-step.active {
+            border-color: var(--accent);
+            background: rgba(196, 97, 42, 0.04);
+        }
+        .rc-bridge .path-arrow {
+            color: var(--accent);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* ── FAQ ── */
+        .rc-faq {
+            padding: 80px 24px;
+            background: var(--light-cream);
+        }
+        .rc-faq-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .rc-faq h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--espresso);
+        }
+
+        /* ── FINAL CTA ── */
+        .rc-final-cta {
+            padding: 80px 24px;
+            background: var(--espresso);
+            text-align: center;
+        }
+        .rc-final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            color: var(--warm-white);
+            margin-bottom: 16px;
+        }
+        .rc-final-cta p {
+            font-size: 18px;
+            color: rgba(250, 250, 248, 0.8);
+            margin-bottom: 32px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .rc-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 24px 60px;
+            }
+            .rc-stat-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .rc-day-card {
+                grid-template-columns: 56px 1fr;
+                gap: 16px;
+            }
+            .rc-day-num {
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
+            }
+            .rc-audience-grid {
+                grid-template-columns: 1fr;
+            }
+            .rc-includes-grid {
+                grid-template-columns: 1fr;
+            }
+            .rc-bridge .bridge-path {
+                flex-direction: column;
+            }
+            .rc-bridge .path-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Roast Launch</a>
+            <nav class="nav-menu">
+                <a href="/about">About</a>
+                <a href="/curriculum">Curriculum</a>
+                <a href="/should-i-start">Quiz</a>
+                <a href="/calculator">Calculator</a>
+                <a href="/blog">Blog</a>
+                <a href="/community">Community</a>
+            </nav>
+            <a href="https://app.roastlaunch.com/login" class="btn-login">Member Login</a>
+            <a href="/workshop" class="btn btn-primary">Free Workshop</a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ═══ HERO ═══ -->
+        <section class="rc-hero">
+            <div class="rc-hero-inner">
+                <div class="rc-hero-content">
+                    <span class="section-label">Before you invest $100K+</span>
+                    <h1>Find Out If Your Coffee Shop <span>Will Actually Work</span></h1>
+                    <p class="subtitle">The Reality Check is a 5-day self-paced course that tells you &mdash; with data, not guesswork &mdash; whether your coffee shop concept is viable. Built from 50+ owner interviews and 100+ hours of research.</p>
+                    <div class="hero-cta-row">
+                        <a href="#pricing" class="btn btn-primary">Get the Reality Check &mdash; $97</a>
+                        <a href="/should-i-start" class="btn btn-outline">Take the Free Quiz First</a>
+                    </div>
+                    <p class="hero-meta">Self-paced &middot; 30&ndash;45 min/day &middot; $97 credited toward the Accelerator</p>
+                </div>
+                <div class="rc-hero-visual">
+                    <div class="rc-hero-card">
+                        <div class="card-label">Your 5-Day Framework</div>
+                        <div class="card-title">The Reality Check</div>
+                        <ul class="day-list">
+                            <li><span class="day-num">Day 1</span> Concept Clarity &mdash; Define your vision, customer, and differentiator</li>
+                            <li><span class="day-num">Day 2</span> Location &amp; Market &mdash; Validate with real data, not hopes</li>
+                            <li><span class="day-num">Day 3</span> Financial Reality &mdash; Startup costs, unit economics, break-even</li>
+                            <li><span class="day-num">Day 4</span> Funding &amp; Pathways &mdash; Calculate the gap and map the route</li>
+                            <li><span class="day-num">Day 5</span> Go / No-Go Decision &mdash; Score your concept. Decide with confidence.</li>
+                        </ul>
+                        <div class="card-price">
+                            <div class="price">$97</div>
+                            <div class="price-note">Credited toward the Accelerator</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ THE PROBLEM ═══ -->
+        <section class="rc-problem">
+            <div class="rc-problem-inner">
+                <h2>Most Coffee Shops Fail Because the Owner Never Validated the Concept</h2>
+                <p>They fell in love with the idea. They signed a lease. They spent $150K&ndash;$300K. Then they discovered the market wasn&rsquo;t there, the numbers didn&rsquo;t work, or the location was wrong. The Reality Check exists so that doesn&rsquo;t happen to you.</p>
+                <div class="rc-stat-row">
+                    <div class="rc-stat">
+                        <span class="stat-num">60%</span>
+                        <span class="stat-label">of food &amp; beverage businesses fail within 3 years</span>
+                    </div>
+                    <div class="rc-stat">
+                        <span class="stat-num">$150K+</span>
+                        <span class="stat-label">average lost by owners who skip validation</span>
+                    </div>
+                    <div class="rc-stat">
+                        <span class="stat-num">5 days</span>
+                        <span class="stat-label">to know if your concept is viable &mdash; before you risk a dollar</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ THE 5 DAYS ═══ -->
+        <section class="rc-days fade-in">
+            <div class="rc-days-inner">
+                <span class="section-label" style="text-align: center; display: block;">What you&rsquo;ll do</span>
+                <h2>5 Days to a Clear Answer</h2>
+                <p class="section-subtitle">Each day is designed for 30&ndash;45 minutes of focused work. By Day 5, you&rsquo;ll have a data-backed decision &mdash; not a gut feeling.</p>
+
+                <div class="rc-day-card">
+                    <div class="rc-day-num">1</div>
+                    <div>
+                        <h3>Concept Clarity</h3>
+                        <p>Define your coffee shop concept with precision. Who is your target customer? What makes your shop different from the three others within a mile? What kind of gathering place does your community actually need? You&rsquo;ll finish Day 1 with a concept statement sharp enough to pitch to an investor.</p>
+                        <span class="day-output">You&rsquo;ll leave with: A one-page concept brief</span>
+                    </div>
+                </div>
+
+                <div class="rc-day-card">
+                    <div class="rc-day-num">2</div>
+                    <div>
+                        <h3>Location &amp; Market Validation</h3>
+                        <p>Stop guessing about your location. You&rsquo;ll analyze foot traffic patterns, local demographics, competition density, and lease economics using the same framework commercial real estate professionals use. Real data, real numbers, real conclusions.</p>
+                        <span class="day-output">You&rsquo;ll leave with: A scored location analysis</span>
+                    </div>
+                </div>
+
+                <div class="rc-day-card">
+                    <div class="rc-day-num">3</div>
+                    <div>
+                        <h3>Financial Reality</h3>
+                        <p>Build your startup cost estimate, model your unit economics, and calculate your break-even timeline. No hand-waving. You&rsquo;ll use real lease rates, real equipment costs, and real labor numbers to see exactly what it takes to become profitable.</p>
+                        <span class="day-output">You&rsquo;ll leave with: A startup cost estimate &amp; break-even model</span>
+                    </div>
+                </div>
+
+                <div class="rc-day-card">
+                    <div class="rc-day-num">4</div>
+                    <div>
+                        <h3>Funding &amp; Pathways</h3>
+                        <p>Calculate the gap between what you have and what you need. Then map realistic paths to capital &mdash; SBA loans, investors, personal savings, creative financing. You&rsquo;ll know exactly how much you need and the most realistic way to get it.</p>
+                        <span class="day-output">You&rsquo;ll leave with: A funding gap analysis &amp; capital roadmap</span>
+                    </div>
+                </div>
+
+                <div class="rc-day-card">
+                    <div class="rc-day-num">5</div>
+                    <div>
+                        <h3>Go / No-Go Decision</h3>
+                        <p>Score your concept across every dimension &mdash; market, location, finances, funding, and personal readiness. You&rsquo;ll walk away with a clear, data-backed answer: go, pivot, or wait. No ambiguity. No wishful thinking. Just clarity.</p>
+                        <span class="day-output">You&rsquo;ll leave with: A scored viability assessment &amp; decision</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px;">
+                    <a href="#pricing" class="btn btn-primary">Get the Reality Check &mdash; $97</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ WHO THIS IS FOR ═══ -->
+        <section class="rc-audience fade-in">
+            <div class="rc-audience-inner">
+                <h2>Is the Reality Check for You?</h2>
+                <div class="rc-audience-grid">
+                    <div class="rc-audience-col for-you">
+                        <h3>This is for you if&hellip;</h3>
+                        <ul>
+                            <li>You&rsquo;ve been dreaming about opening a coffee shop but haven&rsquo;t committed yet</li>
+                            <li>You want to validate your concept before risking your savings</li>
+                            <li>You&rsquo;re exploring locations but don&rsquo;t know how to evaluate them with data</li>
+                            <li>You need clarity on startup costs and whether the numbers actually work</li>
+                            <li>You want an honest, structured framework &mdash; not cheerleading</li>
+                            <li>You&rsquo;re considering the Accelerator but want to test the waters first</li>
+                        </ul>
+                    </div>
+                    <div class="rc-audience-col not-for">
+                        <h3>This is not for you if&hellip;</h3>
+                        <ul>
+                            <li>You&rsquo;ve already signed a lease and started buildout</li>
+                            <li>You&rsquo;re looking for a get-rich-quick scheme (coffee shops aren&rsquo;t that)</li>
+                            <li>You want someone to tell you your idea is great without doing the work</li>
+                            <li>You&rsquo;re not willing to look up real numbers for your area</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ WHAT'S INCLUDED ═══ -->
+        <section class="rc-includes fade-in">
+            <div class="rc-includes-inner">
+                <span class="section-label" style="text-align: center; display: block;">Everything inside</span>
+                <h2>What You Get for $97</h2>
+                <div class="rc-includes-grid">
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x1F4CB;</div>
+                        <h3>5 Guided Exercises</h3>
+                        <p>One per day, designed for 30&ndash;45 minutes of focused work. Each builds on the last to create a complete viability picture.</p>
+                    </div>
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x1F4CA;</div>
+                        <h3>Financial Templates</h3>
+                        <p>Startup cost estimator, unit economics calculator, and break-even model &mdash; the same tools used in the full Accelerator.</p>
+                    </div>
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x1F4CD;</div>
+                        <h3>Location Scorecard</h3>
+                        <p>A structured framework for evaluating potential locations using demographics, foot traffic, competition, and lease economics.</p>
+                    </div>
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x1F4B0;</div>
+                        <h3>Funding Gap Calculator</h3>
+                        <p>Know exactly how much capital you need and the most realistic paths to get it &mdash; SBA loans, investors, or creative financing.</p>
+                    </div>
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x2705;</div>
+                        <h3>Go/No-Go Scorecard</h3>
+                        <p>A multi-dimensional scoring framework that turns your analysis into a clear decision: go, pivot, or wait.</p>
+                    </div>
+                    <div class="rc-include-card">
+                        <div class="card-icon">&#x1F4B3;</div>
+                        <h3>$97 Accelerator Credit</h3>
+                        <p>Your entire $97 is credited toward the Accelerator if you decide to continue. The Reality Check is free if you go all in.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PRICING ═══ -->
+        <section class="rc-pricing fade-in" id="pricing">
+            <div class="rc-pricing-inner">
+                <span class="section-label">One-time investment</span>
+                <h2>$97 Could Save You $150,000</h2>
+                <p class="pricing-desc">That&rsquo;s not a typo. The average failed coffee shop loses $150K&ndash;$300K. The Reality Check costs less than a single month of commercial rent &mdash; and it tells you whether that rent is worth signing up for.</p>
+                <div class="rc-pricing-card">
+                    <div class="price-main">$97</div>
+                    <div class="price-sub">Credited toward the Accelerator ($997)</div>
+                    <ul class="price-features">
+                        <li>5-day self-paced validation course</li>
+                        <li>Concept clarity framework &amp; exercises</li>
+                        <li>Location scorecard &amp; market analysis template</li>
+                        <li>Financial model &amp; break-even calculator</li>
+                        <li>Funding gap analysis &amp; capital roadmap</li>
+                        <li>Go/No-Go decision scorecard</li>
+                        <li>Full $97 credited toward the Accelerator</li>
+                        <li>Lifetime access to all course materials</li>
+                    </ul>
+                    <a href="https://app.roastlaunch.com/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                </div>
+                <p class="pricing-note">Instant access after purchase. Self-paced &mdash; complete it in 5 days or take your time. No subscription, no recurring charges.</p>
+            </div>
+        </section>
+
+        <!-- ═══ BRIDGE TO ACCELERATOR ═══ -->
+        <section class="rc-bridge fade-in">
+            <div class="rc-bridge-inner">
+                <span class="section-label">Your path forward</span>
+                <h2>The Reality Check Is Step One</h2>
+                <p>If your Reality Check confirms your concept is viable, the natural next step is the Accelerator &mdash; where you&rsquo;ll build a complete, fundable launch plan across 8 self-paced modules. Your $97 is credited toward the $997 Accelerator, so the Reality Check is effectively free when you continue.</p>
+                <div class="bridge-path">
+                    <div class="path-step active">Reality Check ($97)</div>
+                    <span class="path-arrow">&rarr;</span>
+                    <div class="path-step">Accelerator ($997)</div>
+                    <span class="path-arrow">&rarr;</span>
+                    <div class="path-step">Alumni Community ($47/mo)</div>
+                </div>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/curriculum" class="btn btn-outline">See the Full Curriculum</a>
+                    <a href="/community-landing" class="btn btn-outline" style="border-color: var(--sage); color: var(--sage);">Learn About the Accelerator</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FAQ ═══ -->
+        <section class="rc-faq fade-in">
+            <div class="rc-faq-inner">
+                <h2>Questions About the Reality Check</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>How long does it take?</h3>
+                        <div class="faq-answer">
+                            <p>The course is designed for 5 days at 30&ndash;45 minutes per day. You can move faster or slower &mdash; it&rsquo;s entirely self-paced. Most people finish within a week.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I don&rsquo;t have a specific location yet?</h3>
+                        <div class="faq-answer">
+                            <p>That&rsquo;s fine. Day 2 teaches you how to evaluate locations, so you can use it to assess neighborhoods you&rsquo;re considering. The framework works whether you have a specific address or a general area in mind.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How does the $97 Accelerator credit work?</h3>
+                        <div class="faq-answer">
+                            <p>If you decide to join the Accelerator after completing the Reality Check, your $97 is applied as a credit toward the $997 enrollment. You&rsquo;d pay the remaining $900 (or use the 3-payment plan at an adjusted rate). The credit never expires.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if my Reality Check says &ldquo;no-go&rdquo;?</h3>
+                        <div class="faq-answer">
+                            <p>Then it just saved you $150,000+. A no-go result doesn&rsquo;t mean your dream is over &mdash; it means your current concept, in your current location, with your current resources, needs adjustment. Many people pivot their concept based on what they learn and come back stronger.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is there a refund policy?</h3>
+                        <div class="faq-answer">
+                            <p>Because the Reality Check is a digital course with instant access, we don&rsquo;t offer refunds. However, the $97 is credited toward the Accelerator, so if you continue your journey, it&rsquo;s effectively free.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do I need the Reality Check before the Accelerator?</h3>
+                        <div class="faq-answer">
+                            <p>No. If you already know your concept is viable and you&rsquo;re ready to build a full launch plan, you can go straight to the <a href="/community-landing">Accelerator</a>. The Reality Check is designed for people who want to validate their idea first.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FINAL CTA ═══ -->
+        <section class="rc-final-cta">
+            <h2>Know Before You Go All In</h2>
+            <p>Five days. Five exercises. One clear answer. The smartest $97 you&rsquo;ll ever spend on your coffee shop dream.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://app.roastlaunch.com/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                <a href="/workshop" class="btn btn-outline" style="border-color: rgba(250,250,248,0.3); color: var(--warm-white);">Attend the Free Workshop First</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Roast Launch</h4>
+                <p>Open the coffee shop you were made for.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/curriculum">Curriculum</a></li>
+                    <li><a href="/workshop">Workshop</a></li>
+                    <li><a href="/reality-check">Reality Check</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/community">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/should-i-start">Quiz</a></li>
+                    <li><a href="/calculator">Calculator</a></li>
+                    <li><a href="/guide">Complete Guide</a></li>
+                    <li><a href="/resources">Free Resources</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="https://roastlaunch.beehiiv.com" target="_blank" rel="noopener noreferrer">Newsletter Archive</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://instagram.com/roastlaunch" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://tiktok.com/@roastlaunch" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    <li><a href="https://youtube.com/@roastlaunch" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                    <li><a href="https://linkedin.com/company/roastlaunch" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="mailto:john@roastlaunch.com">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Roast Launch, LLC &middot; <a href="/privacy" style="color: rgba(250,250,248,0.6);">Privacy &amp; Terms</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
