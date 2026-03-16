@@ -1228,38 +1228,31 @@ section { padding: 88px 0; }
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-top: 4px;
-    margin-top: 4px;
-    border-top: 1px solid rgba(28, 18, 9, 0.06);
+    padding-top: 0;
+    margin-top: 8px;
+    border-top: none;
   }
   .nav-mobile-actions a { display: none; }
   .nav-mobile-actions .nav-mobile-login {
     display: block;
-    margin-top: 8px;
+    margin-top: 0;
     border-bottom: none;
     padding: 14px 0;
     font-size: 15px;
+    font-weight: 500;
     color: var(--text-secondary);
+    text-align: center;
   }
   .nav-mobile-actions .btn-mobile-cta {
     display: block;
     margin-top: 4px;
     text-align: center;
-    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 15px;
+    border-radius: 8px;
   }
   .nav-mobile-separator { display: none; }
-  .nav-mobile-login {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    padding: 10px 0;
-    text-align: center;
-  }
-  .btn-mobile-cta {
-    text-align: center;
-    font-size: 15px;
-    padding: 12px 24px;
-  }
   .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
