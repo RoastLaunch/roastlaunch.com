@@ -32,6 +32,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── MORE DROPDOWN ──────────────────────────────────
+  const moreBtn = document.querySelector('.nav-more-btn');
+  const moreWrap = document.querySelector('.nav-more');
+  if (moreBtn && moreWrap) {
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = moreWrap.classList.toggle('open');
+      moreBtn.setAttribute('aria-expanded', isOpen);
+    });
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!moreWrap.contains(e.target)) {
+        moreWrap.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && moreWrap.classList.contains('open')) {
+        moreWrap.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+        moreBtn.focus();
+      }
+    });
+  }
+
   // ── HERO PARALLAX-LITE ─────────────────────────────
   // Subtle depth: hero content shifts slightly as you scroll
   const hero = document.querySelector('.hero-content');
