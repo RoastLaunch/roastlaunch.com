@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navMenu.classList.toggle('open');
+      // Lock body scroll when menu is open
+      document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
       // Close More dropdown when closing mobile menu
       if (!navMenu.classList.contains('open')) {
         const moreW = document.querySelector('.nav-more');
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         navMenu.classList.remove('open');
+        document.body.style.overflow = '';
       });
     });
   }
