@@ -170,6 +170,7 @@ section { padding: 88px 0; }
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.7;
   color: var(--text-secondary);
   background: none;
   border: none;
