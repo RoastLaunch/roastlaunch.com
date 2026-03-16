@@ -160,6 +160,8 @@ section { padding: 88px 0; }
 /* ── More dropdown ── */
 .nav-more {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .nav-more-btn {
   display: inline-flex;
