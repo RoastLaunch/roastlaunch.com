@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navMenu.classList.toggle('open');
+      // Close More dropdown when closing mobile menu
+      if (!navMenu.classList.contains('open')) {
+        const moreW = document.querySelector('.nav-more');
+        if (moreW) { moreW.classList.remove('open'); }
+      }
     });
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
