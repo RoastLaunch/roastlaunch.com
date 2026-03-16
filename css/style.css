@@ -153,9 +153,11 @@ section { padding: 88px 0; }
 }
 .nav-login:hover { color: var(--text-primary); }
 .btn-nav {
-  padding: 10px 22px;
-  font-size: 14px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
   border-radius: 6px;
+  letter-spacing: 0.01em;
 }
 /* ── More dropdown ── */
 .nav-more {
