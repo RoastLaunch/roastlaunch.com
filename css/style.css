@@ -152,7 +152,7 @@ section { padding: 88px 0; }
   transition: color 0.2s var(--ease);
 }
 .nav-login:hover { color: var(--text-primary); }
-.btn-nav {
+.btn.btn-nav {
   padding: 8px 18px;
   font-size: 13px;
   font-weight: 500;
