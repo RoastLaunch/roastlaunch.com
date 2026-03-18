@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Take the free Coffee Shop Readiness Assessment. Find out if you're ready to open a specialty coffee shop — emotionally, financially, and spiritually. A free tool from Roast Launch.">
-    <meta property="og:title" content="Should I Start a Coffee Shop? — Free Readiness Assessment">
-    <meta property="og:description" content="Find out if you're ready to open a specialty coffee shop — emotionally, financially, and spiritually.">
+    <meta name="description" content="Take this free 3-minute quiz to find out if you're ready to open a coffee shop. Get a personalized readiness score across 5 key areas — concept, location, finances, funding, and personal readiness.">
+    <meta property="og:title" content="Should You Open a Coffee Shop? — Free Readiness Quiz">
+    <meta property="og:description" content="Find out in 3 minutes if you're ready to open a coffee shop. Get a personalized readiness score and next steps based on where you are right now.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://roastlaunch.com/should-i-start/">
     <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Should I Start a Coffee Shop? — Free Readiness Assessment">
-    <meta name="twitter:description" content="Find out if you're ready to open a specialty coffee shop — emotionally, financially, and spiritually.">
+    <meta name="twitter:title" content="Should You Open a Coffee Shop? — Free Readiness Quiz">
+    <meta name="twitter:description" content="Find out in 3 minutes if you're ready to open a coffee shop. Get a personalized readiness score and next steps.">
     <meta name="twitter:image" content="https://roastlaunch.com/images/hero.jpg">
     <link rel="canonical" href="https://roastlaunch.com/should-i-start/">
-    <title>Should I Start a Coffee Shop? — Roast Launch</title>
+    <title>Should You Open a Coffee Shop? — Free Readiness Quiz | Roast Launch</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Should You Open a Coffee Shop? — Readiness Quiz",
+      "description": "A free 3-minute quiz that evaluates your coffee shop readiness across 5 key areas: concept clarity, location and market, finances, funding, and personal readiness.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Roast Launch",
+        "url": "https://roastlaunch.com"
+      },
+      "educationalLevel": "Beginner",
+      "about": {
+        "@type": "Thing",
+        "name": "Coffee Shop Entrepreneurship"
+      }
+    }
+    </script>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
@@ -25,32 +43,55 @@
     <link rel="stylesheet" href="../css/style.css?v=2026031618">
 
     <!-- ═══════════════════════════════════════════════════════
-         READINESS ASSESSMENT — INLINE STYLES
-         All styles for the quiz are here for easy portability.
-         To update colors/fonts, change the CSS variables in style.css.
+         READINESS QUIZ — PAGE-SPECIFIC STYLES
          ═══════════════════════════════════════════════════════ -->
     <style>
+        /* ── HERO ── */
+        .quiz-hero {
+            padding-top: calc(64px + 56px);
+            padding-bottom: 48px;
+            text-align: center;
+            background: linear-gradient(155deg, var(--warm-white) 55%, var(--warm-cream) 100%);
+        }
+        .quiz-hero h1 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .quiz-hero h1 span { color: var(--accent); }
+        .quiz-hero .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+        .quiz-hero .quiz-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
         /* ── QUIZ CONTAINER ── */
-        .quiz-wrap {
-            max-width: 720px;
+        .quiz-section { padding: 56px 0 80px; }
+        .quiz-container {
+            max-width: 680px;
             margin: 0 auto;
-            padding: 0 24px 88px;
+            padding: 0 24px;
         }
 
         /* ── PROGRESS BAR ── */
-        .quiz-progress {
-            margin-bottom: 40px;
-        }
+        .quiz-progress { margin-bottom: 40px; }
         .quiz-progress-bar {
-            width: 100%;
             height: 6px;
             background: var(--warm-cream);
             border-radius: 3px;
             overflow: hidden;
+            margin-bottom: 12px;
         }
         .quiz-progress-fill {
             height: 100%;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--sage));
             border-radius: 3px;
             transition: width 0.4s var(--ease);
             width: 0%;
@@ -58,12 +99,25 @@
         .quiz-progress-text {
             font-size: 13px;
             color: var(--text-secondary);
-            margin-top: 8px;
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
+        }
+        .quiz-progress-category {
+            font-weight: 600;
+            color: var(--accent);
         }
 
-        /* ── CATEGORY LABEL ── */
-        .quiz-category {
+        /* ── QUESTION CARD ── */
+        .quiz-question {
+            display: none;
+            animation: quizFadeIn 0.35s var(--ease);
+        }
+        .quiz-question.active { display: block; }
+        @keyframes quizFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-question-label {
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -72,29 +126,11 @@
             margin-bottom: 10px;
             display: block;
         }
-
-        /* ── QUESTION CARD ── */
-        .quiz-question {
-            display: none;
-            animation: quizFadeIn 0.35s var(--ease) forwards;
-        }
-        .quiz-question.active {
-            display: block;
-        }
-        @keyframes quizFadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
         .quiz-question h2 {
             font-size: clamp(1.3rem, 3vw, 1.7rem);
             line-height: 1.3;
-            margin-bottom: 8px;
-        }
-        .quiz-question .quiz-hint {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            line-height: 1.6;
+            margin-bottom: 28px;
+            color: var(--espresso);
         }
 
         /* ── ANSWER OPTIONS ── */
@@ -107,31 +143,38 @@
             display: flex;
             align-items: flex-start;
             gap: 14px;
-            padding: 18px 20px;
+            width: 100%;
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--warm-white);
             border: 2px solid rgba(28, 18, 9, 0.08);
             border-radius: 12px;
+            padding: 18px 20px;
             cursor: pointer;
             transition: all 0.2s var(--ease);
-            background: var(--warm-white);
         }
         .quiz-option:hover {
-            border-color: var(--accent);
+            border-color: rgba(196, 97, 42, 0.3);
             background: rgba(196, 97, 42, 0.03);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(28, 18, 9, 0.06);
         }
         .quiz-option.selected {
             border-color: var(--accent);
             background: rgba(196, 97, 42, 0.06);
+            box-shadow: 0 0 0 4px rgba(196, 97, 42, 0.08);
         }
+        .quiz-option:active { transform: translateY(0); }
         .quiz-option-radio {
-            width: 22px;
-            height: 22px;
+            width: 22px; height: 22px;
             border: 2px solid rgba(28, 18, 9, 0.15);
             border-radius: 50%;
             flex-shrink: 0;
             margin-top: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             transition: all 0.2s var(--ease);
         }
         .quiz-option.selected .quiz-option-radio {
@@ -140,34 +183,26 @@
         }
         .quiz-option.selected .quiz-option-radio::after {
             content: '';
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--warm-white);
             border-radius: 50%;
         }
-        .quiz-option-text {
-            font-size: 16px;
-            line-height: 1.5;
-            color: var(--text-primary);
-        }
+        .quiz-option-text { font-size: 16px; line-height: 1.5; }
 
-        /* ── NAVIGATION BUTTONS ── */
+        /* ── NAV BUTTONS ── */
         .quiz-nav {
             display: flex;
             justify-content: space-between;
             margin-top: 32px;
             gap: 16px;
         }
-        .quiz-nav .btn {
-            min-width: 140px;
-        }
+        .quiz-nav .btn { min-width: 140px; }
         .quiz-back {
             background: transparent;
             color: var(--text-secondary);
             border: 2px solid rgba(28, 18, 9, 0.1);
             font-family: var(--font-body);
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 15px; font-weight: 600;
             padding: 12px 24px;
             border-radius: 8px;
             cursor: pointer;
@@ -177,186 +212,241 @@
             border-color: rgba(28, 18, 9, 0.25);
             color: var(--text-primary);
         }
-        .quiz-next {
-            margin-left: auto;
+        .quiz-next { margin-left: auto; font-size: 15px; padding: 12px 24px; }
+        .quiz-next[disabled] {
+            opacity: 0.4;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* ── EMAIL CAPTURE ── */
+        .quiz-email {
+            display: none;
+            text-align: center;
+            animation: quizFadeIn 0.4s var(--ease);
+        }
+        .quiz-email.active { display: block; }
+        .quiz-email h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            color: var(--espresso);
+            margin-bottom: 12px;
+        }
+        .quiz-email > p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+        .quiz-email-form {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .quiz-email-form input {
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 16px;
+            padding: 14px 20px;
+            border: 2px solid rgba(28, 18, 9, 0.1);
+            border-radius: 8px;
+            background: var(--warm-white);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s var(--ease);
+            margin-bottom: 12px;
+        }
+        .quiz-email-form input:focus { border-color: var(--accent); }
+        .quiz-email-form input::placeholder { color: var(--text-secondary); }
+        .quiz-email-form .btn { width: 100%; margin-top: 4px; font-size: 16px; padding: 14px 32px; }
+        .quiz-email-skip {
+            display: block;
+            margin: 16px auto 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none; border: none;
+            font-family: var(--font-body);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .quiz-email-skip:hover { color: var(--text-primary); }
+        .quiz-email-privacy {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            margin-bottom: 0;
         }
 
         /* ── RESULTS ── */
         .quiz-results {
             display: none;
-            animation: quizFadeIn 0.5s var(--ease) forwards;
+            animation: quizFadeIn 0.5s var(--ease);
         }
-        .quiz-results.active {
-            display: block;
-        }
+        .quiz-results.active { display: block; }
 
-        .result-header {
-            text-align: center;
-            margin-bottom: 40px;
+        .result-header { text-align: center; margin-bottom: 48px; }
+        .result-badge {
+            display: inline-block;
+            font-size: 13px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 6px 18px; border-radius: 24px; margin-bottom: 20px;
         }
-        .result-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            margin: 0 auto 20px;
-        }
-        .result-icon.go    { background: rgba(92, 122, 78, 0.15); }
-        .result-icon.wait  { background: rgba(196, 97, 42, 0.12); }
-        .result-icon.pause { background: rgba(107, 107, 107, 0.12); }
+        .result-badge.ready   { background: rgba(92,122,78,0.15); color: var(--sage); }
+        .result-badge.almost  { background: rgba(196,97,42,0.12); color: var(--accent); }
+        .result-badge.growing { background: rgba(61,35,20,0.12); color: var(--coffee-brown); }
+        .result-badge.early   { background: rgba(107,107,107,0.12); color: var(--mid-gray); }
+
         .result-header h2 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            margin-bottom: 12px;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: var(--espresso);
+            margin-bottom: 16px; line-height: 1.2;
         }
-        .result-header p {
+        .result-header > p {
             font-size: 17px;
             color: var(--text-secondary);
-            max-width: 540px;
+            max-width: 560px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
-        /* Score breakdown */
-        .result-scores {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
+        /* Score ring */
+        .result-ring {
+            width: 160px; height: 160px;
+            margin: 0 auto 28px;
+            position: relative;
         }
-        .score-card {
-            background: var(--warm-cream);
-            border-radius: 12px;
-            padding: 24px 20px;
-            text-align: center;
+        .result-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .ring-bg { fill: none; stroke: var(--warm-cream); stroke-width: 8; }
+        .ring-fill {
+            fill: none; stroke-width: 8; stroke-linecap: round;
+            transition: stroke-dashoffset 1.2s var(--ease);
         }
-        .score-card-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
+        .ring-fill.ready   { stroke: var(--sage); }
+        .ring-fill.almost  { stroke: var(--accent); }
+        .ring-fill.growing { stroke: var(--coffee-brown); }
+        .ring-fill.early   { stroke: var(--mid-gray); }
+        .result-ring-num {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
         }
-        .score-card-value {
+        .result-ring-num .num {
             font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--text-primary);
-            line-height: 1;
-            margin-bottom: 4px;
+            font-size: 2.4rem; color: var(--espresso); line-height: 1;
         }
-        .score-card-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(28, 18, 9, 0.06);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
+        .result-ring-num .label {
+            font-size: 13px; color: var(--text-secondary); margin-top: 4px;
         }
-        .score-card-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.6s var(--ease);
-        }
-        .score-card-bar-fill.heart   { background: var(--accent); }
-        .score-card-bar-fill.finance { background: var(--sage); }
-        .score-card-bar-fill.overall { background: var(--coffee-brown); }
 
-        /* Insight cards */
-        .result-insights {
-            margin-bottom: 40px;
-        }
-        .result-insights h3 {
-            margin-bottom: 16px;
-        }
-        .insight-card {
+        /* Category breakdown */
+        .result-breakdown {
             background: var(--warm-white);
-            border: 1px solid rgba(28, 18, 9, 0.06);
+            border: 1px solid rgba(28,18,9,0.06);
+            border-radius: 14px;
+            padding: 32px;
+            margin-bottom: 36px;
+        }
+        .result-breakdown h3 {
+            font-size: 1.15rem; color: var(--espresso); margin-bottom: 24px;
+        }
+        .bd-item {
+            display: flex; align-items: center; gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(28,18,9,0.04);
+        }
+        .bd-item:last-child { border-bottom: none; }
+        .bd-label { font-size: 15px; font-weight: 500; min-width: 140px; }
+        .bd-bar {
+            flex: 1; height: 8px;
+            background: var(--warm-cream);
+            border-radius: 4px; overflow: hidden;
+        }
+        .bd-fill {
+            height: 100%; border-radius: 4px;
+            transition: width 0.8s var(--ease);
+        }
+        .bd-fill.high { background: var(--sage); }
+        .bd-fill.mid  { background: var(--accent); }
+        .bd-fill.low  { background: var(--coffee-brown); }
+        .bd-score {
+            font-size: 14px; font-weight: 700; min-width: 40px; text-align: right;
+        }
+
+        /* Recommendations */
+        .result-recs { margin-bottom: 36px; }
+        .result-recs h3 { font-size: 1.15rem; color: var(--espresso); margin-bottom: 20px; }
+        .rec-card {
+            background: var(--warm-white);
+            border: 1px solid rgba(28,18,9,0.06);
             border-radius: 12px;
             padding: 20px 24px;
             margin-bottom: 12px;
         }
-        .insight-card-title {
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--text-primary);
-            margin-bottom: 6px;
+        .rec-card strong {
+            display: block; font-size: 15px;
+            color: var(--text-primary); margin-bottom: 6px;
         }
-        .insight-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.65;
-            margin-bottom: 0;
+        .rec-card p {
+            font-size: 15px; color: var(--text-secondary);
+            line-height: 1.65; margin-bottom: 0;
         }
 
-        /* CTA in results */
+        /* CTA Card */
         .result-cta {
             background: var(--espresso);
             border-radius: 16px;
             padding: 40px 36px;
             text-align: center;
+            margin-bottom: 32px;
         }
         .result-cta h3 {
-            color: var(--warm-white);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            color: var(--warm-white); font-size: 1.4rem; margin-bottom: 12px;
         }
-        .result-cta p {
-            color: rgba(250, 250, 248, 0.7);
-            font-size: 15px;
-            max-width: 440px;
-            margin: 0 auto 24px;
+        .result-cta > p {
+            color: rgba(250,250,248,0.7); font-size: 15px;
+            max-width: 480px; margin: 0 auto 24px; line-height: 1.65;
         }
-        .result-cta .btn-primary {
-            margin-right: 12px;
-        }
-        .result-cta-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .result-cta-btns {
+            display: flex; gap: 12px;
+            justify-content: center; flex-wrap: wrap;
         }
         .btn-ghost-light {
-            background: rgba(250, 250, 248, 0.1);
+            background: rgba(250,250,248,0.1);
             color: var(--warm-white) !important;
-            border: 2px solid rgba(250, 250, 248, 0.2);
+            border: 2px solid rgba(250,250,248,0.2);
         }
         .btn-ghost-light:hover {
-            background: rgba(250, 250, 248, 0.18);
+            background: rgba(250,250,248,0.18);
             color: var(--warm-white) !important;
             transform: translateY(-2px);
         }
-
-        .quiz-retake {
-            text-align: center;
-            margin-top: 28px;
-        }
-        .quiz-retake button {
-            background: none;
-            border: none;
-            color: var(--accent);
-            font-family: var(--font-body);
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .quiz-retake button:hover {
-            text-decoration: underline;
+        .result-cta .price-tag {
+            display: block; font-size: 14px;
+            color: rgba(250,250,248,0.5); margin-top: 12px;
         }
 
+        .result-footer { text-align: center; padding-top: 24px; }
+        .result-footer p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+        .retake-btn {
+            font-size: 14px; font-weight: 600;
+            color: var(--accent); background: none; border: none;
+            cursor: pointer; font-family: var(--font-body);
+            text-decoration: underline; text-underline-offset: 3px;
+        }
+        .retake-btn:hover { color: var(--accent-hover); }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .result-scores {
-                grid-template-columns: 1fr;
-            }
-            .result-cta {
-                padding: 32px 24px;
-            }
-            .result-cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            .quiz-hero { padding-top: calc(64px + 32px); padding-bottom: 32px; }
+            .quiz-section { padding: 32px 0 56px; }
+            .quiz-option { padding: 14px 18px; font-size: 15px; }
+            .quiz-nav { flex-direction: column-reverse; }
+            .quiz-nav .btn, .quiz-nav .quiz-back { width: 100%; text-align: center; justify-content: center; }
+            .bd-label { min-width: 100px; font-size: 13px; }
+            .result-breakdown { padding: 24px 20px; }
+            .result-cta { padding: 32px 24px; }
+            .result-cta-btns { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -366,7 +456,7 @@
     <!-- ── NAVIGATION ── -->
     <header class="nav">
         <div class="nav-container">
-                        <a href="/" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <img src="/images/logo-nav.png" alt="Roast Launch" width="140" height="32">
             </a>
             <nav class="nav-menu">
@@ -376,7 +466,7 @@
                 <div class="nav-more">
                     <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true">More <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <div class="nav-dropdown">
-                        <a href="/should-i-start">Readiness Quiz</a>
+                        <a href="/should-i-start" class="nav-active">Readiness Quiz</a>
                         <a href="/calculator">Startup Calculator</a>
                         <a href="/community">Community</a>
                         <a href="/resources">Free Resources</a>
@@ -384,7 +474,7 @@
                     </div>
                 </div>
                 <div class="nav-mobile-actions">
-                    <a href="/should-i-start">Readiness Quiz</a>
+                    <a href="/should-i-start" class="nav-active">Readiness Quiz</a>
                     <a href="/calculator">Startup Calculator</a>
                     <a href="/community">Community</a>
                     <a href="/resources">Free Resources</a>
@@ -407,42 +497,49 @@
     </header>
 
     <main id="main-content">
-        <!-- Page Header -->
-        <section class="page-header">
+        <!-- Hero -->
+        <section class="quiz-hero">
             <div class="container">
-                <h1>Should I Start a Coffee Shop?</h1>
-                <p class="subtitle">A 2-minute assessment to see where you stand — emotionally, financially, and spiritually.</p>
+                <h1>Should You <span>Open a Coffee Shop?</span></h1>
+                <p class="subtitle">Answer 12 honest questions across the 5 areas that determine whether a coffee shop succeeds or fails. Get a personalized readiness score and clear next steps.</p>
+                <p class="quiz-meta">Free &middot; 3 minutes &middot; No fluff, just clarity</p>
             </div>
         </section>
 
-        <!-- Quiz Container -->
-        <div class="quiz-wrap">
-
-            <!-- Progress -->
-            <div class="quiz-progress">
-                <div class="quiz-progress-bar">
-                    <div class="quiz-progress-fill" id="progressFill"></div>
+        <!-- Quiz -->
+        <section class="quiz-section">
+            <div class="quiz-container">
+                <!-- Progress -->
+                <div class="quiz-progress" id="quizProgress">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="quiz-progress-text">
+                        <span id="progressStep">Question 1 of 12</span>
+                        <span class="quiz-progress-category" id="progressCat">Concept</span>
+                    </div>
                 </div>
-                <p class="quiz-progress-text" id="progressText">Question 1 of 10</p>
+
+                <!-- Questions -->
+                <div id="quizQuestions"></div>
+
+                <!-- Email Capture -->
+                <div class="quiz-email" id="emailScreen">
+                    <h2>Your results are ready.</h2>
+                    <p>Enter your name and email to see your personalized readiness score, category breakdown, and recommended next steps.</p>
+                    <div class="quiz-email-form">
+                        <input type="text" id="qName" placeholder="Your first name" autocomplete="given-name">
+                        <input type="email" id="qEmail" placeholder="Your email address" autocomplete="email">
+                        <button class="btn btn-primary" id="emailBtn">See My Results</button>
+                        <button class="quiz-email-skip" id="skipBtn">Skip &mdash; just show my results</button>
+                        <p class="quiz-email-privacy">We respect your inbox. Unsubscribe anytime.<br>By continuing you agree to our <a href="/privacy">Privacy Policy</a>.</p>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="quiz-results" id="resultsScreen"></div>
             </div>
-
-            <!-- ══════════════════════════════════════════════════
-                 QUESTIONS
-                 ────────────────────────────────────────────────
-                 To add/edit/remove questions, modify the QUESTIONS
-                 array in the <script> at the bottom. Each question
-                 has: category, question text, hint, and 4 options
-                 with point values. That's it — everything else
-                 updates automatically.
-                 ══════════════════════════════════════════════════ -->
-            <div id="quizQuestions"></div>
-
-            <!-- ══════════════════════════════════════════════════
-                 RESULTS (hidden until quiz is complete)
-                 ══════════════════════════════════════════════════ -->
-            <div class="quiz-results" id="quizResults"></div>
-
-        </div>
+        </section>
     </main>
 
     <!-- ── FOOTER ── -->
@@ -457,10 +554,10 @@
                 <ul>
                     <li><a href="/about">About</a></li>
                     <li><a href="/curriculum">Curriculum</a></li>
-                    <li><a href="/workshop">Workshop</a></li>
-                    <li><a href="/reality-check">Reality Check</a></li>
                     <li><a href="/blog">Blog</a></li>
                     <li><a href="/community">Community</a></li>
+                    <li><a href="/workshop">Workshop</a></li>
+                    <li><a href="/reality-check">Reality Check</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -485,458 +582,532 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Roast Launch, LLC &middot; <a href="/privacy" style="color: rgba(250,250,248,0.6);">Privacy & Terms</a></p>
+            <p>&copy; 2026 Roast Launch, LLC &middot; <a href="/privacy" style="color: rgba(250,250,248,0.6);">Privacy &amp; Terms</a></p>
         </div>
     </footer>
 
     <script src="../js/main.js?v=2026031614"></script>
 
     <!-- ═══════════════════════════════════════════════════════
-         READINESS ASSESSMENT — QUIZ ENGINE
+         READINESS QUIZ ENGINE
          ─────────────────────────────────────────────────────
-         HOW TO UPDATE:
-         1. Edit the QUESTIONS array to add/change/remove questions.
-         2. Each question has: category ("heart" or "finance"),
-            text, hint (optional), and options [{label, points}].
-         3. Points range 1–4. 4 = most ready, 1 = least ready.
-         4. Edit the RESULTS object to change result thresholds
-            and messaging.
-         5. Everything else (progress bar, scoring, display)
-            updates automatically.
+         12 questions across 5 areas (Concept, Location,
+         Finances, Funding, Readiness). Weighted scoring with
+         4 result tiers. Email capture before results.
+
+         TO UPDATE: edit the QUESTIONS array below. Each
+         question has category, text, and 4 options with
+         point values (4 = most ready, 1 = least ready).
+         Everything else updates automatically.
          ═══════════════════════════════════════════════════════ -->
     <script>
     (function() {
         'use strict';
 
         /* ────────────────────────────────────
-           QUESTIONS — Edit these freely
+           QUESTIONS
            ──────────────────────────────────── */
-        const QUESTIONS = [
-            // ── HEART / CALLING (5 questions) ──
+        var QUESTIONS = [
+            /* ── CONCEPT CLARITY (3 Qs) ── */
             {
-                category: 'heart',
-                categoryLabel: 'Heart & Calling',
-                text: 'How often do you think about opening a coffee shop?',
-                hint: 'Be honest — not how often you think you should, but how often you actually do.',
+                cat: 'Concept',
+                catLabel: 'Concept Clarity',
+                text: 'How clearly can you describe the coffee shop you want to open?',
                 options: [
-                    { label: 'It crosses my mind occasionally', points: 1 },
-                    { label: 'A few times a week — I notice coffee shops everywhere', points: 2 },
-                    { label: 'Almost every day — I catch myself planning in my head', points: 3 },
-                    { label: "It's constant — I feel genuinely called to this", points: 4 }
+                    { label: "I have a detailed concept \u2014 the type of shop, target customer, menu direction, and what makes it different.", pts: 4 },
+                    { label: "I have a general idea of the vibe and experience, but I haven\u2019t nailed down specifics.", pts: 3 },
+                    { label: "I know I want to open a coffee shop, but I\u2019m still figuring out what kind.", pts: 2 },
+                    { label: "I just know I love coffee and want to do something with it.", pts: 1 }
                 ]
             },
             {
-                category: 'heart',
-                categoryLabel: 'Heart & Calling',
-                text: 'How do you feel about the idea of serving a community through your coffee shop?',
-                hint: 'Coffee shops are community spaces first. The coffee brings people in — the community keeps them.',
+                cat: 'Concept',
+                catLabel: 'Concept Clarity',
+                text: 'Can you describe your ideal customer \u2014 who they are, why they\u2019d choose your shop over what already exists?',
                 options: [
-                    { label: "I hadn't really thought about community — I just love coffee", points: 1 },
-                    { label: 'Community sounds nice, but the coffee is my main focus', points: 2 },
-                    { label: "I want to create a welcoming space where people connect and belong", points: 3 },
-                    { label: "Building community is the whole reason — the coffee shop is the vehicle", points: 4 }
+                    { label: "Yes \u2014 I can describe them specifically: age, habits, what\u2019s missing from their current options.", pts: 4 },
+                    { label: "I have a general sense of who I\u2019d serve, but I haven\u2019t researched it deeply.", pts: 3 },
+                    { label: "I think I\u2019d attract \u201ceveryone who likes coffee\u201d \u2014 I haven\u2019t narrowed it down.", pts: 2 },
+                    { label: "I haven\u2019t really thought about a specific customer yet.", pts: 1 }
                 ]
             },
             {
-                category: 'heart',
-                categoryLabel: 'Heart & Calling',
-                text: 'How does your current work make you feel on Sunday nights?',
-                hint: 'This isn\'t about hating your job. It\'s about whether something deeper is stirring.',
+                cat: 'Concept',
+                catLabel: 'Concept Clarity',
+                text: 'What makes your coffee shop concept different from others in your area?',
                 options: [
-                    { label: "I'm pretty content — no real urge to change", points: 1 },
-                    { label: "I feel restless, like I'm supposed to be doing something different", points: 2 },
-                    { label: 'I actively dread going back — something feels misaligned', points: 3 },
-                    { label: "I've already started planning my exit because I know my calling is elsewhere", points: 4 }
-                ]
-            },
-            {
-                category: 'heart',
-                categoryLabel: 'Heart & Calling',
-                text: 'How would you describe your relationship with specialty coffee?',
-                hint: 'Owning a shop means living coffee every single day. Passion matters.',
-                options: [
-                    { label: 'I like good coffee but don\'t know much about specialty', points: 1 },
-                    { label: 'I seek out specialty coffee and appreciate the craft', points: 2 },
-                    { label: 'I\'m deep into it — I know origins, processing methods, extraction basics', points: 3 },
-                    { label: "I study it obsessively — roasting, cupping, sourcing, the whole chain", points: 4 }
-                ]
-            },
-            {
-                category: 'heart',
-                categoryLabel: 'Heart & Calling',
-                text: 'Do the people closest to you support this dream?',
-                hint: 'Starting a business affects everyone around you. Community starts at home.',
-                options: [
-                    { label: "They don't know about it — I haven't told anyone", points: 1 },
-                    { label: 'They know, but they\'re skeptical or worried', points: 2 },
-                    { label: 'They\'re supportive but cautious — they want to see a plan', points: 3 },
-                    { label: 'They\'re all in — they believe in this and are ready to support me', points: 4 }
+                    { label: "I\u2019ve identified a clear gap in the market and a specific differentiator customers will value.", pts: 4 },
+                    { label: "I have some ideas about what would make my shop unique, but I haven\u2019t validated them.", pts: 3 },
+                    { label: "I think my passion for coffee would shine through, but I\u2019m not sure what\u2019s specifically different.", pts: 2 },
+                    { label: "I haven\u2019t looked into the local competition yet.", pts: 1 }
                 ]
             },
 
-            // ── FINANCIAL READINESS (5 questions) ──
+            /* ── LOCATION & MARKET (2 Qs) ── */
             {
-                category: 'finance',
-                categoryLabel: 'Financial Readiness',
-                text: 'How much do you know about the financial side of running a coffee shop?',
-                hint: 'Startup costs, margins, break-even — the numbers that keep the doors open.',
+                cat: 'Location',
+                catLabel: 'Location & Market',
+                text: 'How much do you know about the area where you want to open?',
                 options: [
-                    { label: "Very little — I haven't looked into the financial side yet", points: 1 },
-                    { label: "I've done some Googling — I know it's expensive but not the specifics", points: 2 },
-                    { label: "I've researched startup costs and have a rough sense of the numbers", points: 3 },
-                    { label: "I've built or studied financial models — I understand margins, unit economics, and break-even", points: 4 }
+                    { label: "I\u2019ve researched foot traffic, demographics, competition density, and lease rates in my target area.", pts: 4 },
+                    { label: "I have a neighborhood in mind and I\u2019ve visited it, but I haven\u2019t done formal research.", pts: 3 },
+                    { label: "I have a general city or region in mind but no specific location data.", pts: 2 },
+                    { label: "I haven\u2019t thought about location beyond \u201csomewhere near me.\u201d", pts: 1 }
                 ]
             },
             {
-                category: 'finance',
-                categoryLabel: 'Financial Readiness',
-                text: 'How would you describe your current financial situation?',
-                hint: 'No judgment here — just an honest snapshot of where you are.',
+                cat: 'Location',
+                catLabel: 'Location & Market',
+                text: 'How well do you know the existing coffee shops near your target location?',
                 options: [
-                    { label: "I'm living paycheck to paycheck with no savings", points: 1 },
-                    { label: "I have some savings but not specifically for a business", points: 2 },
-                    { label: "I'm actively saving toward a business and have an emergency fund", points: 3 },
-                    { label: "I have significant savings, access to capital, or a clear funding plan", points: 4 }
+                    { label: "I\u2019ve mapped them out \u2014 I know the competition and believe there\u2019s room for my concept.", pts: 4 },
+                    { label: "I\u2019m aware of a few, but I haven\u2019t done a thorough competitive analysis.", pts: 3 },
+                    { label: "I think there are some nearby, but I\u2019m not sure how many or what they offer.", pts: 2 },
+                    { label: "I haven\u2019t looked into competition at all.", pts: 1 }
+                ]
+            },
+
+            /* ── FINANCES (3 Qs) ── */
+            {
+                cat: 'Finances',
+                catLabel: 'Financial Readiness',
+                text: 'Do you know how much it would cost to open the type of coffee shop you\u2019re envisioning?',
+                options: [
+                    { label: "Yes \u2014 I\u2019ve built a startup cost estimate with real numbers (buildout, equipment, permits, working capital).", pts: 4 },
+                    { label: "I have a rough range in mind from research, but I haven\u2019t modeled my specific costs.", pts: 3 },
+                    { label: "I\u2019ve seen some numbers online but don\u2019t know what applies to my situation.", pts: 2 },
+                    { label: "I have no idea what it would actually cost.", pts: 1 }
                 ]
             },
             {
-                category: 'finance',
-                categoryLabel: 'Financial Readiness',
-                text: 'Could you go 6–12 months without a full salary while the shop gets going?',
-                hint: 'Most new coffee shops don\'t generate owner salary immediately. Planning for this matters.',
+                cat: 'Finances',
+                catLabel: 'Financial Readiness',
+                text: 'How well do you understand coffee shop unit economics \u2014 revenue per transaction, cost of goods, labor, break-even?',
                 options: [
-                    { label: "No — I need every paycheck to cover my expenses", points: 1 },
-                    { label: "It would be extremely tight, but maybe with major lifestyle cuts", points: 2 },
-                    { label: "I could manage 6 months if I plan carefully", points: 3 },
-                    { label: "Yes — I've planned for a runway of 12+ months", points: 4 }
+                    { label: "I understand the key metrics and could explain how a coffee shop makes (or loses) money.", pts: 4 },
+                    { label: "I know the basics \u2014 margins on coffee are good, labor is the biggest cost \u2014 but haven\u2019t modeled it.", pts: 3 },
+                    { label: "I\u2019ve read a few articles but don\u2019t feel confident about the numbers.", pts: 2 },
+                    { label: "I don\u2019t know what unit economics means.", pts: 1 }
                 ]
             },
             {
-                category: 'finance',
-                categoryLabel: 'Financial Readiness',
-                text: 'Have you researched commercial real estate costs in your target area?',
-                hint: 'Rent is typically the largest fixed cost. Knowing your market matters.',
+                cat: 'Finances',
+                catLabel: 'Financial Readiness',
+                text: 'How long could you sustain yourself without a paycheck while launching?',
                 options: [
-                    { label: "I haven't started looking at locations yet", points: 1 },
-                    { label: "I've browsed online listings but haven't done real analysis", points: 2 },
-                    { label: "I know approximate rents and have identified a few neighborhoods", points: 3 },
-                    { label: "I've talked to commercial brokers and analyzed specific spaces", points: 4 }
+                    { label: "12+ months of personal expenses saved, separate from the business investment.", pts: 4 },
+                    { label: "6\u201312 months saved, though it would be tight.", pts: 3 },
+                    { label: "3\u20136 months \u2014 I\u2019d need the business to pay me quickly.", pts: 2 },
+                    { label: "I haven\u2019t thought about personal runway \u2014 I\u2019m focused on business costs.", pts: 1 }
+                ]
+            },
+
+            /* ── FUNDING (2 Qs) ── */
+            {
+                cat: 'Funding',
+                catLabel: 'Funding Strategy',
+                text: 'How do you plan to fund your coffee shop?',
+                options: [
+                    { label: "I have a clear strategy \u2014 savings, SBA loan, investors, or a combination \u2014 and I\u2019ve started the process.", pts: 4 },
+                    { label: "I have a general plan (savings + a loan) but haven\u2019t talked to lenders yet.", pts: 3 },
+                    { label: "I know I\u2019ll need funding, but I\u2019m not sure how to get it.", pts: 2 },
+                    { label: "I\u2019m hoping to figure that out later.", pts: 1 }
                 ]
             },
             {
-                category: 'finance',
-                categoryLabel: 'Financial Readiness',
-                text: 'How do you feel about the overall investment required ($80K–$300K+ for most shops)?',
-                hint: 'This is the real range for most specialty coffee shops in the US.',
+                cat: 'Funding',
+                catLabel: 'Funding Strategy',
+                text: 'Do you have a business plan or financial model you could show a lender today?',
                 options: [
-                    { label: "That's way more than I expected — I need to rethink this", points: 1 },
-                    { label: "It's intimidating, but I'm willing to figure out the funding", points: 2 },
-                    { label: "I knew it was in that range — I'm working toward it", points: 3 },
-                    { label: "I'm prepared for it — I have a plan to fund the investment", points: 4 }
+                    { label: "Yes \u2014 I have a written business plan with financial projections.", pts: 4 },
+                    { label: "I\u2019ve started one, but it\u2019s not complete or polished enough to present.", pts: 3 },
+                    { label: "No, but I know I need one.", pts: 2 },
+                    { label: "I\u2019m not sure what a lender would want to see.", pts: 1 }
+                ]
+            },
+
+            /* ── PERSONAL READINESS (2 Qs) ── */
+            {
+                cat: 'Readiness',
+                catLabel: 'Personal Readiness',
+                text: 'How much time can you commit to launching a coffee shop right now?',
+                options: [
+                    { label: "Full-time \u2014 I\u2019m ready to make this my primary focus.", pts: 4 },
+                    { label: "Part-time (15\u201325 hrs/week) alongside my current job, with a plan to transition.", pts: 3 },
+                    { label: "A few hours per week \u2014 I\u2019m still exploring whether this is right for me.", pts: 2 },
+                    { label: "I don\u2019t have much time right now, but I\u2019m interested in the idea.", pts: 1 }
+                ]
+            },
+            {
+                cat: 'Readiness',
+                catLabel: 'Personal Readiness',
+                text: 'Does your family or support system know about your coffee shop plans \u2014 and are they on board?',
+                options: [
+                    { label: "Yes \u2014 my partner/family fully supports this and we\u2019ve discussed the sacrifices involved.", pts: 4 },
+                    { label: "They know I\u2019m interested and they\u2019re cautiously supportive.", pts: 3 },
+                    { label: "I\u2019ve mentioned it, but we haven\u2019t had a serious conversation about what it takes.", pts: 2 },
+                    { label: "I haven\u2019t told anyone yet \u2014 it\u2019s still a private dream.", pts: 1 }
                 ]
             }
         ];
 
-        /* ────────────────────────────────────
-           RESULTS — Edit thresholds & copy
-           ──────────────────────────────────── */
-        const RESULTS = {
-            go: {
-                minPercent: 72,
-                icon: '🟢',
-                iconClass: 'go',
-                title: "You're ready to start building.",
-                subtitle: "Your heart, your finances, and your preparation all point in the same direction. You don't need more permission — you need a plan. The community is here to help you build one.",
-                cta: "Join the community and start building your launch plan with people who are on the same path.",
-                insightTitle: "What's working in your favor"
-            },
-            wait: {
-                minPercent: 45,
-                icon: '🟡',
-                iconClass: 'wait',
-                title: "You're close — but a few things need attention first.",
-                subtitle: "The calling is real, but some pieces aren't in place yet. That's not a no — it's a 'not yet.' The good news: these are all things you can actively work on, especially with the right community around you.",
-                cta: "Start preparing now. The community gives you the education, tools, and accountability to close the gaps.",
-                insightTitle: "Where to focus your energy"
-            },
-            pause: {
-                minPercent: 0,
-                icon: '🔴',
-                iconClass: 'pause',
-                title: "This might not be the right season — and that's okay.",
-                subtitle: "Being honest with yourself is the first step of stewardship. Whether this dream grows into a calling or evolves into something else, you've started thinking seriously about it. Stay connected and keep learning.",
-                cta: "Start with the free newsletter. Keep learning, keep exploring, and revisit this when the time feels right.",
-                insightTitle: "What to think about"
-            }
-        };
+        /* Category definitions for breakdown */
+        var CATS = [
+            { name: 'Concept Clarity',    idx: [0,1,2], max: 12 },
+            { name: 'Location & Market',  idx: [3,4],   max: 8 },
+            { name: 'Financial Readiness', idx: [5,6,7], max: 12 },
+            { name: 'Funding Strategy',   idx: [8,9],   max: 8 },
+            { name: 'Personal Readiness', idx: [10,11], max: 8 }
+        ];
 
-        /* ────────────────────────────────────
-           QUIZ ENGINE — No need to edit below
-           ──────────────────────────────────── */
-        const totalQ = QUESTIONS.length;
-        let current = 0;
-        let answers = new Array(totalQ).fill(null);
+        var totalQ = QUESTIONS.length;
+        var current = 0;
+        var answers = new Array(totalQ).fill(null);
 
-        const questionsEl = document.getElementById('quizQuestions');
-        const resultsEl   = document.getElementById('quizResults');
-        const progressFill = document.getElementById('progressFill');
-        const progressText = document.getElementById('progressText');
+        var questionsEl  = document.getElementById('quizQuestions');
+        var emailEl      = document.getElementById('emailScreen');
+        var resultsEl    = document.getElementById('resultsScreen');
+        var progressEl   = document.getElementById('quizProgress');
+        var progressFill = document.getElementById('progressFill');
+        var progressStep = document.getElementById('progressStep');
+        var progressCat  = document.getElementById('progressCat');
 
-        /* Build all question cards once on init */
+        /* ── BUILD QUESTIONS ──────────────────────── */
         function buildQuestions() {
             questionsEl.innerHTML = '';
-            QUESTIONS.forEach((q, i) => {
-                const optionsHtml = q.options.map((opt, oi) => {
-                    return `
-                        <div class="quiz-option" data-q="${i}" data-o="${oi}">
-                            <div class="quiz-option-radio"></div>
-                            <div class="quiz-option-text">${opt.label}</div>
-                        </div>`;
+            QUESTIONS.forEach(function(q, i) {
+                var optsHtml = q.options.map(function(o, oi) {
+                    return '<div class="quiz-option" data-q="' + i + '" data-o="' + oi + '">' +
+                        '<div class="quiz-option-radio"></div>' +
+                        '<div class="quiz-option-text">' + o.label + '</div></div>';
                 }).join('');
 
-                const div = document.createElement('div');
+                var div = document.createElement('div');
                 div.className = 'quiz-question';
                 div.dataset.index = i;
-                div.innerHTML = `
-                    <span class="quiz-category">${q.categoryLabel}</span>
-                    <h2>${q.text}</h2>
-                    ${q.hint ? `<p class="quiz-hint">${q.hint}</p>` : ''}
-                    <div class="quiz-options">${optionsHtml}</div>
-                    <div class="quiz-nav">
-                        ${i > 0 ? '<button class="quiz-back" data-dir="back">Back</button>' : '<span></span>'}
-                        <button class="btn btn-primary quiz-next" data-dir="next" disabled style="opacity:0.4;cursor:not-allowed;">
-                            ${i === totalQ - 1 ? 'See My Results' : 'Next'}
-                        </button>
-                    </div>`;
+                div.innerHTML =
+                    '<span class="quiz-question-label">' + q.catLabel + '</span>' +
+                    '<h2>' + q.text + '</h2>' +
+                    '<div class="quiz-options">' + optsHtml + '</div>' +
+                    '<div class="quiz-nav">' +
+                        (i > 0 ? '<button class="quiz-back" data-dir="back">Back</button>' : '<span></span>') +
+                        '<button class="btn btn-primary quiz-next" data-dir="next" disabled>' +
+                            (i === totalQ - 1 ? 'See My Results' : 'Next') +
+                        '</button>' +
+                    '</div>';
                 questionsEl.appendChild(div);
             });
-
-            // Attach option click handlers (once, using delegation)
-            questionsEl.addEventListener('click', function(e) {
-                const option = e.target.closest('.quiz-option');
-                if (option) {
-                    const qi = parseInt(option.dataset.q);
-                    const oi = parseInt(option.dataset.o);
-                    answers[qi] = oi;
-                    updateSelection(qi);
-                    return;
-                }
-
-                const navBtn = e.target.closest('[data-dir]');
-                if (navBtn) {
-                    e.preventDefault();
-                    if (navBtn.dataset.dir === 'back' && current > 0) {
-                        current--;
-                        showQuestion();
-                    } else if (navBtn.dataset.dir === 'next' && answers[current] !== null) {
-                        if (current < totalQ - 1) {
-                            current++;
-                            showQuestion();
-                        } else {
-                            showResults();
-                        }
-                    }
-                }
-            });
         }
 
-        /* Update selection styling without rebuilding DOM */
+        /* ── EVENT DELEGATION ─────────────────────── */
+        questionsEl.addEventListener('click', function(e) {
+            var opt = e.target.closest('.quiz-option');
+            if (opt) {
+                var qi = parseInt(opt.dataset.q);
+                answers[qi] = parseInt(opt.dataset.o);
+                updateSelection(qi);
+                return;
+            }
+            var nav = e.target.closest('[data-dir]');
+            if (!nav) return;
+            e.preventDefault();
+            if (nav.dataset.dir === 'back' && current > 0) {
+                current--;
+                showQuestion();
+            } else if (nav.dataset.dir === 'next' && answers[current] !== null) {
+                if (current < totalQ - 1) {
+                    current++;
+                    showQuestion();
+                } else {
+                    showEmail();
+                }
+            }
+        });
+
         function updateSelection(qi) {
-            const questionEl = questionsEl.querySelector(`.quiz-question[data-index="${qi}"]`);
-            if (!questionEl) return;
-
-            // Update option styles
-            questionEl.querySelectorAll('.quiz-option').forEach(opt => {
-                const oi = parseInt(opt.dataset.o);
-                opt.classList.toggle('selected', oi === answers[qi]);
+            var card = questionsEl.querySelector('.quiz-question[data-index="' + qi + '"]');
+            if (!card) return;
+            card.querySelectorAll('.quiz-option').forEach(function(o) {
+                o.classList.toggle('selected', parseInt(o.dataset.o) === answers[qi]);
             });
-
-            // Enable the Next button
-            const nextBtn = questionEl.querySelector('.quiz-next');
-            if (nextBtn) {
-                nextBtn.disabled = false;
-                nextBtn.style.opacity = '';
-                nextBtn.style.cursor = '';
-            }
+            var btn = card.querySelector('.quiz-next');
+            if (btn) { btn.disabled = false; }
         }
 
-        /* Show the current question, hide others */
         function showQuestion() {
-            const questions = questionsEl.querySelectorAll('.quiz-question');
-            questions.forEach((el, i) => {
-                if (i === current) {
-                    el.classList.add('active');
-                } else {
-                    el.classList.remove('active');
-                }
+            questionsEl.querySelectorAll('.quiz-question').forEach(function(el, i) {
+                el.classList.toggle('active', i === current);
             });
-
-            // Restore Next button state for current question
-            const activeQ = questions[current];
-            if (activeQ) {
-                const nextBtn = activeQ.querySelector('.quiz-next');
-                if (nextBtn) {
-                    const hasAnswer = answers[current] !== null;
-                    nextBtn.disabled = !hasAnswer;
-                    nextBtn.style.opacity = hasAnswer ? '' : '0.4';
-                    nextBtn.style.cursor = hasAnswer ? '' : 'not-allowed';
-                }
+            var activeCard = questionsEl.querySelector('.quiz-question[data-index="' + current + '"]');
+            if (activeCard) {
+                var btn = activeCard.querySelector('.quiz-next');
+                if (btn) btn.disabled = (answers[current] === null);
             }
-
-            // Update progress
-            const pct = Math.round(((current) / totalQ) * 100);
+            var pct = ((current + 1) / totalQ) * 100;
             progressFill.style.width = pct + '%';
-            progressText.textContent = `Question ${current + 1} of ${totalQ}`;
+            progressStep.textContent = 'Question ' + (current + 1) + ' of ' + totalQ;
+            progressCat.textContent = QUESTIONS[current].catLabel;
+            scrollToQuiz();
         }
 
-        function showResults() {
-            questionsEl.style.display = 'none';
-            document.querySelector('.quiz-progress').style.display = 'none';
+        function scrollToQuiz() {
+            var y = document.querySelector('.quiz-section').offsetTop - 80;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
 
-            // Calculate scores
-            let heartTotal = 0, heartMax = 0;
-            let finTotal = 0, finMax = 0;
+        /* ── EMAIL SCREEN ─────────────────────────── */
+        function showEmail() {
+            questionsEl.querySelectorAll('.quiz-question').forEach(function(el) { el.classList.remove('active'); });
+            progressEl.style.display = 'none';
+            emailEl.classList.add('active');
+            scrollToQuiz();
+        }
 
-            QUESTIONS.forEach((q, i) => {
-                const pts = q.options[answers[i]].points;
-                const max = 4; // max points per question
-                if (q.category === 'heart') {
-                    heartTotal += pts;
-                    heartMax += max;
-                } else {
-                    finTotal += pts;
-                    finMax += max;
-                }
+        document.getElementById('emailBtn').addEventListener('click', function() {
+            var email = document.getElementById('qEmail').value.trim();
+            var name  = document.getElementById('qName').value.trim();
+            if (email && email.indexOf('@') > 0) {
+                submitToNewsletter(email);
+            }
+            showResults(name);
+        });
+        document.getElementById('skipBtn').addEventListener('click', function() {
+            showResults('');
+        });
+
+        function submitToNewsletter(email) {
+            try {
+                var iframe = document.createElement('iframe');
+                iframe.name = 'quiz-nl';
+                iframe.style.cssText = 'position:absolute;width:0;height:0;border:0;';
+                iframe.setAttribute('aria-hidden', 'true');
+                document.body.appendChild(iframe);
+
+                var form = document.createElement('form');
+                form.method = 'get';
+                form.action = 'https://roastlaunch.beehiiv.com/subscribe';
+                form.target = 'quiz-nl';
+                form.style.display = 'none';
+
+                var inp = document.createElement('input');
+                inp.name = 'email'; inp.value = email;
+                form.appendChild(inp);
+
+                var tag = document.createElement('input');
+                tag.name = 'utm_source'; tag.value = 'readiness_quiz';
+                form.appendChild(tag);
+
+                document.body.appendChild(form);
+                form.submit();
+                setTimeout(function() {
+                    document.body.removeChild(form);
+                    document.body.removeChild(iframe);
+                }, 2000);
+            } catch(e) { /* silent */ }
+        }
+
+        /* ── RESULTS ──────────────────────────────── */
+        function showResults(userName) {
+            emailEl.classList.remove('active');
+
+            /* Calculate scores */
+            var total = 0;
+            answers.forEach(function(a, i) {
+                if (a !== null) total += QUESTIONS[i].options[a].pts;
+            });
+            var maxScore = totalQ * 4; // 48
+            var pct = Math.round((total / maxScore) * 100);
+
+            /* Determine tier */
+            var tier;
+            if (pct >= 78) {
+                tier = {
+                    key: 'ready',
+                    badge: 'Ready to Launch',
+                    title: 'You\u2019re ready to build your coffee shop.',
+                    desc: 'Your concept is clear, your research is strong, and you have real momentum. You\u2019re not daydreaming \u2014 you\u2019re preparing. The next step is turning all of this into a complete, fundable launch plan.',
+                    recs: [
+                        { t: 'Build your launch plan', d: 'You have the clarity and preparation to start building a professional business plan, financial model, and brand brief that gets funded.' },
+                        { t: 'Refine your financial model', d: 'Your cost awareness is strong. Now model your specific numbers \u2014 real lease rates, equipment costs, and labor \u2014 to build a plan a lender will trust.' },
+                        { t: 'Join a community of founders', d: 'Being around others at your stage accelerates everything. Accountability, shared learning, and honest feedback make the difference.' }
+                    ],
+                    cta: {
+                        title: 'Your Next Step: The Accelerator',
+                        desc: 'Build your complete, fundable launch plan across 8 self-paced modules \u2014 financial model, brand brief, location analysis, legal foundation, marketing strategy, and more.',
+                        link: '/curriculum',
+                        btn: 'See the Full Curriculum',
+                        alt: { link: '/workshop', btn: 'Watch the Free Workshop' },
+                        price: '$997 \u2014 Lifetime access \u2014 100% Launch Plan Guarantee'
+                    }
+                };
+            } else if (pct >= 55) {
+                tier = {
+                    key: 'almost',
+                    badge: 'Almost There',
+                    title: 'You have real momentum \u2014 with a few gaps to close.',
+                    desc: 'You\u2019re more prepared than most aspiring coffee shop owners. But there are specific areas that need attention before you commit serious capital. The good news: they\u2019re all fixable.',
+                    recs: [
+                        { t: 'Focus on your lowest scores', d: 'The categories where you scored lowest are your biggest risks right now. Target those first for the highest impact.' },
+                        { t: 'Validate with real data', d: 'The Reality Check gives you a structured 5-day framework to validate your concept \u2014 market, finances, location \u2014 with real numbers, not hopes.' },
+                        { t: 'Build your financial foundation', d: 'If finances or funding scored low, start with the free Startup Calculator to build a realistic cost estimate for your specific concept.' }
+                    ],
+                    cta: {
+                        title: 'Your Next Step: The Reality Check',
+                        desc: 'Validate your concept in 5 focused days. Walk away with a data-backed answer on whether your idea is viable \u2014 before you risk a dollar.',
+                        link: '/reality-check',
+                        btn: 'Get the Reality Check \u2014 $97',
+                        alt: { link: '/calculator', btn: 'Try the Free Calculator' },
+                        price: '$97 \u2014 Credited toward the Accelerator'
+                    }
+                };
+            } else if (pct >= 35) {
+                tier = {
+                    key: 'growing',
+                    badge: 'Building Your Foundation',
+                    title: 'You\u2019re in the exploration phase \u2014 and that\u2019s exactly right.',
+                    desc: 'You have the dream and the interest to pursue it. There\u2019s important groundwork to do before investing serious time or money. The fact that you\u2019re taking this quiz means you\u2019re already more thoughtful than most.',
+                    recs: [
+                        { t: 'Get clear on your concept', d: 'Start by defining what type of shop you\u2019d open, who it\u2019s for, and what makes it different. Clarity here shapes everything else.' },
+                        { t: 'Research your local market', d: 'Visit competing coffee shops, look up lease rates, study what\u2019s working nearby. Real exposure builds real knowledge.' },
+                        { t: 'Learn what kills coffee shops', d: 'The free workshop covers the #1 mistake that sinks shops before they open. It\u2019s the best 60 minutes you can spend right now.' }
+                    ],
+                    cta: {
+                        title: 'Your Next Step: Free Workshop',
+                        desc: 'Learn what kills most coffee shops before they open \u2014 and how to avoid it. Free, actionable, built from 50+ owner interviews.',
+                        link: '/workshop',
+                        btn: 'Register for Free Workshop',
+                        alt: { link: '/guide', btn: 'Read the Complete Guide' },
+                        price: 'Free \u2014 No credit card required'
+                    }
+                };
+            } else {
+                tier = {
+                    key: 'early',
+                    badge: 'Dream Stage',
+                    title: 'Every great coffee shop started right where you are.',
+                    desc: 'You\u2019re in the dreaming phase, and there\u2019s nothing wrong with that. The most successful shop owners spent months learning before they spent a dollar. You\u2019re doing the smart thing by exploring first.',
+                    recs: [
+                        { t: 'Start with the fundamentals', d: 'Learn what it costs, how the business model works, and what makes shops succeed or fail. Knowledge is your first investment.' },
+                        { t: 'Read real cost breakdowns', d: 'Our free guide covers realistic startup costs for 2026 \u2014 so you know what you\u2019re working toward.' },
+                        { t: 'Get one lesson per week', d: 'Join 500+ aspiring coffee shop owners in the newsletter. Real numbers, real frameworks, and encouragement for the journey ahead.' }
+                    ],
+                    cta: {
+                        title: 'Your Next Step: Start Learning',
+                        desc: 'Join 500+ aspiring owners getting one actionable lesson per week on coffee, business, and faith-grounded entrepreneurship.',
+                        link: '/#newsletter',
+                        btn: 'Join the Free Newsletter',
+                        alt: { link: '/blog', btn: 'Read the Blog' },
+                        price: 'Free \u2014 One lesson per week'
+                    }
+                };
+            }
+
+            /* Build category breakdown */
+            var bdHtml = '';
+            CATS.forEach(function(cat) {
+                var s = 0;
+                cat.idx.forEach(function(i) {
+                    if (answers[i] !== null) s += QUESTIONS[i].options[answers[i]].pts;
+                });
+                var cp = Math.round((s / cat.max) * 100);
+                var lvl = cp >= 75 ? 'high' : cp >= 50 ? 'mid' : 'low';
+                var clr = lvl === 'high' ? 'var(--sage)' : lvl === 'mid' ? 'var(--accent)' : 'var(--coffee-brown)';
+                bdHtml +=
+                    '<div class="bd-item">' +
+                        '<span class="bd-label">' + cat.name + '</span>' +
+                        '<div class="bd-bar"><div class="bd-fill ' + lvl + '" style="width:0%" data-w="' + cp + '%"></div></div>' +
+                        '<span class="bd-score" style="color:' + clr + '">' + s + '/' + cat.max + '</span>' +
+                    '</div>';
             });
 
-            const heartPct = Math.round((heartTotal / heartMax) * 100);
-            const finPct   = Math.round((finTotal / finMax) * 100);
-            const overallPct = Math.round(((heartTotal + finTotal) / (heartMax + finMax)) * 100);
+            /* Build recs */
+            var recsHtml = tier.recs.map(function(r) {
+                return '<div class="rec-card"><strong>' + r.t + '</strong><p>' + r.d + '</p></div>';
+            }).join('');
 
-            // Determine result tier
-            let tier;
-            if (overallPct >= RESULTS.go.minPercent) tier = RESULTS.go;
-            else if (overallPct >= RESULTS.wait.minPercent) tier = RESULTS.wait;
-            else tier = RESULTS.pause;
+            /* Score ring */
+            var circ = 2 * Math.PI * 60;
+            var off = circ - (pct / 100) * circ;
+            var greeting = userName ? (userName + ', your') : 'Your';
 
-            // Build insights
-            const insights = [];
-            if (heartPct >= 75) {
-                insights.push({ title: 'Your calling is strong', text: "You're not casually curious — you feel drawn to this. That kind of conviction is what carries people through the hard seasons of starting a business." });
-            } else if (heartPct >= 50) {
-                insights.push({ title: 'The interest is real, but deepen it', text: "You're drawn to coffee and the idea of a shop, but there's room to explore whether this is a hobby or a genuine calling. Spend time in specialty coffee shops, talk to owners, and sit with the question." });
-            } else {
-                insights.push({ title: 'Explore before you invest', text: "The desire is early-stage. Before committing time or money, spend a few months immersing yourself in specialty coffee culture and talking to shop owners to see if the calling grows stronger." });
-            }
-
-            if (finPct >= 75) {
-                insights.push({ title: 'Financially, you\'re in a strong position', text: "You've done your homework and have resources or a clear plan to fund this. That puts you ahead of most aspiring owners. Now it's about refining the numbers with real projections." });
-            } else if (finPct >= 50) {
-                insights.push({ title: 'Financial preparation needs focus', text: "You have some awareness of the costs, but building a detailed financial model would give you much more clarity and confidence. This is exactly what the community's business deep-dives cover." });
-            } else {
-                insights.push({ title: 'Start with the financial education', text: "The financial side of coffee shops can be surprising. Before making any commitments, invest time in understanding startup costs, unit economics, and what a realistic runway looks like." });
-            }
-
-            // Community insight always included
-            if (overallPct >= 60) {
-                insights.push({ title: "You'd thrive in community", text: "Based on your answers, you're at a stage where being around others on the same journey would accelerate your progress. Accountability, shared learning, and honest conversation make the difference." });
-            } else {
-                insights.push({ title: 'Community can help you figure this out', text: "You don't have to have it all figured out to benefit from community. Being around people who are asking the same questions and further along the path helps bring clarity to your own decisions." });
-            }
-
-            const insightsHtml = insights.map(i => `
-                <div class="insight-card">
-                    <p class="insight-card-title">${i.title}</p>
-                    <p>${i.text}</p>
-                </div>`).join('');
-
-            // Determine CTA buttons based on tier
-            let ctaButtons;
-            if (tier === RESULTS.go) {
-                ctaButtons = `
-                    <div class="result-cta-buttons">
-                        <a href="/community-landing" class="btn btn-primary">Apply for the Accelerator</a>
-                        <a href="/workshop" class="btn btn-ghost-light">Watch the Free Workshop</a>
-                    </div>`;
-            } else if (tier === RESULTS.wait) {
-                ctaButtons = `
-                    <div class="result-cta-buttons">
-                        <a href="/workshop" class="btn btn-primary">Attend the Free Workshop</a>
-                        <a href="/community-landing" class="btn btn-ghost-light">Learn About the Accelerator</a>
-                    </div>`;
-            } else {
-                ctaButtons = `
-                    <div class="result-cta-buttons">
-                        <a href="/#newsletter" class="btn btn-primary">Get the Free Newsletter</a>
-                        <a href="/blog" class="btn btn-ghost-light">Read the Blog</a>
-                    </div>`;
-            }
-
-            resultsEl.innerHTML = `
-                <div class="result-header">
-                    <div class="result-icon ${tier.iconClass}">${tier.icon}</div>
-                    <h2>${tier.title}</h2>
-                    <p>${tier.subtitle}</p>
-                </div>
-
-                <div class="result-scores">
-                    <div class="score-card">
-                        <p class="score-card-label">Heart & Calling</p>
-                        <div class="score-card-value">${heartPct}%</div>
-                        <div class="score-card-bar"><div class="score-card-bar-fill heart" style="width:${heartPct}%"></div></div>
-                    </div>
-                    <div class="score-card">
-                        <p class="score-card-label">Financial Readiness</p>
-                        <div class="score-card-value">${finPct}%</div>
-                        <div class="score-card-bar"><div class="score-card-bar-fill finance" style="width:${finPct}%"></div></div>
-                    </div>
-                    <div class="score-card">
-                        <p class="score-card-label">Overall Readiness</p>
-                        <div class="score-card-value">${overallPct}%</div>
-                        <div class="score-card-bar"><div class="score-card-bar-fill overall" style="width:${overallPct}%"></div></div>
-                    </div>
-                </div>
-
-                <div class="result-insights">
-                    <h3>${tier.insightTitle}</h3>
-                    ${insightsHtml}
-                </div>
-
-                <div class="result-cta">
-                    <h3>${overallPct >= 60 ? "Ready for your next step?" : "Keep the dream alive."}</h3>
-                    <p>${tier.cta}</p>
-                    ${ctaButtons}
-                </div>
-
-                <div class="quiz-retake">
-                    <button id="retakeBtn">Retake the assessment</button>
-                </div>`;
+            resultsEl.innerHTML =
+                '<div class="result-header">' +
+                    '<div class="result-badge ' + tier.key + '">' + tier.badge + '</div>' +
+                    '<div class="result-ring">' +
+                        '<svg viewBox="0 0 140 140">' +
+                            '<circle class="ring-bg" cx="70" cy="70" r="60"/>' +
+                            '<circle class="ring-fill ' + tier.key + '" cx="70" cy="70" r="60" stroke-dasharray="' + circ + '" stroke-dashoffset="' + circ + '" data-off="' + off + '"/>' +
+                        '</svg>' +
+                        '<div class="result-ring-num">' +
+                            '<span class="num">' + pct + '%</span>' +
+                            '<span class="label">Readiness</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<h2>' + greeting + ' result: ' + tier.title + '</h2>' +
+                    '<p>' + tier.desc + '</p>' +
+                '</div>' +
+                '<div class="result-breakdown">' +
+                    '<h3>Your Score by Category</h3>' +
+                    bdHtml +
+                '</div>' +
+                '<div class="result-recs">' +
+                    '<h3>What We\u2019d Recommend</h3>' +
+                    recsHtml +
+                '</div>' +
+                '<div class="result-cta">' +
+                    '<h3>' + tier.cta.title + '</h3>' +
+                    '<p>' + tier.cta.desc + '</p>' +
+                    '<div class="result-cta-btns">' +
+                        '<a href="' + tier.cta.link + '" class="btn btn-primary">' + tier.cta.btn + '</a>' +
+                        '<a href="' + tier.cta.alt.link + '" class="btn btn-ghost-light">' + tier.cta.alt.btn + '</a>' +
+                    '</div>' +
+                    '<span class="price-tag">' + tier.cta.price + '</span>' +
+                '</div>' +
+                '<div class="result-footer">' +
+                    '<p>Not the result you expected? It\u2019s a starting point, not a verdict.</p>' +
+                    '<button class="retake-btn" id="retakeBtn">Retake the Quiz</button>' +
+                '</div>';
 
             resultsEl.classList.add('active');
+            scrollToQuiz();
 
-            // Retake handler
+            /* Animate ring + bars */
+            setTimeout(function() {
+                var ring = resultsEl.querySelector('.ring-fill');
+                if (ring) ring.style.strokeDashoffset = ring.dataset.off;
+                resultsEl.querySelectorAll('.bd-fill').forEach(function(b) {
+                    b.style.width = b.dataset.w;
+                });
+            }, 100);
+
+            /* Retake handler */
             document.getElementById('retakeBtn').addEventListener('click', function() {
-                current = 0;
                 answers = new Array(totalQ).fill(null);
+                current = 0;
                 resultsEl.classList.remove('active');
                 resultsEl.innerHTML = '';
-                questionsEl.style.display = '';
-                document.querySelector('.quiz-progress').style.display = '';
+                emailEl.classList.remove('active');
+                progressEl.style.display = '';
+                document.getElementById('qName').value = '';
+                document.getElementById('qEmail').value = '';
                 buildQuestions();
                 showQuestion();
-                document.querySelector('.page-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
-
-            // Scroll to top of results
-            resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Initialize
+        /* ── KEYBOARD NAV ─────────────────────────── */
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.closest('.quiz-option')) {
+                e.target.closest('.quiz-option').click();
+            }
+        });
+
+        /* ── INIT ─────────────────────────────────── */
         buildQuestions();
         showQuestion();
-
     })();
     </script>
 
+    <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
 </html>

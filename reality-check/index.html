@@ -186,6 +186,7 @@
             font-size: clamp(1.6rem, 3.5vw, 2.4rem);
             margin-bottom: 24px;
             line-height: 1.25;
+            color: var(--warm-white);
         }
         .rc-problem p {
             font-size: 18px;
@@ -248,7 +249,7 @@
             padding: 32px 0;
             border-bottom: 1px solid var(--warm-cream);
         }
-        .rc-day-card:last-child {
+        .rc-day-card:last-of-type {
             border-bottom: none;
         }
         .rc-day-num {
@@ -392,6 +393,73 @@
             font-size: 15px;
             color: var(--text-secondary);
             line-height: 1.6;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .rc-testimonials {
+            padding: 80px 24px;
+            background: var(--warm-cream);
+        }
+        .rc-testimonials-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .rc-testimonials h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--espresso);
+        }
+        .rc-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .rc-testimonial-card {
+            background: var(--warm-white);
+            border-radius: 14px;
+            padding: 32px 28px;
+            border: 1px solid rgba(28, 18, 9, 0.04);
+        }
+        .rc-testimonial-stars {
+            color: var(--accent);
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .rc-testimonial-card blockquote {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .rc-testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .rc-testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--warm-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .rc-testimonial-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+        .rc-testimonial-role {
+            font-size: 13px;
+            color: var(--text-secondary);
         }
 
         /* ── PRICING / CTA ── */
@@ -590,6 +658,9 @@
             .rc-includes-grid {
                 grid-template-columns: 1fr;
             }
+            .rc-testimonials-grid {
+                grid-template-columns: 1fr;
+            }
             .rc-bridge .bridge-path {
                 flex-direction: column;
             }
@@ -603,7 +674,7 @@
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header class="nav">
         <div class="nav-container">
-                        <a href="/" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <img src="/images/logo-nav.png" alt="Roast Launch" width="140" height="32">
             </a>
             <nav class="nav-menu">
@@ -644,7 +715,7 @@
     </header>
 
     <main id="main-content">
-        <!-- ═══ HERO ═══ -->
+        <!-- HERO -->
         <section class="rc-hero">
             <div class="rc-hero-inner">
                 <div class="rc-hero-content">
@@ -677,7 +748,7 @@
             </div>
         </section>
 
-        <!-- ═══ THE PROBLEM ═══ -->
+        <!-- THE PROBLEM -->
         <section class="rc-problem">
             <div class="rc-problem-inner">
                 <h2>Most Coffee Shops Fail Because the Owner Never Validated the Concept</h2>
@@ -699,7 +770,7 @@
             </div>
         </section>
 
-        <!-- ═══ THE 5 DAYS ═══ -->
+        <!-- THE 5 DAYS -->
         <section class="rc-days fade-in">
             <div class="rc-days-inner">
                 <span class="section-label" style="text-align: center; display: block;">What you&rsquo;ll do</span>
@@ -757,7 +828,7 @@
             </div>
         </section>
 
-        <!-- ═══ WHO THIS IS FOR ═══ -->
+        <!-- WHO THIS IS FOR -->
         <section class="rc-audience fade-in">
             <div class="rc-audience-inner">
                 <h2>Is the Reality Check for You?</h2>
@@ -786,7 +857,7 @@
             </div>
         </section>
 
-        <!-- ═══ WHAT'S INCLUDED ═══ -->
+        <!-- WHAT'S INCLUDED -->
         <section class="rc-includes fade-in">
             <div class="rc-includes-inner">
                 <span class="section-label" style="text-align: center; display: block;">Everything inside</span>
@@ -826,7 +897,50 @@
             </div>
         </section>
 
-        <!-- ═══ PRICING ═══ -->
+        <!-- TESTIMONIALS -->
+        <section class="rc-testimonials fade-in">
+            <div class="rc-testimonials-inner">
+                <h2>What People Are Saying</h2>
+                <div class="rc-testimonials-grid">
+                    <div class="rc-testimonial-card">
+                        <div class="rc-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>&ldquo;The Reality Check saved me from signing a lease in the wrong neighborhood. Day 2 alone was worth 10x the price. I had no idea how to actually evaluate a location before this.&rdquo;</blockquote>
+                        <div class="rc-testimonial-author">
+                            <div class="rc-testimonial-avatar">S</div>
+                            <div>
+                                <div class="rc-testimonial-name">Sarah M.</div>
+                                <div class="rc-testimonial-role">Aspiring shop owner, Nashville</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-testimonial-card">
+                        <div class="rc-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>&ldquo;I&rsquo;d been going back and forth on this for two years. Five days and $97 later, I had a clear go decision &mdash; and the numbers to back it up. Now I&rsquo;m in the Accelerator.&rdquo;</blockquote>
+                        <div class="rc-testimonial-author">
+                            <div class="rc-testimonial-avatar">M</div>
+                            <div>
+                                <div class="rc-testimonial-name">Marcus T.</div>
+                                <div class="rc-testimonial-role">Now enrolled in the Accelerator</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-testimonial-card">
+                        <div class="rc-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>&ldquo;The financial reality exercise on Day 3 was a wake-up call &mdash; in the best way. I realized I needed $40K more than I thought. Better to know now than after signing a lease.&rdquo;</blockquote>
+                        <div class="rc-testimonial-author">
+                            <div class="rc-testimonial-avatar">J</div>
+                            <div>
+                                <div class="rc-testimonial-name">Jordan K.</div>
+                                <div class="rc-testimonial-role">Aspiring shop owner, Austin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-top: 24px; font-style: italic;">* These are placeholder testimonials. Real testimonials coming soon from Reality Check participants.</p>
+            </div>
+        </section>
+
+        <!-- PRICING -->
         <section class="rc-pricing fade-in" id="pricing">
             <div class="rc-pricing-inner">
                 <span class="section-label">One-time investment</span>
@@ -851,7 +965,7 @@
             </div>
         </section>
 
-        <!-- ═══ BRIDGE TO ACCELERATOR ═══ -->
+        <!-- BRIDGE TO ACCELERATOR -->
         <section class="rc-bridge fade-in">
             <div class="rc-bridge-inner">
                 <span class="section-label">Your path forward</span>
@@ -866,12 +980,12 @@
                 </div>
                 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="/curriculum" class="btn btn-outline">See the Full Curriculum</a>
-                    <a href="/community-landing" class="btn btn-outline" style="border-color: var(--sage); color: var(--sage);">Learn About the Accelerator</a>
+                    <a href="/accelerator" class="btn btn-outline" style="border-color: var(--sage); color: var(--sage);">Learn About the Accelerator</a>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ FAQ ═══ -->
+        <!-- FAQ -->
         <section class="rc-faq fade-in">
             <div class="rc-faq-inner">
                 <h2>Questions About the Reality Check</h2>
@@ -914,14 +1028,14 @@
                     <div class="faq-item">
                         <h3>Do I need the Reality Check before the Accelerator?</h3>
                         <div class="faq-answer">
-                            <p>No. If you already know your concept is viable and you&rsquo;re ready to build a full launch plan, you can go straight to the <a href="/community-landing">Accelerator</a>. The Reality Check is designed for people who want to validate their idea first.</p>
+                            <p>No. If you already know your concept is viable and you&rsquo;re ready to build a full launch plan, you can go straight to the <a href="/accelerator">Accelerator</a>. The Reality Check is designed for people who want to validate their idea first.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ FINAL CTA ═══ -->
+        <!-- FINAL CTA -->
         <section class="rc-final-cta">
             <h2>Know Before You Go All In</h2>
             <p>Five days. Five exercises. One clear answer. The smartest $97 you&rsquo;ll ever spend on your coffee shop dream.</p>
@@ -952,7 +1066,7 @@
             <div class="footer-column">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="/should-i-start">Quiz</a></li>
+                    <li><a href="/should-i-start">Readiness Quiz</a></li>
                     <li><a href="/calculator">Calculator</a></li>
                     <li><a href="/guide">Complete Guide</a></li>
                     <li><a href="/resources">Free Resources</a></li>
