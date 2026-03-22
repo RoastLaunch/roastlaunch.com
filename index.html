@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://roastlaunch.beehiiv.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://roastlaunch.beehiiv.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://roastlaunch.beehiiv.com;">
     <meta name="description" content="Open the coffee shop you were made for. Get a complete, fundable launch plan with self-paced video lessons, community support, and a guarantee that it works.">
     <meta property="og:title" content="Roast Launch - Open the Coffee Shop You Were Made For">
     <meta property="og:description" content="You'll have a complete, fundable launch plan for your specialty coffee shop — with self-paced video lessons, community support, and a guarantee.">
@@ -71,9 +72,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="css/style.css?v=2026031618">
 </head>
 <body>
@@ -219,8 +218,10 @@
                     </div>
                 </div>
                 <div class="system-cta">
-                    <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
-                    <a href="/curriculum" class="btn btn-outline" style="margin-left: 12px;">See the Full Curriculum</a>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
+                        <a href="/curriculum" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">See the Full Curriculum</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -282,8 +283,10 @@
                     </div>
                 </div>
                 <div class="system-cta" style="margin-top: 40px;">
-                    <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
-                    <a href="/workshop" class="btn btn-outline" style="margin-left: 12px;">Start with the Free Workshop</a>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
+                        <a href="/workshop" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">Start with the Free Workshop</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -363,7 +366,7 @@
                 <h2>Start building your coffee shop today.</h2>
                 <p>Join 500+ aspiring coffee shop owners getting one actionable lesson per week on specialty coffee, business fundamentals, and faith-grounded entrepreneurship.</p>
                 <div class="newsletter-wrap">
-                <form action="https://roastlaunch.beehiiv.com/subscribe" method="get" target="nl-iframe" class="newsletter-form">
+                <form action="https://roastlaunch.beehiiv.com/subscribe" method="post" target="nl-iframe" class="newsletter-form">
                     <label for="email-home" class="sr-only">Email address</label>
                     <input type="email" id="email-home" name="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Join the Newsletter</button>
@@ -423,6 +426,7 @@
     </footer>
 
     <script src="js/main.js?v=2026031614"></script>
+    <script src="js/cookie-consent.js"></script>
     <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
 </html>
