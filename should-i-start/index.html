@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://roastlaunch.beehiiv.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://roastlaunch.beehiiv.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://roastlaunch.beehiiv.com;">
     <meta name="description" content="Take this free 3-minute quiz to find out if you're ready to open a coffee shop. Get a personalized readiness score across 5 key areas — concept, location, finances, funding, and personal readiness.">
     <meta property="og:title" content="Should You Open a Coffee Shop? — Free Readiness Quiz">
     <meta property="og:description" content="Find out in 3 minutes if you're ready to open a coffee shop. Get a personalized readiness score and next steps based on where you are right now.">
@@ -39,9 +40,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css?v=2026031618">
 
     <!-- ═══════════════════════════════════════════════════════
@@ -589,6 +588,7 @@
     </footer>
 
     <script src="../js/main.js?v=2026031614"></script>
+    <script src="../js/cookie-consent.js"></script>
 
     <!-- ═══════════════════════════════════════════════════════
          READINESS QUIZ ENGINE
@@ -975,7 +975,7 @@
                     ],
                     cta: {
                         title: 'Your Next Step: Free Workshop',
-                        desc: 'Learn what kills most coffee shops before they open \u2014 and how to avoid it. Free, actionable, built from 50+ owner interviews.',
+                        desc: 'Learn what kills most coffee shops before they open \u2014 and how to avoid it. Free, actionable, built from 50+ real case studies.',
                         link: '/workshop',
                         btn: 'Register for Free Workshop',
                         alt: { link: '/guide', btn: 'Read the Complete Guide' },
@@ -991,11 +991,11 @@
                     recs: [
                         { t: 'Start with the fundamentals', d: 'Learn what it costs, how the business model works, and what makes shops succeed or fail. Knowledge is your first investment.' },
                         { t: 'Read real cost breakdowns', d: 'Our free guide covers realistic startup costs for 2026 \u2014 so you know what you\u2019re working toward.' },
-                        { t: 'Get one lesson per week', d: 'Join 500+ aspiring coffee shop owners in the newsletter. Real numbers, real frameworks, and encouragement for the journey ahead.' }
+                        { t: 'Get one lesson per week', d: 'Join aspiring coffee shop owners in the newsletter. Real numbers, real frameworks, and encouragement for the journey ahead.' }
                     ],
                     cta: {
                         title: 'Your Next Step: Start Learning',
-                        desc: 'Join 500+ aspiring owners getting one actionable lesson per week on coffee, business, and faith-grounded entrepreneurship.',
+                        desc: 'Join aspiring owners getting one actionable lesson per week on coffee, business, and faith-grounded entrepreneurship.',
                         link: '/#newsletter',
                         btn: 'Join the Free Newsletter',
                         alt: { link: '/blog', btn: 'Read the Blog' },

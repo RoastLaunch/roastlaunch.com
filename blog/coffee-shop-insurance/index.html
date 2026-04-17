@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://roastlaunch.beehiiv.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://roastlaunch.beehiiv.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://roastlaunch.beehiiv.com;">
     <meta name="description" content="Learn what insurance your coffee shop needs, what it costs, and when to get it. A complete guide to protecting your business.">
     <meta property="og:title" content="What Insurance Does a Coffee Shop Need? A Complete Guide - Roast Launch">
     <meta property="og:description" content="Learn what insurance your coffee shop needs, what it costs, and when to get it. A complete guide to protecting your business.">
@@ -21,9 +22,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/style.css?v=2026031618">
     <script type="application/ld+json">
     {
@@ -90,7 +89,7 @@
                     <div class="blog-badge business">Business</div>
                     <h1>What Insurance Does a Coffee Shop Need? A Complete Guide</h1>
                     <p>The right coverage protects everything you've built. Here's what you actually need.</p>
-                    <div class="article-meta"><span class="read-time">10 min read</span></div>
+                    <div class="article-meta"><span class="read-time">4 min read</span></div>
                 </div>
             </div>
             <div class="article-body">
@@ -155,7 +154,7 @@
                 <h2>Join the conversation</h2>
                 <p>Get weekly insights on building a gathering place that matters — coffee craft, community building, business strategy, and faith in your inbox.</p>
                 <div class="newsletter-wrap">
-                <form action="https://roastlaunch.beehiiv.com/subscribe" method="get" target="nl-iframe" class="newsletter-form">
+                <form action="https://roastlaunch.beehiiv.com/subscribe" method="post" target="nl-iframe" class="newsletter-form">
                     <label for="email-article" class="sr-only">Email address</label>
                     <input type="email" name="email" id="email-article" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Join the Newsletter</button>
@@ -212,6 +211,7 @@
         </div>
     </footer>
     <script src="../../js/main.js?v=2026031614"></script>
+    <script src="../../js/cookie-consent.js"></script>
     <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
 </html>
