@@ -1,6 +1,17 @@
 /* ═══════════════════════════════════════════════════════
    ROAST LAUNCH — Complete Stylesheet
    Brand-aligned, responsive, Ali Abdaal / Airbnb-inspired
+
+   ── ACCESSIBILITY / CONTRAST GUARDRAILS ──
+   Per Brand Style Guide (WCAG AA):
+     Terracotta (#C4612A) on Warm White = 3.95:1 → LARGE TEXT ONLY
+       (headlines ≥ 24px, or ≥ 18.66px bold, or buttons/badges).
+       NEVER use for body copy on light backgrounds.
+     Accent Hover (#A8522A) on Warm White = 5.15:1 → body-safe.
+     Sage (#5C7A4E) on Warm White = 4.62:1 → body-safe.
+     Espresso (#1C1209) on Warm White = 17.63:1 → default body color.
+   Body-prose inline links below add underline so link identity
+   does not rely on color contrast alone.
    ═══════════════════════════════════════════════════════ */
 
 /* ── CSS VARIABLES ─────────────────────────────────── */
@@ -18,6 +29,7 @@
   --bg-primary:     #FAFAF8;
   --accent:         #C4612A;
   --accent-hover:   #A8522A;
+  --accent-safe:    #A8522A;  /* Use when accent color is needed on body-sized text */
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,6 +49,21 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color 0.2s var(--ease); }
 a:hover { color: var(--accent-hover); }
 
+/* Body-prose links: underlined so link identity does not rely on color
+   contrast alone (Terracotta on Warm White = 3.95:1, fails WCAG AA body).
+   Limited to prose contexts to preserve clean nav/card/button treatments. */
+p a, li a, blockquote a, dd a,
+.article-content a, .faq-answer a, .prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(196, 97, 42, 0.35);
+  text-underline-offset: 3px;
+}
+p a:hover, li a:hover, blockquote a:hover, dd a:hover,
+.article-content a:hover, .faq-answer a:hover, .prose a:hover {
+  text-decoration-color: var(--accent-hover);
+}
+
 /* ── ACCESSIBILITY ─────────────────────────────────── */
 .skip-to-content {
   position: absolute;
@@ -45,7 +72,7 @@ a:hover { color: var(--accent-hover); }
   z-index: 9999;
   padding: 12px 24px;
   background: var(--accent);
-  color: #fff;
+  color: var(--warm-white);
   font-weight: 600;
   font-size: 14px;
   border-radius: 0 0 8px 0;
@@ -194,7 +221,7 @@ section { padding: 88px 0; }
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
+  background: var(--warm-white);
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(28, 18, 9, 0.12), 0 1px 4px rgba(28, 18, 9, 0.06);
   padding: 8px 0;
@@ -208,7 +235,7 @@ section { padding: 88px 0; }
   left: 50%;
   transform: translateX(-50%);
   border: 8px solid transparent;
-  border-bottom-color: #fff;
+  border-bottom-color: var(--warm-white);
   border-top: 0;
 }
 .nav-more.open .nav-dropdown {
@@ -1308,7 +1335,7 @@ section { padding: 88px 0; }
   width: 52px;
   height: 52px;
   background: var(--terracotta);
-  color: #fff;
+  color: var(--warm-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
