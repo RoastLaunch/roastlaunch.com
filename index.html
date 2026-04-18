@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://roastlaunch.beehiiv.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://roastlaunch.beehiiv.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://roastlaunch.beehiiv.com;">
-    <meta name="description" content="Open the coffee shop you were made for. Get a complete, fundable launch plan with self-paced video lessons, community support, and a guarantee that it works.">
-    <meta property="og:title" content="Roast Launch - Open the Coffee Shop You Were Made For">
-    <meta property="og:description" content="You'll have a complete, fundable launch plan for your specialty coffee shop — with self-paced video lessons, community support, and a guarantee.">
+    <meta name="description" content="Before you risk $150K on a coffee shop, spend $97 and 5 days on the Reality Check. Get a data-backed go/no-go decision for your concept. Built from 50+ real case studies.">
+    <meta property="og:title" content="Roast Launch — Is Your Coffee Shop Concept Actually Viable?">
+    <meta property="og:description" content="The Reality Check is a 5-day, $97 self-paced course that tells you whether your coffee shop concept will work — before you sign a lease. Built from 50+ real case studies.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://roastlaunch.com/">
     <meta property="og:image" content="https://roastlaunch.com/images/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Roast Launch - Open the Coffee Shop You Were Made For">
-    <meta name="twitter:description" content="You'll have a complete, fundable launch plan for your specialty coffee shop — with self-paced video lessons, community support, and a guarantee.">
+    <meta name="twitter:title" content="Roast Launch — Is Your Coffee Shop Concept Actually Viable?">
+    <meta name="twitter:description" content="The Reality Check is a 5-day, $97 self-paced course that tells you whether your coffee shop concept will work — before you sign a lease.">
     <meta name="twitter:image" content="https://roastlaunch.com/images/hero.jpg">
     <link rel="canonical" href="https://roastlaunch.com/">
-    <title>Roast Launch - Open the Coffee Shop You Were Made For</title>
+    <title>Roast Launch — Validate Your Coffee Shop Concept in 5 Days for $97</title>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +26,7 @@
           "name": "Roast Launch",
           "url": "https://roastlaunch.com",
           "logo": "https://roastlaunch.com/images/favicon-32.png",
-          "description": "Roast Launch helps aspiring coffee shop owners build complete, fundable launch plans through self-paced video lessons and proven business frameworks.",
+          "description": "Roast Launch helps aspiring coffee shop owners validate their concept and build a fundable launch plan — before they risk their savings.",
           "founder": {
             "@type": "Person",
             "name": "John Sitzman"
@@ -40,20 +40,38 @@
         },
         {
           "@type": "Course",
-          "@id": "https://roastlaunch.com/#accelerator",
-          "name": "Coffee Shop Launch Accelerator",
-          "description": "8-module self-paced program with expert-led video lessons, community Q&A, and everything you need to build a complete, fundable launch plan for your specialty coffee shop.",
+          "@id": "https://roastlaunch.com/#reality-check",
+          "name": "The Reality Check",
+          "description": "A 5-day self-paced course that validates your coffee shop concept with real data — market research, financial modeling, and a go/no-go framework built from 50+ real case studies.",
           "provider": { "@id": "https://roastlaunch.com/#organization" },
           "offers": {
             "@type": "Offer",
-            "price": "997",
+            "price": "97",
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock"
           },
           "hasCourseInstance": {
             "@type": "CourseInstance",
             "courseMode": "Online",
-            "duration": "P8M"
+            "courseWorkload": "PT4H"
+          }
+        },
+        {
+          "@type": "Course",
+          "@id": "https://roastlaunch.com/#accelerator",
+          "name": "Coffee Shop Launch Accelerator",
+          "description": "8-module self-paced program with expert-led video lessons, community Q&A, and everything you need to build a complete, fundable launch plan. Currently in pre-launch — join the waitlist.",
+          "provider": { "@id": "https://roastlaunch.com/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "price": "997",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder"
+          },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "duration": "P8W"
           }
         },
         {
@@ -73,7 +91,162 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="css/style.css?v=2026031618">
+    <link rel="stylesheet" href="css/style.css?v=2026041700">
+    <style>
+        /* Homepage-specific additions for Reality Check-forward design */
+        .rc-home-days {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            max-width: 1040px;
+            margin: 48px auto 0;
+        }
+        .rc-home-day {
+            background: var(--warm-white);
+            border: 1px solid rgba(28, 18, 9, 0.06);
+            border-radius: 12px;
+            padding: 20px 18px;
+            text-align: left;
+        }
+        .rc-home-day .day-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .rc-home-day h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--espresso);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .rc-home-day p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+        @media (max-width: 900px) {
+            .rc-home-days {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 540px) {
+            .rc-home-days {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accelerator "coming soon" teaser */
+        .accelerator-teaser {
+            padding: 88px 24px;
+            background: var(--warm-cream);
+        }
+        .accelerator-teaser-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .accelerator-teaser .coming-soon-badge {
+            display: inline-block;
+            background: rgba(92, 122, 78, 0.12);
+            color: var(--sage);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        .accelerator-teaser h2 {
+            margin-bottom: 16px;
+        }
+        .accelerator-teaser .teaser-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
+        .accelerator-teaser .teaser-modules {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 840px;
+            margin: 0 auto 40px;
+            opacity: 0.75;
+        }
+        .accelerator-teaser .teaser-module {
+            background: rgba(250, 250, 248, 0.6);
+            border: 1px dashed rgba(28, 18, 9, 0.12);
+            border-radius: 10px;
+            padding: 14px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        .accelerator-teaser .teaser-module .module-tag {
+            display: block;
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        @media (max-width: 768px) {
+            .accelerator-teaser .teaser-modules {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .accelerator-teaser .teaser-cta-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-disabled {
+            background: var(--mid-gray) !important;
+            border-color: var(--mid-gray) !important;
+            color: var(--warm-white) !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .btn-disabled:hover {
+            transform: none !important;
+            background: var(--mid-gray) !important;
+        }
+
+        /* Final CTA — Reality Check forward */
+        .rc-home-final {
+            padding: 96px 24px;
+            background: var(--espresso);
+            color: var(--warm-white);
+            text-align: center;
+        }
+        .rc-home-final h2 {
+            color: var(--warm-white);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 16px;
+        }
+        .rc-home-final p {
+            color: rgba(250, 250, 248, 0.8);
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 580px;
+            margin: 0 auto 32px;
+        }
+        .rc-home-final .btn-outline {
+            border-color: rgba(250, 250, 248, 0.3);
+            color: var(--warm-white);
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
@@ -83,33 +256,39 @@
                 <img src="/images/logo-nav.png" alt="Roast Launch" width="140" height="32">
             </a>
             <nav class="nav-menu">
-                <a href="/curriculum">Curriculum</a>
+                <a href="/reality-check">Reality Check</a>
                 <a href="/blog">Blog</a>
                 <a href="/about">About</a>
                 <div class="nav-more">
                     <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true">More <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <div class="nav-dropdown">
+                        <a href="/workshop">Free Workshop</a>
                         <a href="/should-i-start">Readiness Quiz</a>
                         <a href="/calculator">Startup Calculator</a>
+                        <a href="/accelerator">Accelerator (coming soon)</a>
+                        <a href="/curriculum">Curriculum</a>
                         <a href="/community">Community</a>
                         <a href="/resources">Free Resources</a>
                         <a href="/guide">Complete Guide</a>
                     </div>
                 </div>
                 <div class="nav-mobile-actions">
+                    <a href="/workshop">Free Workshop</a>
                     <a href="/should-i-start">Readiness Quiz</a>
                     <a href="/calculator">Startup Calculator</a>
+                    <a href="/accelerator">Accelerator (coming soon)</a>
+                    <a href="/curriculum">Curriculum</a>
                     <a href="/community">Community</a>
                     <a href="/resources">Free Resources</a>
                     <a href="/guide">Complete Guide</a>
                     <div class="nav-mobile-separator"></div>
                     <a href="https://app.roastlaunch.com/login" class="nav-mobile-login">Log In</a>
-                    <a href="/workshop" class="btn btn-primary btn-mobile-cta">Get Started Free</a>
+                    <a href="/reality-check" class="btn btn-primary btn-mobile-cta">Start Reality Check &mdash; $97</a>
                 </div>
             </nav>
             <div class="nav-actions">
                 <a href="https://app.roastlaunch.com/login" class="nav-login">Log In</a>
-                <a href="/workshop" class="btn btn-primary btn-nav">Get Started Free</a>
+                <a href="/reality-check" class="btn btn-primary btn-nav">Start Reality Check &mdash; $97</a>
             </div>
             <button class="hamburger" aria-label="Menu">
                 <span></span>
@@ -120,17 +299,17 @@
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
+        <!-- Hero Section — Reality Check forward -->
         <section class="hero">
             <div class="hero-split">
                 <div class="hero-content">
-                    <h1>Open the coffee shop you were made for.</h1>
-                    <p class="subtitle">Through 8 self-paced modules, you'll build a complete, fundable launch plan for a specialty coffee shop you're proud of — with expert-led video lessons, a supportive community of founders, and a guarantee that it works.</p>
+                    <h1>Know If Your Coffee Shop Will Actually Work &mdash; Before You Risk Everything.</h1>
+                    <p class="subtitle">The Reality Check is a 5-day, $97 self-paced course that gives you a data-backed go/no-go decision on your coffee shop concept. Built from 50+ real case studies and 100+ hours of research &mdash; so you know whether to sign the lease or rework the plan.</p>
                     <div class="hero-buttons">
-                        <a href="/workshop" class="btn btn-primary">Register for Free Workshop</a>
-                        <a href="/should-i-start" class="btn btn-outline">Take the Free Quiz</a>
+                        <a href="/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                        <a href="/workshop" class="btn btn-outline">Watch the Free Workshop</a>
                     </div>
-                    <p class="proof-line">Lifetime access — self-paced | Built from 50+ real case studies | 100+ hours of research</p>
+                    <p class="proof-line">5 days, self-paced &middot; Built from 50+ real case studies &middot; $97 credits toward the Accelerator when it launches</p>
                 </div>
                 <div class="hero-image">
                     <img src="images/hero.jpg" alt="Cozy coffee shop interior with warm lighting and inviting atmosphere" loading="eager">
@@ -138,90 +317,180 @@
             </div>
         </section>
 
-        <!-- What You'll Learn Section -->
+        <!-- The Stakes — why validation matters -->
+        <section class="social-proof-section fade-in fade-in--fast" style="background: var(--espresso); color: var(--warm-white);">
+            <div class="container text-center">
+                <h2 style="color: var(--warm-white);">Most coffee shops fail because the owner never validated the concept.</h2>
+                <p class="social-proof-subtitle" style="color: rgba(250, 250, 248, 0.8); max-width: 700px; margin: 0 auto 32px;">They fell in love with the idea, signed a lease, spent $150K&ndash;$300K, and then discovered the market wasn't there, the numbers didn't work, or the location was wrong. The Reality Check exists so that doesn't happen to you.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <p class="stat-number" style="color: var(--accent);">60%</p>
+                        <p class="stat-label" style="color: rgba(250, 250, 248, 0.7);">of food &amp; beverage businesses fail within 3 years</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-number" style="color: var(--accent);">$150K+</p>
+                        <p class="stat-label" style="color: rgba(250, 250, 248, 0.7);">average loss for owners who skip validation</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-number" style="color: var(--accent);">5 days</p>
+                        <p class="stat-label" style="color: rgba(250, 250, 248, 0.7);">to know if your concept is viable &mdash; before you risk a dollar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You'll Walk Away With — reframed around Reality Check -->
         <section class="learning-pillars fade-in fade-in--fast">
             <div class="container">
-                <h2>What You'll Walk Away With</h2>
+                <h2>What You'll Walk Away With in 5 Days</h2>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 17px; max-width: 620px; margin: 0 auto 48px; line-height: 1.7;">The Reality Check turns a vague dream into a data-backed decision. Here's what you actually produce.</p>
                 <div class="pillars-grid stagger">
                     <article class="pillar-card">
                         <div class="pillar-icon">📋</div>
-                        <h3>The Plan</h3>
-                        <p>Walk away with a complete, fundable launch plan — financial model, brand brief, location analysis, legal foundation, and marketing strategy.</p>
+                        <h3>A Concept Brief</h3>
+                        <p>Your coffee shop concept &mdash; customer, differentiator, purpose &mdash; sharp enough to pitch to an investor. No more vague ideas.</p>
                     </article>
                     <article class="pillar-card">
-                        <div class="pillar-icon">☕</div>
-                        <h3>The Coffee</h3>
-                        <p>Master specialty sourcing, extraction science, and roasting profiles. Build the craft that draws people in and keeps them coming back.</p>
+                        <div class="pillar-icon">📍</div>
+                        <h3>A Location Scorecard</h3>
+                        <p>Evaluate any neighborhood the way commercial real estate pros do &mdash; foot traffic, demographics, competition, lease economics.</p>
                     </article>
                     <article class="pillar-card">
                         <div class="pillar-icon">📊</div>
-                        <h3>The Business</h3>
-                        <p>Learn real financial modeling, location strategy, operations, and the metrics that keep your doors open — not vague theory.</p>
+                        <h3>A Financial Reality Check</h3>
+                        <p>Real startup cost estimate, unit economics, break-even model. See the actual numbers before a lender asks for them.</p>
                     </article>
                     <article class="pillar-card">
-                        <div class="pillar-icon">🤝</div>
-                        <h3>The Community</h3>
-                        <p>Build alongside a community of founders who share your calling. Get accountability, honest feedback, and support that makes the journey possible.</p>
+                        <div class="pillar-icon">✅</div>
+                        <h3>A Go/No-Go Decision</h3>
+                        <p>A data-backed answer: go, pivot, or wait. No ambiguity. No wishful thinking. Just the clarity you need to move forward.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-
-        <!-- Launch System Section -->
+        <!-- The 5-Day Framework -->
         <section class="launch-system fade-in">
             <div class="container">
-                <h2>The Coffee Shop Launch System</h2>
-                <p class="section-subtitle">8 self-paced modules with expert-led video lessons. You'll build your launch plan at your own pace — with real deadlines, community Q&A with John, and a guarantee.</p>
-                <p style="text-align: center; color: var(--accent); font-weight: 600; font-size: 15px; margin-top: 8px;">The average failed coffee shop loses $80,000&ndash;$300,000. The Accelerator costs $997.</p>
-                <p style="text-align: center; font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Founding price ends June 1 &middot; Regular price $1,497</p>
-                <div class="modules-grid stagger">
-                    <div class="module-card">
-                        <div class="module-number" data-target="1">00</div>
-                        <h3>The Vision & Calling</h3>
-                        <p>Discover what kind of gathering place your community needs — and whether you're the one meant to build it.</p>
+                <h2>The 5-Day Reality Check</h2>
+                <p class="section-subtitle">5 focused days. 30&ndash;45 minutes each. One clear answer at the end. Self-paced &mdash; move as fast or slow as you need.</p>
+                <p style="text-align: center; color: var(--accent); font-weight: 600; font-size: 15px; margin-top: 8px;">$97 could save you $150,000. Every dollar credits toward the Accelerator when it launches.</p>
+                <div class="rc-home-days stagger">
+                    <div class="rc-home-day">
+                        <span class="day-label">Day 1</span>
+                        <h4>Concept Clarity</h4>
+                        <p>Sharpen your concept &mdash; customer, differentiator, purpose.</p>
                     </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="2">00</div>
-                        <h3>Market Research & Location</h3>
-                        <p>Find the neighborhood that needs you. Learn to read foot traffic, demographics, and community fit.</p>
+                    <div class="rc-home-day">
+                        <span class="day-label">Day 2</span>
+                        <h4>Location &amp; Market</h4>
+                        <p>Validate with real foot traffic and demographic data.</p>
                     </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="3">00</div>
-                        <h3>Business Model & Finance</h3>
-                        <p>Build a financial model that keeps your gathering place sustainable for years, not months.</p>
+                    <div class="rc-home-day">
+                        <span class="day-label">Day 3</span>
+                        <h4>Financial Reality</h4>
+                        <p>Startup costs, unit economics, break-even &mdash; real numbers.</p>
                     </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="4">00</div>
-                        <h3>Brand & Identity</h3>
-                        <p>Create a brand that reflects your community and invites people to belong — from name to atmosphere.</p>
+                    <div class="rc-home-day">
+                        <span class="day-label">Day 4</span>
+                        <h4>Funding &amp; Pathways</h4>
+                        <p>Gap analysis and realistic paths to the capital you need.</p>
                     </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="5">00</div>
-                        <h3>Operations & Training</h3>
-                        <p>Build the systems and team culture that make every visit feel like coming home.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="6">00</div>
-                        <h3>Legal & Administrative</h3>
-                        <p>Handle the permits, licenses, insurance, and structure so you can focus on what matters — people.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="7">00</div>
-                        <h3>Pre-Launch Marketing</h3>
-                        <p>Build a community of supporters before you even open the doors. Launch day should feel like a reunion.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-number" data-target="8">00</div>
-                        <h3>Launch & First 90 Days</h3>
-                        <p>Open your doors with confidence and a community already cheering you on. Then sustain the momentum.</p>
+                    <div class="rc-home-day">
+                        <span class="day-label">Day 5</span>
+                        <h4>Go / No-Go</h4>
+                        <p>Score your concept. Decide with data, not hope.</p>
                     </div>
                 </div>
-                <div class="system-cta">
+                <div class="system-cta" style="margin-top: 56px;">
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
-                        <a href="/curriculum" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">See the Full Curriculum</a>
+                        <a href="/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                        <a href="/workshop" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">Watch the Free Workshop First</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section class="who-for-section fade-in">
+            <div class="container">
+                <h2 class="text-center">Is the Reality Check Right for You?</h2>
+                <div class="who-for-grid">
+                    <div class="who-for-card who-for-yes">
+                        <h3>This Is for You If...</h3>
+                        <ul class="who-for-list">
+                            <li><span class="who-check">✓</span> You've been dreaming about a coffee shop but haven't committed yet</li>
+                            <li><span class="who-check">✓</span> You want to validate your concept before risking your savings</li>
+                            <li><span class="who-check">✓</span> You need clarity on whether the numbers actually work</li>
+                            <li><span class="who-check">✓</span> You want an honest, structured framework &mdash; not cheerleading</li>
+                            <li><span class="who-check">✓</span> You believe your coffee shop can be a calling, not just a business</li>
+                        </ul>
+                    </div>
+                    <div class="who-for-card who-for-no">
+                        <h3>This Isn't for You If...</h3>
+                        <ul class="who-for-list">
+                            <li><span class="who-x">✗</span> You've already signed a lease and started buildout</li>
+                            <li><span class="who-x">✗</span> You want someone to tell you your idea is great without doing the work</li>
+                            <li><span class="who-x">✗</span> You're looking for a get-rich-quick scheme</li>
+                            <li><span class="who-x">✗</span> You're not willing to look up real numbers for your area</li>
+                            <li><span class="who-x">✗</span> You just want recipes &mdash; this is about building a real business</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="system-cta" style="margin-top: 40px;">
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                        <a href="/should-i-start" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">Take the Free Readiness Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Stats -->
+        <section class="social-proof-section fade-in">
+            <div class="container text-center">
+                <h2>Built on real research, not guesswork.</h2>
+                <p class="social-proof-subtitle">Every framework in the Reality Check is based on 50+ real coffee shop case studies, 100+ hours of industry research, and the financial realities of running a specialty shop.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <p class="stat-number">50+</p>
+                        <p class="stat-label">Real Case Studies</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-number">100+</p>
+                        <p class="stat-label">Hours of Research</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-number">5</p>
+                        <p class="stat-label">Days to a Clear Answer</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-number">$97</p>
+                        <p class="stat-label">That Could Save You $150K</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accelerator Coming Soon Teaser -->
+        <section class="accelerator-teaser fade-in">
+            <div class="accelerator-teaser-inner">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <h2>The Full Accelerator &mdash; 8 Modules to Your Launch Plan</h2>
+                <p class="teaser-subtitle">Once your Reality Check confirms your concept is viable, the Accelerator takes you from validated idea to a complete, fundable launch plan &mdash; 8 self-paced modules, 24 worksheets, and 7 professional deliverables. Launching soon. Every dollar of your Reality Check credits toward it.</p>
+                <div class="teaser-modules">
+                    <div class="teaser-module"><span class="module-tag">Module 1</span>Vision &amp; Calling</div>
+                    <div class="teaser-module"><span class="module-tag">Module 2</span>Market &amp; Location</div>
+                    <div class="teaser-module"><span class="module-tag">Module 3</span>Business Model &amp; Finance</div>
+                    <div class="teaser-module"><span class="module-tag">Module 4</span>Brand &amp; Identity</div>
+                    <div class="teaser-module"><span class="module-tag">Module 5</span>Operations &amp; Training</div>
+                    <div class="teaser-module"><span class="module-tag">Module 6</span>Legal &amp; Administrative</div>
+                    <div class="teaser-module"><span class="module-tag">Module 7</span>Pre-Launch Marketing</div>
+                    <div class="teaser-module"><span class="module-tag">Module 8</span>Launch &amp; First 90 Days</div>
+                </div>
+                <div class="teaser-cta-row">
+                    <a href="/reality-check" class="btn btn-primary">Start with the Reality Check &mdash; $97</a>
+                    <a href="/accelerator" class="btn btn-outline">Join the Accelerator Waitlist</a>
                 </div>
             </div>
         </section>
@@ -256,67 +525,6 @@
             </div>
         </section>
 
-        <!-- Who This Is For Section -->
-        <section class="who-for-section fade-in">
-            <div class="container">
-                <h2 class="text-center">Is the Accelerator Right for You?</h2>
-                <div class="who-for-grid">
-                    <div class="who-for-card who-for-yes">
-                        <h3>This Is for You If...</h3>
-                        <ul class="who-for-list">
-                            <li><span class="who-check">✓</span> You've been dreaming about opening a coffee shop but don't know where to start</li>
-                            <li><span class="who-check">✓</span> You want real numbers — not vague motivational advice</li>
-                            <li><span class="who-check">✓</span> You'd rather spend $997 on a plan than $80,000–$300,000 on a failed shop</li>
-                            <li><span class="who-check">✓</span> You want accountability and a community of people on the same path</li>
-                            <li><span class="who-check">✓</span> You believe your coffee shop can be a calling, not just a business</li>
-                        </ul>
-                    </div>
-                    <div class="who-for-card who-for-no">
-                        <h3>This Isn't for You If...</h3>
-                        <ul class="who-for-list">
-                            <li><span class="who-x">✗</span> You want a franchise or cookie-cutter approach</li>
-                            <li><span class="who-x">✗</span> You're looking for a get-rich-quick scheme</li>
-                            <li><span class="who-x">✗</span> You're not willing to do the homework between sessions</li>
-                            <li><span class="who-x">✗</span> You've already opened and are looking for operational help</li>
-                            <li><span class="who-x">✗</span> You just want recipes — this is about building a real business</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="system-cta" style="margin-top: 40px;">
-                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="/accelerator" class="btn btn-primary">Get the Accelerator — $997</a>
-                        <a href="/workshop" class="btn btn-primary" style="background: var(--sage); border-color: var(--sage);">Start with the Free Workshop</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Proof Section -->
-        <section class="social-proof-section fade-in">
-            <div class="container text-center">
-                <h2>Built on real research, not guesswork.</h2>
-                <p class="social-proof-subtitle">Every module is based on 50+ real coffee shop case studies, 100+ hours of industry research, and tested business frameworks.</p>
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <p class="stat-number">50+</p>
-                        <p class="stat-label">Real Case Studies</p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-number">100+</p>
-                        <p class="stat-label">Hours of Research</p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-number">8</p>
-                        <p class="stat-label">In-Depth Modules</p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-number">100%</p>
-                        <p class="stat-label">Launch Plan Guarantee</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Homepage FAQ Section -->
         <section class="faq-section fade-in">
             <div class="container">
@@ -326,43 +534,59 @@
                 </div>
                 <div class="faq-container">
                     <div class="faq-item">
-                        <h3>Do I need coffee experience to join the Accelerator?</h3>
+                        <h3>What exactly is the Reality Check?</h3>
                         <div class="faq-answer">
-                            <p>Not at all. The Accelerator is designed for aspiring coffee shop owners starting from scratch. Module 1 begins with your vision and calling — no barista skills required. You'll learn everything from specialty sourcing to financial modeling along the way.</p>
+                            <p>A 5-day self-paced course that validates your coffee shop concept with data &mdash; not guesswork. Each day is 30&ndash;45 minutes of focused work. By Day 5 you have a concept brief, a location scorecard, a financial model, a funding gap analysis, and a scored go/no-go decision. $97, one-time, lifetime access. <a href="/reality-check">See what's inside &rarr;</a></p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <h3>What if I'm not sure I'm ready?</h3>
+                        <h3>Do I need coffee or business experience?</h3>
                         <div class="faq-answer">
-                            <p>That's exactly what the free workshop and $97 Reality Check are for. Start with the workshop to learn what kills coffee shops before they open. If you want to go deeper, the Reality Check gives you 5 days of focused validation — and that $97 applies as credit toward the Accelerator.</p>
+                            <p>No. The Reality Check is designed for aspiring owners starting from zero. You bring your idea and a willingness to look honestly at the numbers. We bring the frameworks built from 50+ real case studies.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <h3>What does the 100% guarantee mean?</h3>
+                        <h3>What happens to my $97 if I decide to go all in?</h3>
                         <div class="faq-answer">
-                            <p>Complete all 8 modules and do the exercises — if you don't walk away with a complete, fundable launch plan, you get a full refund. Either you get the plan, or you get your money back. <a href="/accelerator#pricing">See full details</a>.</p>
+                            <p>Your entire $97 credits toward the Coffee Shop Launch Accelerator when it launches &mdash; so if you continue your journey with us, the Reality Check is effectively free. The credit never expires.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <h3>How much does a coffee shop actually cost to open?</h3>
+                        <h3>When does the Accelerator launch?</h3>
                         <div class="faq-answer">
-                            <p>Typical specialty coffee shop buildouts range from $80,000 to $300,000+ depending on location, size, and build-out scope. The Accelerator teaches you to model your specific numbers so you know exactly what you need before you sign a lease. Try our free Calculator for a quick estimate.</p>
+                            <p>The Accelerator is in active development. <a href="/accelerator">Join the waitlist</a> to be first to know when it opens and to lock in founding pricing. In the meantime, the Reality Check is the highest-leverage $97 you can spend on your coffee shop dream.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What if my Reality Check says "no-go"?</h3>
+                        <div class="faq-answer">
+                            <p>Then it just saved you $150,000+. A no-go doesn't mean your dream is over &mdash; it means your current concept, location, or resources need adjustment. Many people pivot and come back stronger.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <h3>Is this faith-based?</h3>
                         <div class="faq-answer">
-                            <p>Faith is part of John's story and the Roast Launch ethos — we believe a coffee shop can be a calling, not just a business. But the program is built on hard data, real frameworks, and proven business strategy. You don't need to share any particular belief to get enormous value from the Accelerator.</p>
+                            <p>Faith is part of John's story and the Roast Launch ethos &mdash; we believe a coffee shop can be a calling, not just a business. But the program is built on hard data, real frameworks, and proven business strategy. You don't need to share any particular belief to get enormous value.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Banner -->
+        <!-- Final CTA -->
+        <section class="rc-home-final">
+            <h2>$97 and 5 Days to Know Before You Go All In.</h2>
+            <p>The smartest money you'll ever spend on your coffee shop dream &mdash; whether the answer is "go," "pivot," or "wait." Every dollar credits toward the Accelerator when it launches.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="/reality-check" class="btn btn-primary">Start the Reality Check &mdash; $97</a>
+                <a href="/workshop" class="btn btn-outline">Watch the Free Workshop First</a>
+            </div>
+        </section>
+
+        <!-- Newsletter CTA Banner -->
         <section class="cta-banner" id="newsletter">
             <div class="container">
-                <p style="margin-bottom: 12px; font-size: 14px;">Not ready for the Accelerator? Start here — get one actionable lesson per week.</p>
+                <p style="margin-bottom: 12px; font-size: 14px;">Not ready for the Reality Check? Start here &mdash; get one actionable lesson per week.</p>
                 <h2>Start building your coffee shop today.</h2>
                 <p>Join aspiring coffee shop owners getting one actionable lesson per week on specialty coffee, business fundamentals, and faith-grounded entrepreneurship.</p>
                 <div class="newsletter-wrap">
@@ -390,13 +614,13 @@
             <div class="footer-column">
                 <h4>Pages</h4>
                 <ul>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/curriculum">Curriculum</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/community">Community</a></li>
-                    <li><a href="/accelerator">Accelerator</a></li>
-                    <li><a href="/workshop">Workshop</a></li>
                     <li><a href="/reality-check">Reality Check</a></li>
+                    <li><a href="/workshop">Free Workshop</a></li>
+                    <li><a href="/accelerator">Accelerator (coming soon)</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/curriculum">Curriculum</a></li>
+                    <li><a href="/community">Community</a></li>
                 </ul>
             </div>
             <div class="footer-column">
