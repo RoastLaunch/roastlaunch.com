@@ -1451,9 +1451,8 @@ section { padding: 88px 0; }
 .article-cta-box {
   background: var(--warm-cream);
   border-radius: 12px;
-  padding: 32px 28px;
-  margin: 48px auto;
-  max-width: 560px;
+  padding: 36px 40px;
+  margin: 48px 0;
   text-align: center;
 }
 .article-cta-box h3 {
