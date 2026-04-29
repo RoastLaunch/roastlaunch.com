@@ -278,6 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const words = (el.textContent || '').trim().split(/\s+/).filter(Boolean);
       if (words.length < 4) return;
 
+      // Skip narrow containers (cards, sidebars, etc.). In tight columns,
+      // forcing the trailing 1-2 words onto a single indivisible unit
+      // tends to push it onto its own line, which creates a different
+      // (and uglier) orphan further up the paragraph. Wide prose like
+      // dashboard hero text and blog posts is unaffected.
+      if (el.getBoundingClientRect().width < 400) return;
+
       const textNodes = [];
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
       let n = walker.nextNode();
