@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // can't feedback-loop and progressively destroy the layout.
   (function preventOrphans() {
     const PROSE_SELECTOR =
-      'p, li, h1, h2, h3, h4, h5, h6, dd, figcaption, blockquote';
+      'p, li, dd, figcaption, blockquote';
     const TAIL_LIMIT = 15;
 
     function fixAll() {
@@ -271,6 +271,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function fixOne(el) {
       if (el.closest('input, textarea, [contenteditable="true"]')) return;
+
+      // Skip elements with too few words: binding 2-of-3 words can
+      // INVERT the layout — leaving the first short word ("A") alone
+      // on its own line while the bound pair wraps together.
+      const words = (el.textContent || '').trim().split(/\s+/).filter(Boolean);
+      if (words.length < 4) return;
 
       const textNodes = [];
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);

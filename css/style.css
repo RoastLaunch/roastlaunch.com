@@ -49,12 +49,16 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color 0.2s var(--ease); }
 a:hover { color: var(--accent-hover); }
 
-/* Browser-level orphan prevention as a baseline. Modern engines
-   (Chrome 117+, Safari 17.5+, Firefox 124+) auto-balance the last line.
-   The deterministic typographic fix lives in js/main.js (binds the
-   trailing words with NBSP). Both layers are safe to combine. */
-p, li, h1, h2, h3, h4, h5, h6, dd, figcaption, blockquote {
+/* Browser-level orphan prevention. Body prose gets `pretty` (balances
+   the last line) while headings get `balance` (balances every line —
+   purpose-built for short multi-line titles). The JS in main.js adds
+   deterministic NBSP binding to body prose only; headings rely on
+   `balance` alone, since binding can invert short heading layouts. */
+p, li, dd, figcaption, blockquote {
   text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
 }
 
 /* Body-prose links: underlined so link identity does not rely on color
