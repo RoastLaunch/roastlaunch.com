@@ -91,7 +91,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="css/style.css?v=2026042822">
+    <link rel="stylesheet" href="css/style.css?v=2026042823">
     <style>
         /* Homepage-specific additions for Reality Check-forward design */
         .rc-home-days {
@@ -106,7 +106,10 @@
             border: 1px solid rgba(28, 18, 9, 0.06);
             border-radius: 12px;
             padding: 20px 18px;
-            text-align: left;
+            /* Centered to match the .pillar-card style — narrow 5-up
+               feature cards read better as balanced columns than as
+               left-justified content blocks. */
+            text-align: center;
         }
         .rc-home-day .day-label {
             font-size: 12px;
@@ -649,7 +652,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=2026042822"></script>
+    <script src="js/main.js?v=2026042823"></script>
     <script src="js/cookie-consent.js"></script>
     <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
