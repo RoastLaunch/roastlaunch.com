@@ -247,4 +247,120 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── PREVENT TEXT ORPHANS ───────────────────────────
+  // Bind the trailing words of every paragraph / heading / list item
+  // with non-breaking spaces so a single short word never wraps to its
+  // own line ("Day 5." dropping below "decision on", etc.).
+  // `text-wrap: pretty` (in style.css) is only a HINT to the browser;
+  // NBSP is the deterministic typographic fix.
+  //
+  // Algorithm: walk backward through each prose element building a
+  // "tail segment" until adding the next word would push it past
+  // TAIL_LIMIT chars; replace each crossed regular space with NBSP.
+  // Pre-existing NBSPs are counted but not re-replaced, which makes
+  // the pass IDEMPOTENT — re-runs are no-ops, so the MutationObserver
+  // can't feedback-loop and progressively destroy the layout.
+  (function preventOrphans() {
+    const PROSE_SELECTOR =
+      'p, li, h1, h2, h3, h4, h5, h6, dd, figcaption, blockquote';
+    const TAIL_LIMIT = 15;
+
+    function fixAll() {
+      document.querySelectorAll(PROSE_SELECTOR).forEach(fixOne);
+    }
+
+    function fixOne(el) {
+      if (el.closest('input, textarea, [contenteditable="true"]')) return;
+
+      const textNodes = [];
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      let n = walker.nextNode();
+      while (n) {
+        textNodes.push(n);
+        n = walker.nextNode();
+      }
+      if (!textNodes.length) return;
+
+      let combined = '';
+      const offsets = [];
+      for (const tn of textNodes) {
+        offsets.push(combined.length);
+        combined += tn.textContent || '';
+      }
+
+      const trimmed = combined.replace(/\s+$/, '');
+      if (!trimmed.length) return;
+
+      const replacements = [];
+      let cursor = trimmed.length;
+      let tailLen = 0;
+
+      while (cursor > 0) {
+        let wsIdx = -1;
+        for (let i = cursor - 1; i >= 0; i--) {
+          const ch = trimmed[i];
+          if (ch === ' ' || ch === '\u00A0' || ch === '\t' || ch === '\n') {
+            wsIdx = i;
+            break;
+          }
+        }
+        if (wsIdx < 0) break;
+
+        const wordLen = cursor - wsIdx - 1;
+        if (wordLen <= 0) {
+          cursor = wsIdx;
+          continue;
+        }
+
+        const newTail = tailLen === 0 ? wordLen : tailLen + 1 + wordLen;
+        if (tailLen > 0 && newTail > TAIL_LIMIT) break;
+
+        if (trimmed[wsIdx] === ' ') replacements.push(wsIdx);
+        tailLen = newTail;
+        cursor = wsIdx;
+      }
+
+      if (!replacements.length) return;
+
+      replacements.sort((a, b) => b - a);
+      for (const pos of replacements) {
+        let idx = 0;
+        for (let i = textNodes.length - 1; i >= 0; i--) {
+          if (offsets[i] <= pos) {
+            idx = i;
+            break;
+          }
+        }
+        const tn = textNodes[idx];
+        const local = pos - offsets[idx];
+        const txt = tn.textContent || '';
+        if (txt[local] !== ' ') continue;
+        tn.textContent = txt.slice(0, local) + '\u00A0' + txt.slice(local + 1);
+      }
+    }
+
+    // Initial pass after layout (two RAFs let the browser paint first).
+    requestAnimationFrame(function () {
+      requestAnimationFrame(fixAll);
+    });
+
+    // Catch dynamic content (newsletter success card, async injected
+    // copy, etc.). RAF-debounced + idempotent so bursts of mutations
+    // coalesce into a single no-op pass.
+    let scheduled = false;
+    const observer = new MutationObserver(function () {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(function () {
+        scheduled = false;
+        fixAll();
+      });
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+  })();
+
 });

@@ -49,6 +49,14 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color 0.2s var(--ease); }
 a:hover { color: var(--accent-hover); }
 
+/* Browser-level orphan prevention as a baseline. Modern engines
+   (Chrome 117+, Safari 17.5+, Firefox 124+) auto-balance the last line.
+   The deterministic typographic fix lives in js/main.js (binds the
+   trailing words with NBSP). Both layers are safe to combine. */
+p, li, h1, h2, h3, h4, h5, h6, dd, figcaption, blockquote {
+  text-wrap: pretty;
+}
+
 /* Body-prose links: underlined so link identity does not rely on color
    contrast alone (Terracotta on Warm White = 3.95:1, fails WCAG AA body).
    Limited to prose contexts to preserve clean nav/card/button treatments. */
