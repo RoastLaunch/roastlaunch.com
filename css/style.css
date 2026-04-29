@@ -49,15 +49,15 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color 0.2s var(--ease); }
 a:hover { color: var(--accent-hover); }
 
-/* Browser-level orphan prevention. Body prose gets `pretty` (balances
-   the last line) while headings get `balance` (balances every line —
-   purpose-built for short multi-line titles). The JS in main.js adds
-   deterministic NBSP binding to body prose only; headings rely on
-   `balance` alone, since binding can invert short heading layouts. */
-p, li, dd, figcaption, blockquote {
-  text-wrap: pretty;
-}
-h1, h2, h3, h4, h5, h6 {
+/* Browser-level orphan prevention. Both body prose and headings get
+   `balance` — the browser distributes lines evenly across short blocks
+   (≤ 6 lines per Chrome's cap), which is exactly the shape of card
+   bodies and headings. Long blog paragraphs exceed the cap and wrap
+   normally; for those, the NBSP walker in main.js takes over (it
+   skips containers narrower than 400px so cards are left to `balance`
+   alone). This pairing — balance on short blocks, NBSP on wide prose
+   — covers both layouts without one fighting the other. */
+p, li, dd, figcaption, blockquote, h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
