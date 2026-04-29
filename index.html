@@ -91,8 +91,21 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="css/style.css?v=2026042823">
+    <link rel="stylesheet" href="css/style.css?v=2026042824">
     <style>
+        /* Center the two section headings + the launch-system subtitle.
+           Scoped to these specific sections so other section headings
+           (which may want to stay left-aligned) aren't affected. */
+        .learning-pillars > .container > h2,
+        .launch-system > .container > h2 {
+            text-align: center;
+        }
+        .launch-system > .container > .section-subtitle {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Homepage-specific additions for Reality Check-forward design */
         .rc-home-days {
             display: grid;
@@ -106,10 +119,7 @@
             border: 1px solid rgba(28, 18, 9, 0.06);
             border-radius: 12px;
             padding: 20px 18px;
-            /* Centered to match the .pillar-card style — narrow 5-up
-               feature cards read better as balanced columns than as
-               left-justified content blocks. */
-            text-align: center;
+            text-align: left;
         }
         .rc-home-day .day-label {
             font-size: 12px;
@@ -652,7 +662,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=2026042823"></script>
+    <script src="js/main.js?v=2026042824"></script>
     <script src="js/cookie-consent.js"></script>
     <iframe name="nl-iframe" style="position:absolute;width:0;height:0;border:0;" aria-hidden="true" tabindex="-1"></iframe>
 </body>
